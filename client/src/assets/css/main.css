@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "Kooky";
+    src: url("../fonts/cartoonist_kooky.ttf");
+}
+
+body {
+    background: #ff5e0e;
+    font-family: "Kooky", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #545454;
+}
+
+a {
+    text-decoration: none;
+    color: #42b983;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+input{
+    font-family: "Berlin", Helvetica, Arial, sans-serif;
+}
+
+#title {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #197270;
+    color: #73b79b;
+    text-align: center;
+    font-size: 4em;
+    margin-top: 30px;
+}
+
+#registration, #login {
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
+    font-size: 16px;
+    line-height: 1.5;
+    background-image: url("../images/pokemen_homepage.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom;   
+    background-size: 65%;
+    margin: 0 auto;
+    margin-top: 2em;      
+    max-width: 880px;
+    padding: 2em 2em 4em;
+}
+
+#login {
+    min-height: 40em;
+}
+
+#registration {
+    min-height: 60em;
+}
+
+#registration h3{
+    text-align: center;
+}
+
+#loginInfo {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#loginButton {
+    background-color: #ffd44a;
+    border-radius: 15px;
+    border: 3px solid #ffd44a;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+#loginButton:hover{
+    color: #ff5e0e;
+    background-color: #fff;
+    border: 3px solid #ff5e0e;
+}

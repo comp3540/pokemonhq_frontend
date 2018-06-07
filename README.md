@@ -1,1 +1,0 @@
-# pokemonhq_frontend
