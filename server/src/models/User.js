@@ -6,5 +6,9 @@ module.exports = (sequelize, DataTypes) =>
       type: DataTypes.STRING,
       unique: true
     },
+	user_ID: {
+		DataTypes:INTEGER,
+		primaryKey:true
+	},
     password: DataTypes.STRING
   })
