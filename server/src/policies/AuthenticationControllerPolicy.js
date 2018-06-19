@@ -6,7 +6,6 @@ module.exports = {
       first_name: Joi.string().required(),
       last_name: Joi.string().required(),
       password: Joi.string().required().regex(/^[a-zA-Z0-9]{3,30}$/),
-      confirmed_password: Joi.string().required().regex(/^[a-zA-Z0-9]{3,30}$/),
       email: Joi.string().email()
     })
 
