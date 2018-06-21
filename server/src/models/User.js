@@ -7,7 +7,7 @@ function hashPassword (user, option) {
   if (!user.changed('password')) {
     return
   }
-  return bcrypt.genSaltAsync(SALT_FACTOR).then(salt => bcrypt.hasAsync(user.password, salt, null)).then(hash => { user.setDataValue('password', hash) })
+  return bcrypt.genSaltAsync(SALT_FACTOR).then(salt => bcrypt.hashAsync(user.password, salt, null)).then(hash => { user.setDataValue('password', hash) })
 }
 
 module.exports = (sequelize, DataTypes) => {
@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true
     },
-	user_ID: {
-		DataTypes:INTEGER,
-		primaryKey:true
-	},
     password: DataTypes.STRING
   }, {
     hooks: {

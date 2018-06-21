@@ -21,6 +21,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 import ValidationError from '@/utilities/errors/ValidationError'
 import Input from '@/utilities/form/Input'
 export default {
+  name: 'Register',
   data () {
     return {
       ValidationError: ValidationError, // ValidationError helper

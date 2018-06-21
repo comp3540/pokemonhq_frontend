@@ -1,5 +1,9 @@
-module.exports = (sequelize, DataTypes) =>
-  sequelize.define('Deck', {
-    Deck.belongsTo(User, {foreignKey: 'user_ID'}),
-    deck: DataTypes.BLOB,
+const User = require('./User')
+module.exports = (sequelize, DataTypes) => {
+  const Deck = sequelize.define('Deck', {
+    deck: DataTypes.BLOB
   })
+  Deck.belongsTo(User(sequelize, DataTypes))
+
+  return Deck
+}
