@@ -1,3 +1,4 @@
+// This file will be responsible for handling the authentication logic on the server
 const {User} = require('./../models')
 module.exports = {
   async register (req, res) {
