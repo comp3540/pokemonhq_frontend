@@ -17,6 +17,22 @@ module.exports = {
     } else {
       next()
     }
+  },
+
+  login (req, res, next) {
+    const schema = Joi.object({
+      password: Joi.string().required(),
+      email: Joi.string().email()
+    })
+
+    const { error } = schema.validate(req.body, { abortEarly: false })
+
+    if (error) {
+      const validationErrors = validationMessageCreator(error)
+      res.status(419).send(validationErrors)
+    } else {
+      next()
+    }
   }
 }
 
