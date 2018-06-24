@@ -5,7 +5,7 @@
       <v-input-text :field="fields.email" v-model="fields.email.value"></v-input-text>
       <v-input-password :field="fields.password" v-model="fields.password.value"></v-input-password>
       <button id="loginButton" @click="login()">Login</button>
-      <router-link :to="{ path: '/register' }">Register now!</router-link>
+      <router-link :to="{ name: 'Register' }">Register now!</router-link>
     </v-form>
     <br>
     <v-alert-fail :message="failMessage" @close="failMessage = ''"></v-alert-fail>

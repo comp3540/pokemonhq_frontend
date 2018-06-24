@@ -5,7 +5,7 @@
     <v-form @clearValidationErrors = "ValidationError.clear(fields, $event)">
       <v-input-text :field="fields.email" v-model="fields.email.value"></v-input-text>
       <button id="loginButton" @click="passwordReset()">Login</button>
-      <router-link :to="{ path: '/' }">Back to login!</router-link>
+      <router-link :to="{ name: 'Login' }">Back to login!</router-link>
     </v-form>
     <br>
     <v-alert-fail :message="failMessage" @close="failMessage = ''"></v-alert-fail>

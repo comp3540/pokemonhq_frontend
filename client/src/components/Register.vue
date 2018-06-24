@@ -8,7 +8,7 @@
       <v-input-text :field="fields.email" v-model="fields.email.value"></v-input-text>
       <v-input-password :field="fields.password" v-model="fields.password.value"></v-input-password>
       <button id="loginButton" @click="register()">Submit</button>
-      <router-link :to="{ path: '/' }">Back to login!</router-link>
+      <router-link :to="{ name: 'Login' }">Back to login!</router-link>
     </v-form>
     <br>
     <v-alert-success :message="successMessage" @close="successMessage = ''"></v-alert-success>
