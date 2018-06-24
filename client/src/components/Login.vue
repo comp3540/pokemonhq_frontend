@@ -51,11 +51,13 @@ export default {
 
         // call the login which is an asynchronous method, passing in the input values.
         // Once the method has finished execution save the response.
-        let response = await AuthenticationService.login(this.Input.getValue(this.fields))
+        var response = await AuthenticationService.login(this.Input.getValue(this.fields))
 
-        // set the success message to the response which will contain a "message" field containing the
-        // success message
-        this.successMessage = response.data.message
+        // set the global user token
+        this.$store.dispatch('setToken', response.data.token)
+
+        // set the global user
+        this.$store.dispatch('setUser', response.data.user)
 
         // clear all input values
         this.Input.clear(this.fields)
@@ -65,11 +67,18 @@ export default {
           // set the validation errors by associating them to the fields that did not
           // pass the backend validation
           this.ValidationError.set(this.fields, error.response.data)
-        } else if (error.response.status === 400) {
+        } else if (error.response.status === 403 || error.response.status === 500) {
           // Set the fail message to the response error message
           this.failMessage = error.response.data.message
         }
       }
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'Login'
+      })
     }
   }
 }

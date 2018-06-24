@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import { sync } from 'vuex-router-sync'
+import store from '@/store/store'
 // generic components
 import Text from './components/generic/form/input/Text'
 import Password from './components/generic/form/input/Password'
@@ -12,6 +13,8 @@ import SuccessAlert from './components/generic/alert/Success'
 import FailAlert from './components/generic/alert/Fail'
 
 Vue.config.productionTip = false
+
+sync(store, router)
 
 // register components
 Vue.component('v-input-text', Text)
@@ -25,5 +28,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store
 })

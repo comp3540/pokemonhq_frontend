@@ -9,5 +9,8 @@ module.exports = {
       host: process.env.DB_HOST || 'localhost',
       storage: './pokemonhq.sqlite'
     }
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }

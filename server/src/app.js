@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 require('./routes')(app)
-
+require('./passport')
 sequelize.sync().then(() => {
   app.listen(process.env.PORT || 8081)
   console.log('server started')
