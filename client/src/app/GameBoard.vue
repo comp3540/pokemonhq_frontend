@@ -1,35 +1,35 @@
 <template>
-  <div id="container>"
-    
-  <h1>Let's Play!</h1>
-    
+<div id="container">
+
+<h1>Let's Play!</h1>
+
 <div class="flex-container">
-  <div class="activeCard">ACTIVE</div>
-  <div>2</div>
-  <div>3</div>  
-  <div>4</div>
-  <div>5</div>
-  <div>6</div>  
-  <div id="placeholder"></div>
-    <div class="prizeCard">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>  
-        <div>4</div>
-        <div>5</div>
-        <div>6</div> 
-    </div>
-  <div>9</div>  
-  <div>10</div>
-  <div>11</div>
-  <div>12</div>  
-  <div>13</div>  
-  
-    <div id="column">  
-     <div class="squareBox">Deck</div>
-     <div class="squareBox">Discard</div>
-    </div><!--end of COLUMN-->
- 
+<div class="activeCard">ACTIVE</div>
+<div>2</div>
+<div>3</div>  
+<div>4</div>
+<div>5</div>
+<div>6</div>  
+<div id="placeholder"></div>
+<div class="prizeCard">
+<div>1</div>
+<div>2</div>
+<div>3</div>  
+<div>4</div>
+<div>5</div>
+<div>6</div> 
+</div>
+<div>9</div>  
+<div>10</div>
+<div>11</div>
+<div>12</div>  
+<div>13</div>  
+
+<div id="column">  
+<div class="squareBox">Deck</div>
+<div class="squareBox">Discard</div>
+</div><!--end of COLUMN-->
+
 </div> 
 </div><!--end of CONTAINER-->
 </template>
