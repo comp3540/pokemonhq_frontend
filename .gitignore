@@ -62,3 +62,7 @@ typings/
 
 # sqlite database
 *.sqlite
+.*.sw*
+*~
+\#*\#
+.DS_Store
