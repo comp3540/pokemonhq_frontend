@@ -1,186 +1,66 @@
 <template>
 <div id="container">
-
-<h1>Let's Play!</h1>
-
-<div class="flex-container">
-<div class="activeCard">ACTIVE</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
-<div>5</div>
-<div>6</div>
-<div id="placeholder"></div>
-<div class="prizeCard">
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
-<div>5</div>
-<div>6</div>
-</div>
-<div>9</div>
-<div>10</div>
-<div>11</div>
-<div>12</div>
-<div>13</div>
-
-<div id="column">
-<div class="squareBox">Deck</div>
-<div class="squareBox">Discard</div>
-</div><!--end of COLUMN-->
-
-</div>
+  <your-side :your="board.opponent"></your-side>
+  <your-side :your="board.your"></your-side>
 </div><!--end of CONTAINER-->
 </template>
 
 <script>
+import YourSide from './components/YourSide';
 export default {
-  name: 'GameBoard'
+  name: 'GameBoard',
+  components: {
+    YourSide
+  },
+  data () {
+    const f = this.fakeCard;
+    return {
+      board: {
+        your: {
+          bench: [f(1), f(2), f(3), f(4), f(5)],
+          active: [f(10)],
+          deck: [f(20)],
+          discard: [f(30)],
+          prize: [f(40), f(41), f(42), f(43), f(44), f(45)],
+          hand: [f(50), f(51), f(52), f(53), f(54), f(55), f(56)]
+        },
+        opponent: {
+          bench: [f(100), f(101), f(102)],
+          active: [f(110)],
+          deck: [f(120), f(121), f(122)],
+          discard: [f(130), f(131), f(132)],
+          prize: [f(140), f(141), f(142), f(143), f(144), f(145)],
+          hand: [f(150), f(151), f(152), f(153), f(154), f(155), f(156)]
+        }
+      }
+    };
+  },
+
+  methods: {
+    fakeCard (id) {
+      return {
+        state: {
+
+        },
+        props: {
+          id,
+          name: 'Pikachu',
+          initialHP: 40,
+          type: 'lightning',
+          clazz: 'POKEMON',
+          stage: 'basic',
+          evolvesFrom: null
+        }
+      };
+    }
+  }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@font-face {
-font-family: "Kooky";
-src: url("fonts/cartoonist_kooky.ttf");
-}
-
-html {
-  background: #ff5e0e;
-}
-
-h1 {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #197270;
-    color: #73b79b;
-    text-align: left;
-    font-size: 3em;
-    margin-top: -15px;
-    font-family: "Kooky", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body {
-    background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    color: #545454;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 70%;
-    margin: 0 auto;
-    max-width: 920px;
-    min-height: 45em;
-    padding: 2em 2em 4em;
-}
-
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  color: orange;
-  justify-content: center;
-}
-
-.flex-container > div {
-  border: 3px solid orange;
-  width: 98px;
-  height: 6em;
-  margin: 5px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 20px;
-  border-radius: 10px
-}
-
-/*ACTIVE CARD*/
-.flex-container > .activeCard {
-    background-color: deeppink;
-    width: 200px;
-    color: white;
-    border: none;
-}
-
-/*PRIZE CARDs*/
-.flex-container > .prizeCard {
+#container{
   background-color: white;
-  width: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  color: white;
-  justify-content: center;
-  border: none;
-}
-
-.flex-container > .prizeCard > div {
-  border: 1px solid white;
-  background-color: deeppink;
-  width: 3em;
-  height: 3em;
-  border-radius: 8px;
-}
-
-/*PLACEHOLDER*/
-.flex-container > #placeholder {
-    background: none;
-}
-
-/*DECK AND DISCARD*/
-.flex-container > #column {
-    display: flex;
-    flex-direction: column;
-    background: none;
-}
-.squareBox {
-    background-color:cadetblue;
-    height: 4em;
-    width: 4em;
-    margin: 4px;
-    font-size: 15px;
-    line-height: 1.7;
-    border-radius: 5px
-    border: none;
+  height: 100vh;
 }
 /*END OF DECK AND DISCARD*/
-
-/*
-}
-.flex-container {
-  display: flex;
-  justify-content: center;
-  height: 9em;
-  padding: 5px;
-}
-
-.flex-container > div {
-  background-color: red;
-  color: white;
-  width: 100px;
-  margin: 10px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 25px;
-}
-
-.flex-container > #column {
-    display: flex;
-    flex-direction: column;
-    background: none;
-}
-
-.flex-container > #placeholder {
-    background: none;
-}
-
-.squareBox {
-    background-color:darkorange;
-    height: 4em;
-    width: 4em;
-    margin: 4px;
-    font-size: 15px;
-    line-height: 1.7;
-
-}
-*/
 </style>

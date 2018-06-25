@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Login from '@/app/Login';
 import Register from '@/app/Register';
 import ForgotPassword from '@/app/ForgotPassword';
+import GameBoard from '@/app/gameboard/GameBoard';
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/forgotPassword',
       name: 'ForgotPassword',
       component: ForgotPassword
+    },
+    {
+      path: '/game',
+      name: 'GameBoard',
+      component: GameBoard
     }
   ]
 });
