@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Deck</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+  </head>
+  <body>
+    <div id="app">
+    <div data-v-9fcfedee="" class="form">
+      <h3>Either Upload Your Deck:</h3>
+      <form action="/upload" enctype="multipart/form-data" method="POST"> 
+        <input type="file" name="deck" />
+        <h3>...Or, Copy and Paste Your Deck Here:</h3>
+        <input type="text" id="deck" name="user-deck">
+      </form>
+      <h3>If you would like to save your deck, please enter a deck name:</h4>
+      <form action="/upload" enctype="multipart/form-data" method="POST">
+        <input type="text" id="deck-name" name="user-deck-name">
+      </form>  
+    </div>
+  <button data-v-9fcfedee id="loginButton">Continue to Deck Summary</button>
+      </div>
+  </body>
+</html>
