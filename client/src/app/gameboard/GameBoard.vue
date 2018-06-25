@@ -6,38 +6,38 @@
 <div class="flex-container">
 <div class="activeCard">ACTIVE</div>
 <div>2</div>
-<div>3</div>  
+<div>3</div>
 <div>4</div>
 <div>5</div>
-<div>6</div>  
+<div>6</div>
 <div id="placeholder"></div>
 <div class="prizeCard">
 <div>1</div>
 <div>2</div>
-<div>3</div>  
+<div>3</div>
 <div>4</div>
 <div>5</div>
-<div>6</div> 
+<div>6</div>
 </div>
-<div>9</div>  
+<div>9</div>
 <div>10</div>
 <div>11</div>
-<div>12</div>  
-<div>13</div>  
+<div>12</div>
+<div>13</div>
 
-<div id="column">  
+<div id="column">
 <div class="squareBox">Deck</div>
 <div class="squareBox">Discard</div>
 </div><!--end of COLUMN-->
 
-</div> 
+</div>
 </div><!--end of CONTAINER-->
 </template>
 
 <script>
 export default {
   name: 'GameBoard'
-}
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
@@ -47,7 +47,7 @@ src: url("fonts/cartoonist_kooky.ttf");
 }
 
 html {
-  background: #ff5e0e;  
+  background: #ff5e0e;
 }
 
 h1 {
@@ -68,9 +68,9 @@ body {
     font-size: 16px;
     line-height: 1.5;
     background-repeat: no-repeat;
-    background-position: bottom;   
+    background-position: bottom;
     background-size: 70%;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: 920px;
     min-height: 45em;
     padding: 2em 2em 4em;
@@ -80,7 +80,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   color: orange;
-  justify-content: center;   
+  justify-content: center;
 }
 
 .flex-container > div {
@@ -91,7 +91,7 @@ body {
   text-align: center;
   line-height: 75px;
   font-size: 20px;
-  border-radius: 10px 
+  border-radius: 10px
 }
 
 /*ACTIVE CARD*/
@@ -114,11 +114,11 @@ body {
 }
 
 .flex-container > .prizeCard > div {
-  border: 1px solid white;   
+  border: 1px solid white;
   background-color: deeppink;
   width: 3em;
   height: 3em;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 /*PLACEHOLDER*/
@@ -138,12 +138,11 @@ body {
     width: 4em;
     margin: 4px;
     font-size: 15px;
-    line-height: 1.7;  
-    border-radius: 5px 
-    border: none;    
+    line-height: 1.7;
+    border-radius: 5px
+    border: none;
 }
 /*END OF DECK AND DISCARD*/
-
 
 /*
 }
@@ -181,7 +180,7 @@ body {
     margin: 4px;
     font-size: 15px;
     line-height: 1.7;
-    
+
 }
 */
 </style>

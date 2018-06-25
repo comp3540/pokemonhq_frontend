@@ -11,11 +11,11 @@ const set = (fields, errors) => {
       if (errors.hasOwnProperty(field)) {
         // then set the fields[field] error property to the validation error found
         // at errors[field]
-        fields[field].error = errors[field]
+        fields[field] = errors[field];
       }
     }
   }
-}
+};
 
 // This method accepts two parameters "fields" and "fieldName", and is responsible for clearing the input validation error/errors.
 // The "fields" parameter is an object containg the input fields of a form
@@ -23,26 +23,27 @@ const set = (fields, errors) => {
 // The "fieldName" parameter is the input's name that contains an error.
 const clear = (fields, fieldName = undefined) => {
   // if the "fieldName" parameter is undefined, then we will clear all the field's errors
-  let clearAll = (typeof fieldName === 'undefined')
+  let clearAll = (typeof fieldName === 'undefined');
+
   if (clearAll) { // clear all the errors of the inputs
     // loop through the "fields" object parameter's keys
     for (let field in fields) {
       // if the "fields" object has a property "field"
       if (fields.hasOwnProperty(field)) {
         // then reset it's "error" property to an empty string (clearing it out)
-        fields[field].error = ''
+        fields[field].error = '';
       }
     }
   } else { // clear a specific error of the input
     // check if "fields" object has a property of the fieldName variable
     if (fields.hasOwnProperty(fieldName)) {
       // reset the "error" property to an empty string
-      fields[fieldName].error = ''
+      fields[fieldName] = '';
     }
   }
-}
+};
 
 export default {
   set,
   clear
-}
+};
