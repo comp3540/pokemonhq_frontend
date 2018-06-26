@@ -4,7 +4,7 @@
     <p-form @clearValidationErrors = "ValidationError.clear(errors, $event)">
       <p-input-text label="Email" v-model="params.email" @clearError="errors.email = ''" :error="errors.email" />
       <p-input-password label="Password" @clearError="errors.password = ''" v-model="params.password" :error="errors.password" />
-      <button id="loginButton" @click="login()">Login</button>
+      <button class="button" @click="login()">Login</button>
       <router-link :to="{ name: 'Register' }">Register now!</router-link>
     </p-form>
     <br>

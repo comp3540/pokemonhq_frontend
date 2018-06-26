@@ -6,7 +6,7 @@
       <p-input-text label="Last name" v-model="params.last_name" @clearError="errors.last_name = ''" :error="errors.last_name"/>
       <p-input-text label="Email" v-model="params.email" @clearError="errors.email = ''" :error="errors.email"/>
       <p-input-password :value="params.password" @clearError="errors.password = ''" label="Password" v-model="params.password" :error="errors.password"/>
-      <button id="loginButton" @click="register()">Submit</button>
+      <button class="button" @click="register()">Submit</button>
       <router-link :to="{ name: 'Login' }">Back to login!</router-link>
     </p-form>
     <br>

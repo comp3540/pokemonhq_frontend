@@ -1,28 +1,45 @@
 <template>
   <div class="form-group" :class="{'has-error' : error !== ''}">
     <label class="control-label">{{label}}:</label>
-    <textarea class="form-control" :rows="rows" :cols="cols" :value="value" @input="input($event.target.value)" />
+    <textarea :rows="rows" :cols="cols" :value="value" @input="input($event.target.value)" />
+    <span class="help-block" v-if="error">{{error}}</span>
   </div>
 </template>
 <script type="text/javascript">
 export default {
-  props:{
+  props: {
     label: {
       required: true,
       type: String
     },
     rows: {
-      required: true, 
+      required: true,
       type: String
-    }, 
+    },
     cols: {
-      required: true, 
+      required: true,
       type: String
     },
     value: {
-      required: true, 
+      required: true,
       type: String
+    },
+    error: {
+      required: true,
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    input (text) {
+      this.$emit('input', text);
+      this.$emit('clearError');
     }
   }
 };
 </script>
+<style type="text/css">
+  textarea {
+    display: block
+  }
+</style>
