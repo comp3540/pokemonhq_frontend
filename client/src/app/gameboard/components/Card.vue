@@ -1,6 +1,13 @@
 <template>
-  <div>
+  <div class="cardd">
+
+
     <h3>{{card.props.id}}</h3>
+
+
+
+
+
   </div>
 </template>
 <script type="text/javascript">

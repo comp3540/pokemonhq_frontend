@@ -4,7 +4,7 @@
 
   <div class="active-column">
     <div class="active-card">
-        <card :card="your.active[0]" />
+        <active-card :card="your.active[0]" />
       </div>
   </div>
   <div class="super-column">
@@ -45,11 +45,13 @@
 
 <script>
 import Card from './Card';
+import ActiveCard from './ActiveCard';
 
 export default {
   name: 'your-side',
   components: {
-    Card
+    Card,
+    ActiveCard
   },
   props: {
     your: {
