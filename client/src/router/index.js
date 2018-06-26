@@ -8,6 +8,7 @@ import GameBoard from '@/app/gameboard/GameBoard';
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

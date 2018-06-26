@@ -1,31 +1,45 @@
 <template>
 
-<div class="flex-container">
+<div class="side">
 
-<div class="activeCard">
-  <card :card="your.active[0]" />
-</div>
-
-<!-- hands -->
-<div v-for="card in your.hand" :key="card.props.id">
-  <card :card="card" />
-</div>
-
-<div class="prizeCard">
-  <div v-for="card in your.prize" :key="card.props.id">
-    <card :card="card" />
+  <div class="active-column">
+    <div class="active-card">
+        <card :card="your.active[0]" />
+      </div>
   </div>
-</div>
+  <div class="super-column">
+    <div class="hand-row">
+    <!-- hands -->
+      <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
+      <div class="card" v-for="card in your.hand" :key="card.props.id">
+        <card :card="card" />
+      </div>
+  </div>
 
-<div v-for="card in your.bench" :key="card.props.id">
-    <card :card="card" />
-</div>
+  <div class="everything-row">
 
-<div id="column">
-<div class="squareBox">Deck</div>
-<div class="squareBox">Discard</div>
-</div><!--end of COLUMN-->
+    <div class="column-1">
+      <!-- bench -->
+        <div class="card" v-for="card in your.bench" :key="card.props.id">
+          <card :card="card" />
+        </div>
+    </div>
 
+    <div class="column-2">
+      <!-- deck and discard -->
+      <div class="deck">Deck</div>
+      <div class="discard">Discard</div>
+    </div>
+
+    <div class="column-3">
+        <div class="prize-card" v-for="card in your.prize" :key="card.props.id">
+          <card :card="card" />
+        </div>
+    </div>
+  </div>
+
+  </div>
+  
 </div>
 </template>
 
@@ -50,15 +64,112 @@ export default {
   }
 };
 </script>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-html {
+
+  .side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .active-column {
+    width: 30%;
+  }
+
+  .super-column {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hand-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .everything-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 99%;
+  }
+
+  .column-1 {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    justify-content: center;
+  }
+
+  .column-2 {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    margin-right: 10px;
+  }
+
+  .card {
+    border: 3px solid orange;
+    width: 135px;
+     height: 6em;
+     margin: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+  border-radius: 10px;
+  }
+
+  .active-card{
+    background-color: deeppink;
+    width: 90%;
+    height: 14em;
+    color: white;
+     margin: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+  border-radius: 10px;
+
+  }
+
+  .column-3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 10%;
+  }
+
+  .prize-card {
+    border: 1px solid white;
+  background-color: deeppink;
+  width: 2em;
+  height: 3em;
+  border-radius: 8px;
+  }
+
+  .deck, .discard {
+    background-color: #000066;
+    color: white;
+    width: 60px;
+    height: 3em;
+  margin: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 20px;
+  border-radius: 10px;
+  }
+
+
+
+/*html {
   background: #ff5e0e;
 }
 
 h1 {
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #197270;
+    -webkit-text-stroke-color: #000066;
     color: #73b79b;
     text-align: left;
     font-size: 3em;
@@ -86,7 +197,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   color: orange;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .flex-container > div {
@@ -100,26 +211,43 @@ body {
   border-radius: 10px;
 }
 
-/*ACTIVE CARD*/
-.flex-container > .activeCard {
+.flex-container > .column1 {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+}
+
+.flex-container > .column2 {
+  display: flex;
+  flex-direction: row;
+  width: 25vw;
+}
+
+.flex-container > .column3 {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+}
+
+.flex-container > .column1 > .activeCard {
     background-color: deeppink;
     width: 200px;
     color: white;
     border: none;
 }
 
-/*PRIZE CARDs*/
-.flex-container > .prizeCard {
+.flex-container > .column1 > .prizeCard {
   background-color: white;
   width: 200px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   color: white;
   justify-content: center;
   border: none;
 }
 
-.flex-container > .prizeCard > div {
+.flex-container > .column1 > .prizeCard > div {
   border: 1px solid white;
   background-color: deeppink;
   width: 3em;
@@ -127,19 +255,23 @@ body {
   border-radius: 8px;
 }
 
-/*PLACEHOLDER*/
-.flex-container > #placeholder {
-    background: none;
+.flex-container > .column2 > .hand-row {
+  background-color: white;
+  flex-direction: row;
 }
 
-/*DECK AND DISCARD*/
-.flex-container > #column {
+.flex-container > .column2 > .bench-row {
+  background-color: #ff80b3;
+  flex-direction: row;
+}
+
+.flex-container > .column3 > #column {
     display: flex;
     flex-direction: column;
     background: none;
 }
 .squareBox {
-    background-color:cadetblue;
+    background-color:#000066;
     height: 4em;
     width: 4em;
     margin: 4px;
@@ -147,5 +279,12 @@ body {
     line-height: 1.7;
     border-radius: 5px;
     border: none;
-}
+}*/
+
+
+
+
+
+
+
 </style>
