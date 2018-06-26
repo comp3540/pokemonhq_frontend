@@ -75,11 +75,11 @@ export default {
   }
 
   .active-column {
-    width: 30%;
+    width: 27%;
   }
 
   .super-column {
-    width: 70%;
+    width: 73%;
     display: flex;
     flex-direction: column;
   }
@@ -112,8 +112,8 @@ export default {
 
   .card {
     border: 3px solid orange;
-    width: 135px;
-     height: 6em;
+    width: 145px;
+     height: 22vh;
      margin: 5px;
   text-align: center;
   line-height: 75px;
@@ -124,7 +124,7 @@ export default {
   .active-card{
     background-color: deeppink;
     width: 90%;
-    height: 14em;
+    height: 47vh;
     color: white;
      margin: 5px;
   text-align: center;
