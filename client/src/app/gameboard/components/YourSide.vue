@@ -39,7 +39,7 @@
   </div>
 
   </div>
-  
+
 </div>
 </template>
 
@@ -161,8 +161,6 @@ export default {
   border-radius: 10px;
   }
 
-
-
 /*html {
   background: #ff5e0e;
 }
@@ -280,11 +278,5 @@ body {
     border-radius: 5px;
     border: none;
 }*/
-
-
-
-
-
-
 
 </style>
