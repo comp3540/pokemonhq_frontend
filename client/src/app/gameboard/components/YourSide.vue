@@ -99,15 +99,15 @@ export default {
   .column-1 {
     display: flex;
     flex-direction: row;
-    width: 75%;
+    width: 80%;
     justify-content: center;
   }
 
   .column-2 {
     display: flex;
     flex-direction: column;
-    width: 10%;
-    margin-right: 10px;
+    width: 8%;
+    margin-right: 5px;
   }
 
   .card {
@@ -138,15 +138,15 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 10%;
+    width: 8%;
   }
 
   .prize-card {
     border: 1px solid white;
-  background-color: deeppink;
-  width: 2em;
-  height: 3em;
-  border-radius: 8px;
+    background-color: deeppink;
+    width: 2em;
+    height: 3em;
+    border-radius: 8px;
   }
 
   .deck, .discard {
