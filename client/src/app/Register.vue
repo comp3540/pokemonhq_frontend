@@ -35,7 +35,8 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
-        password: ''
+        password: '',
+        file: ''
       },
       // the message associated to the fail alert
       failMessage: '',
