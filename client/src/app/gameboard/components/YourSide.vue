@@ -93,13 +93,13 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 99%;
+    width: 100%;
   }
 
   .column-1 {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 85%;
     justify-content: center;
   }
 
@@ -110,15 +110,22 @@ export default {
     margin-right: 5px;
   }
 
+  .column-3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 6%;
+  }
+
   .card {
     border: 3px solid orange;
     width: 145px;
-     height: 22vh;
-     margin: 5px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 20px;
-  border-radius: 10px;
+    height: 22vh;
+    margin: 5px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+    border-radius: 10px;
   }
 
   .active-card{
@@ -126,19 +133,11 @@ export default {
     width: 90%;
     height: 47vh;
     color: white;
-     margin: 5px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 20px;
-  border-radius: 10px;
-
-  }
-
-  .column-3{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 8%;
+    margin: 2px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+    border-radius: 10px;
   }
 
   .prize-card {
@@ -147,6 +146,7 @@ export default {
     width: 2em;
     height: 3em;
     border-radius: 8px;
+    font-size: 12px;
   }
 
   .deck, .discard {
@@ -154,129 +154,11 @@ export default {
     color: white;
     width: 60px;
     height: 3em;
-  margin: 5px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 20px;
-  border-radius: 10px;
+    margin: 5px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 20px;
+    border-radius: 10px;
   }
-
-/*html {
-  background: #ff5e0e;
-}
-
-h1 {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #000066;
-    color: #73b79b;
-    text-align: left;
-    font-size: 3em;
-    margin-top: -15px;
-    font-family: "Kooky", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body {
-    background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
-    color: #545454;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 70%;
-    margin: 0 auto;
-    max-width: 920px;
-    min-height: 45em;
-    padding: 2em 2em 4em;
-}
-
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  color: orange;
-  justify-content: space-around;
-}
-
-.flex-container > div {
-  border: 3px solid orange;
-  width: 98px;
-  height: 6em;
-  margin: 5px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 20px;
-  border-radius: 10px;
-}
-
-.flex-container > .column1 {
-  display: flex;
-  flex-direction: column;
-  width: 25vw;
-}
-
-.flex-container > .column2 {
-  display: flex;
-  flex-direction: row;
-  width: 25vw;
-}
-
-.flex-container > .column3 {
-  display: flex;
-  flex-direction: column;
-  width: 25vw;
-}
-
-.flex-container > .column1 > .activeCard {
-    background-color: deeppink;
-    width: 200px;
-    color: white;
-    border: none;
-}
-
-.flex-container > .column1 > .prizeCard {
-  background-color: white;
-  width: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  color: white;
-  justify-content: center;
-  border: none;
-}
-
-.flex-container > .column1 > .prizeCard > div {
-  border: 1px solid white;
-  background-color: deeppink;
-  width: 3em;
-  height: 3em;
-  border-radius: 8px;
-}
-
-.flex-container > .column2 > .hand-row {
-  background-color: white;
-  flex-direction: row;
-}
-
-.flex-container > .column2 > .bench-row {
-  background-color: #ff80b3;
-  flex-direction: row;
-}
-
-.flex-container > .column3 > #column {
-    display: flex;
-    flex-direction: column;
-    background: none;
-}
-.squareBox {
-    background-color:#000066;
-    height: 4em;
-    width: 4em;
-    margin: 4px;
-    font-size: 15px;
-    line-height: 1.7;
-    border-radius: 5px;
-    border: none;
-}*/
 
 </style>

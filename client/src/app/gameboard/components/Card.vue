@@ -15,3 +15,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+h3 {
+  font-size: unset;
+}
+</style>
