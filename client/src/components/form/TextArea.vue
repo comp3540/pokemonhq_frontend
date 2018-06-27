@@ -25,7 +25,6 @@ export default {
       type: String
     },
     error: {
-      required: true,
       type: String,
       default: ''
     }

@@ -20,8 +20,6 @@ export default {
   name: 'Login',
   data () {
     return {
-      ValidationErrorHelper: ValidationErrorHelper, // ValidationError helper
-      InputHelper: InputHelper,
       params: { // all input fields
         email: '',
         password: ''
@@ -52,14 +50,19 @@ export default {
         // set the global user
         this.$store.dispatch('setUser', response.data.user);
 
+        // go to card upload screen
+        this.$router.push({
+          name: 'UploadDeck'
+        });
+
         // clear all input values
-        this.InputHelper.clear(this.params);
+        InputHelper.clear(this.params);
       } catch (error) {
         // catch validation errors if any
         if (error.response.status === 419) {
           // set the validation errors by associating them to the fields that did not
           // pass the backend validation
-          this.ValidationErrorHelper.set(this.errors, error.response.data);
+          ValidationErrorHelper.set(this.errors, error.response.data);
         } else if (error.response.status === 403 || error.response.status === 500) {
           // Set the fail message to the response error message
           this.failMessage = error.response.data.message;

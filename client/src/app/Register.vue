@@ -23,8 +23,6 @@ export default {
   name: 'Register',
   data () {
     return {
-      ValidationErrorHelper: ValidationErrorHelper, // ValidationError helper
-      InputHelper: InputHelper,
       params: { // all input fields
         first_name: '',
         last_name: '',
@@ -65,13 +63,13 @@ export default {
         this.successMessage = response.data.message;
 
         // clear all input values
-        this.InputHelper.clear(this.params);
+        InputHelper.clear(this.params);
       } catch (error) {
         // catch validation errors if any
         if (error.response.status === 419) {
           // set the validation errors by associating them to the fields that did not
           // pass the backend validation
-          this.ValidationErrorHelper.set(this.errors, error.response.data);
+          ValidationErrorHelper.set(this.errors, error.response.data);
         } else if (error.response.status === 400) {
           // Set the fail message to the response error message
           this.failMessage = error.response.data.message;

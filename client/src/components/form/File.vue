@@ -18,7 +18,6 @@ export default {
       type: String
     },
     error: {
-      required: true,
       type: String,
       default: ''
     }
@@ -33,8 +32,8 @@ export default {
       const fr = new FileReader();
       const $this = this;
       fr.onload = (event) => {
-        console.log(event.target.result);
-        $this.$emit('upload', event.target.result);
+        $this.$emit('upload', {file: event.target.result});
+        $this.$emit('clearError');
       };
       fr.readAsText(file);
     }
