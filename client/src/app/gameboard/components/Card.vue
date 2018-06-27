@@ -1,12 +1,7 @@
 <template>
   <div class="cardd">
 
-
     <h3>{{card.props.id}}</h3>
-
-
-
-
 
   </div>
 </template>

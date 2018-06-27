@@ -1,5 +1,6 @@
 <template>
 
+<!-- your side -->
 <div class="side">
 
   <div class="active-column">
@@ -8,13 +9,6 @@
       </div>
   </div>
   <div class="super-column">
-    <div class="hand-row">
-    <!-- hands -->
-      <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-      <div class="card" v-for="card in your.hand" :key="card.props.id">
-        <card :card="card" />
-      </div>
-  </div>
 
   <div class="everything-row">
 
@@ -36,11 +30,21 @@
           <card :card="card" />
         </div>
     </div>
+
+  </div>
+
+  <div class="hand-row">
+    <!-- hands -->
+      <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
+      <div class="card" v-for="card in your.hand" :key="card.props.id">
+        <card :card="card" />
+      </div>
   </div>
 
   </div>
 
 </div>
+
 </template>
 
 <script>
@@ -71,6 +75,9 @@ export default {
 <style scoped>
 
   .side {
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    color: #545454;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -84,11 +91,21 @@ export default {
     width: 73%;
     display: flex;
     flex-direction: column;
+    align-content: flex-end;
+  }
+
+  .actions-row {
+    width: 100%;
+    height: 30%;
+    background-color:#e6e6e6;
   }
 
   .hand-row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height:50%;
   }
 
   .everything-row {
@@ -96,6 +113,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    height: 50%;
   }
 
   .column-1 {
@@ -108,15 +126,15 @@ export default {
   .column-2 {
     display: flex;
     flex-direction: column;
-    width: 8%;
-    margin-right: 5px;
+    background: none;
+    border: none;
   }
 
   .column-3{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 6%;
+    width: 7%;
   }
 
   .card {
@@ -131,7 +149,8 @@ export default {
   }
 
   .active-card{
-    background-color: deeppink;
+    display: flex;
+    background-color:seagreen;
     width: 90%;
     height: 47vh;
     color: white;
@@ -140,27 +159,40 @@ export default {
     line-height: 75px;
     font-size: 20px;
     border-radius: 10px;
+    justify-content: center;
+    align-content: center;
   }
 
   .prize-card {
-    border: 1px solid white;
-    background-color: deeppink;
+    border: 1px solid seagreen;
+    background-color: white;
+    color: seagreen;
     width: 2em;
     height: 3em;
     border-radius: 8px;
+    margin: 4px;
     font-size: 12px;
   }
 
   .deck, .discard {
-    background-color: #000066;
+    background-color:cadetblue;
     color: white;
-    width: 60px;
-    height: 3em;
-    margin: 5px;
-    text-align: center;
-    line-height: 75px;
-    font-size: 20px;
-    border-radius: 10px;
+    height: 4em;
+    width: 4em;
+    margin: 4px;
+    font-size: 13px;
+    line-height: 30px;  
+    border-radius: 10px; 
   }
+
+  .OppSquareBox {
+    background-color:cadetblue;
+    height: 2em;
+    width: 2em;
+    margin: 4px;
+    border-radius: 5px; 
+    color: white;
+
+}
 
 </style>
