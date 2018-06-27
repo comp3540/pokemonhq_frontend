@@ -8,38 +8,39 @@
         <active-card :card="your.active[0]" />
       </div>
   </div>
+
   <div class="super-column">
 
-  <div class="everything-row">
+    <div class="everything-row">
 
-    <div class="column-1">
-      <!-- bench -->
-        <div class="card" v-for="card in your.bench" :key="card.props.id">
-          <card :card="card" />
-        </div>
-    </div>
-
-    <div class="column-2">
-      <!-- deck and discard -->
-      <div class="deck">Deck</div>
-      <div class="discard">Discard</div>
-    </div>
-
-    <div class="column-3">
-        <div class="prize-card" v-for="card in your.prize" :key="card.props.id">
-          <card :card="card" />
-        </div>
-    </div>
-
-  </div>
-
-  <div class="hand-row">
-    <!-- hands -->
-      <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-      <div class="card" v-for="card in your.hand" :key="card.props.id">
-        <card :card="card" />
+      <div class="column-1">
+        <!-- bench -->
+          <div class="card" v-for="card in your.bench" :key="card.props.id">
+            <card :card="card" />
+          </div>
       </div>
-  </div>
+
+      <div class="column-2">
+        <!-- deck and discard -->
+        <div class="deck">Deck</div>
+        <div class="discard">Discard</div>
+      </div>
+
+      <div class="column-3">
+          <div class="prize-card" v-for="card in your.prize" :key="card.props.id">
+            <card :card="card" />
+          </div>
+      </div>
+
+    </div>
+
+    <div class="hand-row">
+      <!-- hands -->
+        <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
+        <div class="card" v-for="card in your.hand" :key="card.props.id">
+          <card :card="card" />
+        </div>
+    </div>
 
   </div>
 
@@ -181,8 +182,8 @@ export default {
     width: 4em;
     margin: 4px;
     font-size: 13px;
-    line-height: 30px;  
-    border-radius: 10px; 
+    line-height: 30px;
+    border-radius: 10px;
   }
 
   .OppSquareBox {
@@ -190,7 +191,7 @@ export default {
     height: 2em;
     width: 2em;
     margin: 4px;
-    border-radius: 5px; 
+    border-radius: 5px;
     color: white;
 
 }
