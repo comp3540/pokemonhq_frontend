@@ -1,43 +1,47 @@
 <template>
 <div id="container">
-  <your-side :your="board.opponent"></your-side>
+  <opponent-side :opponent="board.opponent"></opponent-side>
   <your-side :your="board.your"></your-side>
 </div><!--end of CONTAINER-->
 </template>
 
 <script>
 import YourSide from './components/YourSide';
+import OpponentSide from './components/OpponentSide';
 export default {
   name: 'GameBoard',
   components: {
-    YourSide
+    YourSide,
+    OpponentSide
   },
   data () {
-    const f = this.fakeCard;
+    const fp = this.fakeCardPokemon;
+    const fe = this.fakeCardEnergy;
+    const ft = this.fakeCardTrainer;
     return {
       board: {
-        your: {
-          bench: [f(1), f(2), f(3), f(4), f(5)],
-          active: [f(10)],
-          deck: [f(20)],
-          discard: [f(30)],
-          prize: [f(40), f(41), f(42), f(43), f(44), f(45)],
-          hand: [f(50), f(51), f(52), f(53), f(54), f(55), f(56)]
-        },
         opponent: {
-          bench: [f(100), f(101), f(102)],
-          active: [f(110)],
-          deck: [f(120), f(121), f(122)],
-          discard: [f(130), f(131), f(132)],
-          prize: [f(140), f(141), f(142), f(143), f(144), f(145)],
-          hand: [f(150), f(151), f(152), f(153), f(154), f(155), f(156)]
+          bench: [fp(1), fp(2), fp(3), fp(4), fp(5)],
+          active: [fp(10)],
+          deck: [fp(20)],
+          discard: [fp(30)],
+          prize: [fp(40), fp(41), fp(42), fp(43), fp(44), fp(45)],
+          hand: [fp(50), ft(51), ft(52), fe(53), fp(54), fe(55), fe(56)]
+        },
+        your: {
+          bench: [fp(11), fp(22), fp(33), fp(44), fp(55)],
+          active: [fp(111)],
+          deck: [fp(222)],
+          discard: [fp(333)],
+          prize: [fp(40), fp(41), fp(42), fp(43), fp(46), fp(45)],
+          hand: [fp(50), ft(51), ft(52), fe(53), fp(54), fe(55), fe(56)]
         }
       }
     };
   },
 
   methods: {
-    fakeCard (id) {
+    fakeCardPokemon (id) {
       return {
         state: {
 
@@ -49,7 +53,42 @@ export default {
           type: 'lightning',
           clazz: 'POKEMON',
           stage: 'basic',
-          evolvesFrom: null
+          evolvesFrom: null,
+          abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: id}, {type: 'colorless', amount: 1, id: id}],
+              id: id
+            }
+          ],
+          status: 'none'
+        }
+      };
+    },
+    fakeCardEnergy (id) {
+      return {
+        state: {
+
+        },
+        props: {
+          id,
+          type: 'lightning',
+          clazz: 'ENERGY'
+        }
+      };
+    },
+    fakeCardTrainer (id) {
+      return {
+        state: {
+
+        },
+        props: {
+          id,
+          name: 'Red Card',
+          clazz: 'TRAINER',
+          type: 'item',
+          ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'
         }
       };
     }
@@ -59,7 +98,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #container{
+  display: flex;
   background-color: white;
+  flex-direction: column;
   height: 100vh;
 }
 /*END OF DECK AND DISCARD*/
