@@ -7,6 +7,7 @@ import FailAlert from './alert/Fail';
 import Header from './Header';
 import File from './form/File';
 import TextArea from './form/TextArea';
+
 // register components
 export default {
   install (Vue) {

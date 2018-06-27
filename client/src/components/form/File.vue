@@ -3,6 +3,7 @@
     <label class="control-label">{{label}}:</label>
     <div class="outer">
       <div class="form-group absolute" :class="{'has-error' : error !== '' }">
+        <h3>CLICK OR DRAG/DROP TO UPLOAD</h3>
         <input class="form-control relative" type="file" @change="upload($event)">
       </div>
     </div>
@@ -45,7 +46,7 @@ export default {
     position: relative;
     z-index: 2;
     opacity: 0;
-    height: 100%;
+    height: 80%;
   }
   .absolute {
     position: absolute;

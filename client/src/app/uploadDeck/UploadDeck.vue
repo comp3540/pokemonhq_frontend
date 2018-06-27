@@ -23,7 +23,7 @@ import DeckApi from '@/services/DeckService';
 import MyDecks from '@/app/uploadDeck/components/MyDecks';
 import ValidationErrorHelper from '@/utilities/errors/ValidationError';
 export default {
-  name: 'GameBoard',
+  name: 'UploadDeck',
   components: {
     MyDecks
   },
@@ -78,6 +78,10 @@ export default {
       // replace next line with spaces
       var checkedDeck = this.params.deck.replace(/\n/g, ' ');
       this.params.deck = checkedDeck;
+    },
+
+    stringifyDeck () {
+      this.params.deck = JSON.stringify(this.params.deck);
     },
 
     async getMyDecks () {
