@@ -16,6 +16,7 @@
 import AuthenticationService from '@/services/AuthenticationService';
 import ValidationErrorHelper from '@/utilities/errors/ValidationError';
 import InputHelper from '@/utilities/form/Input';
+import { mapActions } from 'vuex';
 export default {
   name: 'Login',
   data () {
@@ -34,6 +35,11 @@ export default {
   },
 
   methods: {
+    ...mapActions('user', [
+      'setToken',
+      'setUser'
+    ]),
+
     // this method will attempt to loging based on the input values filled by the user
     async login () {
       try {
@@ -45,10 +51,10 @@ export default {
         var response = await AuthenticationService.login(this.params);
 
         // set the global user token
-        this.$store.dispatch('setToken', response.data.token);
+        this.setToken(response.data.token);
 
         // set the global user
-        this.$store.dispatch('setUser', response.data.user);
+        this.setUser(response.data.user);
 
         // go to card upload screen
         this.$router.push({
@@ -70,8 +76,8 @@ export default {
       }
     },
     logout () {
-      this.$store.dispatch('setToken', null);
-      this.$store.dispatch('setUser', null);
+      this.setToken(null);
+      this.setUser(null);
       this.$router.push({
         name: 'Login'
       });
