@@ -40,7 +40,8 @@ export default {
               id: id
             }
           ],
-          status: 'none'
+          status: 'no status',
+          retreatCost: 2
         }
       };
     },

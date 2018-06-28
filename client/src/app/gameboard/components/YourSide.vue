@@ -15,9 +15,9 @@
 
       <div class="column-1">
         <!-- bench -->
-          <div class="card" v-for="card in board.your.bench" :key="card.props.id">
-            <card :card="card" />
-          </div>
+        <div class="small-card" v-for="card in board.your.bench" :key="card.props.id">
+          <small-card :card="card" />
+        </div>
       </div>
 
       <div class="column-2">
@@ -38,8 +38,8 @@
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
         <draggable class="hand-row" v-model="board.your.hand">
-          <div class="card" v-for="card in board.your.hand" :key="card.props.id">
-            <card :card="card" />
+          <div class="small-card" v-for="card in board.your.hand" :key="card.props.id">
+            <small-card :card="card" />
           </div>
         </draggable>
     </div>
@@ -56,12 +56,14 @@ import ActiveCard from './ActiveCard';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import Deck from './../../../../faker/deck';
+import SmallCard from './SmallCard';
 export default {
   name: 'your-side',
   components: {
     Card,
     ActiveCard,
-    draggable
+    draggable,
+    SmallCard
   },
   created () {
     this.setDeck({player: 'your', deck: Deck.deck});
@@ -148,7 +150,7 @@ export default {
     width: 7%;
   }
 
-  .card {
+  .small-card {
     border: 3px solid orange;
     width: 145px;
     height: 22vh;
@@ -161,7 +163,7 @@ export default {
 
   .active-card{
     display: flex;
-    background-color:seagreen;
+    background-color:#b30000;
     width: 90%;
     height: 47vh;
     color: white;
@@ -175,9 +177,9 @@ export default {
   }
 
   .prize-card {
-    border: 1px solid seagreen;
+    border: 1px solid #b30000;
     background-color: white;
-    color: seagreen;
+    color: #b30000;
     width: 2em;
     height: 3em;
     border-radius: 8px;

@@ -8,7 +8,7 @@
     </div>
 
     <div class="row-2">
-        <div> {{card.props.name}} </div>
+        <div> {{card.props.name}} ID: {{card.props.id}}</div>
     </div>
 
     <div class="row-3" v-if="card.props.abilities" v-for="ability in card.props.abilities" :key="ability.id">
@@ -17,13 +17,6 @@
             {{energyReq.type}}
             {{energyReq.amount}}
         </div>
-        <div class="ability-desc"> {{ability.description}} </div>
-    </div>
-
-    <div class="row-4">
-        <div class="retreat"> {{card.props.retreatCost}} </div>
-        <div class="status"> {{card.props.status}} </div>
-
     </div>
 
   </div>
@@ -31,12 +24,13 @@
 
 <script type="text/javascript">
 export default {
-  name: 'active-card',
+  name: 'small-card',
 
   props: {
     card: {
       default: null,
-      type: Object
+      type: Object,
+      required: true
     }
   }
 };
@@ -49,18 +43,18 @@ export default {
         flex-direction: column;
         align-content: space-between;
         background-color: #ffcc00;
-        width: 300px;
-        height: 350px;
+        width: 145px;
+        height: 162px;
         color: black;
         text-align: center;
         border-radius: 10px;
-        line-height: 35px;
+        line-height: 25px;
     }
 
     .row-1 {
         display: flex;
         justify-content: space-between;
-        height: 10%;
+        height: 15%;
         flex-direction: row;
     }
 
@@ -69,12 +63,12 @@ export default {
         align-content: flex-start;
         border-radius: 10px 0px 0px 0px;
         background-color: grey;
-        width: 45%;
+        width: 65%;
         color: #cccccc;
         font-family: monospace;
         font-style: italic;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 13px;
     }
 
     .hp {
@@ -82,12 +76,13 @@ export default {
         color: rgb(179, 20, 20);
         width: 15%;
         font-family: Helvetica;
-        font-size: 20px;
+        font-size: 13px;
     }
 
     .row-2 {
-        height: 10%;
+        height: 15%;
         justify-content: center;
+        font-size: 14px;
     }
 
     .row-3 {
@@ -105,40 +100,14 @@ export default {
     .ability-name {
         width: 100%;
         text-align: left;
-        font-size: 18px;
+        font-size: 14px;
         font-weight: bold;
     }
 
     .energy-req {
-        width:25%;
-        font-size: 12px;
+        width:50%;
+        font-size: 10px;
         text-align: left;
-    }
-
-    .ability-desc {
-        width: 100%;
-        font-size: 14px;
-        text-align: left;
-    }
-
-    .row-4 {
-        display: flex;
-        height: 10%;
-        justify-content: space-between;
-    }
-
-    .retreat {
-        width: 10%;
-        border-radius:50%;
-        -moz-border-radius:50%;
-        -webkit-border-radius:50%;
-        background-color: rgb(194, 194, 194);
-    }
-
-    .status {
-        width: 30%;
-        font-weight: bold;
-        font-size: 14px;
     }
 
 </style>
