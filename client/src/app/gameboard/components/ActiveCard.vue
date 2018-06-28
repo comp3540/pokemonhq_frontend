@@ -21,7 +21,9 @@
     </div>
 
     <div class="row-4">
-        <div> 2 </div>
+        <div class="retreat"> {{card.props.retreatCost}} </div>
+        <div class="status"> {{card.props.status}} </div>
+
     </div>
 
   </div>
@@ -29,7 +31,7 @@
 
 <script type="text/javascript">
 export default {
-  name: 'default-card',
+  name: 'active-card',
 
   props: {
     card: {
@@ -49,7 +51,7 @@ export default {
         align-content: space-between;
         background-color: #ffcc00;
         width: 300px;
-        height: 300px;
+        height: 350px;
         color: black;
         text-align: center;
         border-radius: 10px;
@@ -68,7 +70,7 @@ export default {
         align-content: flex-start;
         border-radius: 10px 0px 0px 0px;
         background-color: grey;
-        width: 30%;
+        width: 45%;
         color: #cccccc;
         font-family: monospace;
         font-style: italic;
@@ -121,14 +123,23 @@ export default {
     }
 
     .row-4 {
-        background-color: #ffff33;
-        width: 10%;
+        display: flex;
         height: 10%;
+        justify-content: space-between;
+    }
+
+    .retreat {
+        width: 10%;
         border-radius:50%;
         -moz-border-radius:50%;
         -webkit-border-radius:50%;
         background-color: rgb(194, 194, 194);
-        justify-content: flex-start;
+    }
+
+    .status {
+        width: 30%;
+        font-weight: bold;
+        font-size: 14px;
     }
 
 </style>

@@ -15,8 +15,8 @@
 
       <div class="column-1">
         <!-- bench -->
-          <div class="card" v-for="card in your.bench" :key="card.props.id">
-            <card :card="card" />
+          <div class="small-card" v-for="card in your.bench" :key="card.props.id">
+            <small-card :card="card" />
           </div>
       </div>
 
@@ -37,8 +37,8 @@
     <div class="hand-row">
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-        <div class="card" v-for="card in your.hand" :key="card.props.id">
-          <card :card="card" />
+        <div class="small-card" v-for="card in your.hand" :key="card.props.id">
+          <small-card :card="card" />
         </div>
     </div>
 
@@ -51,12 +51,14 @@
 <script>
 import Card from './Card';
 import ActiveCard from './ActiveCard';
+import SmallCard from './SmallCard';
 
 export default {
   name: 'your-side',
   components: {
     Card,
-    ActiveCard
+    ActiveCard,
+    SmallCard
   },
   props: {
     your: {
@@ -138,7 +140,7 @@ export default {
     width: 7%;
   }
 
-  .card {
+  .small-card {
     border: 3px solid orange;
     width: 145px;
     height: 22vh;
@@ -151,7 +153,7 @@ export default {
 
   .active-card{
     display: flex;
-    background-color:seagreen;
+    background-color:#b30000;
     width: 90%;
     height: 47vh;
     color: white;
@@ -165,9 +167,9 @@ export default {
   }
 
   .prize-card {
-    border: 1px solid seagreen;
+    border: 1px solid #b30000;
     background-color: white;
-    color: seagreen;
+    color: #b30000;
     width: 2em;
     height: 3em;
     border-radius: 8px;

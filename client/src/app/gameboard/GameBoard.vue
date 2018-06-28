@@ -34,7 +34,7 @@ export default {
           deck: [fp(222)],
           discard: [fp(333)],
           prize: [fp(40), fp(41), fp(42), fp(43), fp(46), fp(45)],
-          hand: [fp(50), ft(51), ft(52), fe(53), fp(54), fe(55), fe(56)]
+          hand: [fp(50), ft(51), ft(52), fe(53), fp(54)]
         }
       }
     };
@@ -62,7 +62,8 @@ export default {
               id: id
             }
           ],
-          status: 'none'
+          status: 'no status',
+          retreatCost: 2
         }
       };
     },
