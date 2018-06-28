@@ -6,7 +6,7 @@
       <p-input-text label="Last name" v-model="params.last_name" @clearError="errors.last_name = ''" :error="errors.last_name"/>
       <p-input-text label="Email" v-model="params.email" @clearError="errors.email = ''" :error="errors.email"/>
       <p-input-password :value="params.password" @clearError="errors.password = ''" label="Password" v-model="params.password" :error="errors.password"/>
-      <button id="loginButton" @click="register()">Submit</button>
+      <button class="button" @click="register()">Submit</button>
       <router-link :to="{ name: 'Login' }">Back to login!</router-link>
     </p-form>
     <br>
@@ -17,14 +17,12 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService';
-import ValidationErrorHelper from '@/utilities/errors/ValidationError';
+import ValidationError from '@/utilities/errors/ValidationError';
 import InputHelper from '@/utilities/form/Input';
 export default {
   name: 'Register',
   data () {
     return {
-      ValidationErrorHelper: ValidationErrorHelper, // ValidationError helper
-      InputHelper: InputHelper,
       params: { // all input fields
         first_name: '',
         last_name: '',
@@ -35,7 +33,8 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
-        password: ''
+        password: '',
+        file: ''
       },
       // the message associated to the fail alert
       failMessage: '',
@@ -64,13 +63,13 @@ export default {
         this.successMessage = response.data.message;
 
         // clear all input values
-        this.InputHelper.clear(this.params);
+        InputHelper.clear(this.params);
       } catch (error) {
         // catch validation errors if any
         if (error.response.status === 419) {
           // set the validation errors by associating them to the fields that did not
           // pass the backend validation
-          this.ValidationErrorHelper.set(this.errors, error.response.data);
+          ValidationError.set(this.errors, error.response.data);
         } else if (error.response.status === 400) {
           // Set the fail message to the response error message
           this.failMessage = error.response.data.message;

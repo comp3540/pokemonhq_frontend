@@ -34,8 +34,7 @@ export default {
   props: {
     card: {
       default: null,
-      type: Object,
-      required: true
+      type: Object
     }
   }
 };
