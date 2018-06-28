@@ -3,12 +3,13 @@ import Router from 'vue-router';
 import Login from '@/app/Login';
 import Register from '@/app/Register';
 import ForgotPassword from '@/app/ForgotPassword';
+import UploadDeck from '@/app/uploadDeck/UploadDeck';
 import GameBoard from '@/app/gameboard/GameBoard';
 
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -29,6 +30,11 @@ export default new Router({
       path: '/game',
       name: 'GameBoard',
       component: GameBoard
+    },
+    {
+      path: '/upload',
+      name: 'UploadDeck',
+      component: UploadDeck
     }
   ]
 });

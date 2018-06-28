@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/app.js --exec  \"npm run lint && node\"",
     "lint": "eslint src/**/*.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --fix --ext .js,.vue src test/unit test/e2e/specs"
   },
   "author": "",
   "license": "ISC",

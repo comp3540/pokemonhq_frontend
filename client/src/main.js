@@ -6,6 +6,7 @@ import router from './router';
 import { sync } from 'vuex-router-sync';
 import store from '@/store/store';
 import components from '@/components';
+
 Vue.config.productionTip = false;
 Vue.use(components);
 sync(store, router);
