@@ -22,13 +22,17 @@
 
       <div class="column-2">
         <!-- deck and discard -->
-        <div class="deck">Deck</div>
-        <div class="discard">Discard</div>
+        <div class="deck">
+          <face-down-card :card="card" />
+        </div>
+        <div class="discard">
+          <face-down-card :card="card" />
+        </div>
       </div>
 
       <div class="column-3">
           <div class="prize-card" v-for="card in your.prize" :key="card.props.id">
-            <card :card="card" />
+            <face-down-card :card="card" />
           </div>
       </div>
 
@@ -52,13 +56,15 @@
 import Card from './Card';
 import ActiveCard from './ActiveCard';
 import SmallCard from './SmallCard';
+import FaceDownCard from './FaceDownCard';
 
 export default {
   name: 'your-side',
   components: {
     Card,
     ActiveCard,
-    SmallCard
+    SmallCard,
+    FaceDownCard
   },
   props: {
     your: {

@@ -53,6 +53,10 @@ input{
     padding: 2em 2em 4em;
 }
 
+.fukin-hell {
+    background-image: url("../images/pokemonCard.png");
+}
+
 #login {
     min-height: 40em;
 }

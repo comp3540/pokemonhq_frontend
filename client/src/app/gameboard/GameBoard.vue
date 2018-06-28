@@ -74,7 +74,7 @@ export default {
         },
         props: {
           id,
-          type: 'lightning',
+          name: 'lightning',
           clazz: 'ENERGY'
         }
       };
@@ -88,7 +88,7 @@ export default {
           id,
           name: 'Red Card',
           clazz: 'TRAINER',
-          type: 'item',
+          category: 'item',
           ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'
         }
       };

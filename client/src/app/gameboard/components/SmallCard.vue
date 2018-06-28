@@ -2,16 +2,17 @@
 
   <div class="kard">
 
-    <div class="row-1">
-        <div class="stage"> {{card.props.stage}} </div>
-        <div class="hp"> {{card.props.initialHP}} </div>
+    <!-- POKEMON -->
+    <div class="row-1a" v-if="card.props.clazz === 'POKEMON'">
+        <div class="stage" v-if="card.props.stage"> {{card.props.stage}} </div>
+        <div class="hp" v-if="card.props.initialHP"> {{card.props.initialHP}} </div>
     </div>
 
-    <div class="row-2">
+    <div class="row-2a" v-if="card.props.clazz === 'POKEMON'">
         <div> {{card.props.name}} </div>
     </div>
 
-    <div class="row-3" v-if="card.props.abilities" v-for="ability in card.props.abilities" :key="ability.id">
+    <div class="row-3a" v-if="card.props.clazz === 'POKEMON'" v-for="ability in card.props.abilities" :key="ability.id">
         <div class="ability-name"> {{ability.name}} </div>
         <div class="energy-req" v-for="energyReq in ability.energyReq" :key="energyReq.id">
             {{energyReq.type}}
@@ -19,7 +20,28 @@
         </div>
     </div>
 
+    <!-- TRAINER -->
+    <div class= "row-1b" v-if="card.props.clazz === 'TRAINER'">
+        <div class="category" v-if="card.props.category"> {{card.props.category}} </div>
+    </div>
+
+    <div class="row-2b" v-if="card.props.clazz === 'TRAINER'">
+        <div> {{card.props.name}} </div>
+    </div>
+
+    <div class="row-3b" v-if="card.props.clazz === 'TRAINER'">
+        <div v-if="card.props.ability">
+                <div class="ability"> {{card.props.ability}} </div>
+        </div>
+    </div>
+
+    <!-- ENERGY -->
+    <div class= "energy-card" v-if="card.props.clazz === 'ENERGY'">
+        <div> {{card.props.name}} </div>
+    </div>
+
   </div>
+
 </template>
 
 <script type="text/javascript">
@@ -42,7 +64,6 @@ export default {
         display: flex;
         flex-direction: column;
         align-content: space-between;
-        background-color: #ffcc00;
         width: 145px;
         height: 162px;
         color: black;
@@ -51,10 +72,21 @@ export default {
         line-height: 25px;
     }
 
-    .row-1 {
+    .row-1a {
         display: flex;
         justify-content: space-between;
         height: 15%;
+        flex-direction: row;
+        border-radius: 10px 10px 0px 0px;
+        background-color: #ffcc00;
+    }
+
+    .row-1b {
+        display: flex;
+        justify-content: space-between;
+        height: 15%;
+        border-radius: 10px 10px 0px 0px;
+        background-color: #cacaca;
         flex-direction: row;
     }
 
@@ -79,27 +111,60 @@ export default {
         font-size: 13px;
     }
 
-    .row-2 {
+    .category {
+        width: 50%;
+        border-radius: 10px 0px 0px 0px;
+        font-size: 13px;
+        font-family: monospace;
+        background-color: rgb(151, 0, 0);
+        color: white;
+        font-weight: bold;
+    }
+
+    .row-2a {
+        background-color: #ffcc00;
         height: 15%;
         justify-content: center;
         font-size: 14px;
     }
 
-    .row-3 {
+    .row-2b {
+        background-color: #4f61b3;
+        height: 15%;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .row-3a {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        height: 70%;
+        border-radius: 0px 0px 10px 10px;
         background-color: #ffff33;
-        height: 67%;
         align-content: flex-start;
         font-family: Helvetica;
         flex-wrap: wrap;
         line-height: 22px;
+        text-align: left;
+    }
+
+    .row-3b {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: 70%;
+        border-radius: 0px 0px 10px 10px;
+        background-color: #cacaca;
+        align-content: flex-start;
+        font-family: Helvetica;
+        flex-wrap: wrap;
+        line-height: 22px;
+        text-align: left;
     }
 
     .ability-name {
         width: 100%;
-        text-align: left;
         font-size: 14px;
         font-weight: bold;
     }
@@ -107,7 +172,22 @@ export default {
     .energy-req {
         width:50%;
         font-size: 10px;
-        text-align: left;
+    }
+
+    .ability {
+        font-size: 10px;
+    }
+
+    .energy-card {
+        display:flex;
+        width: 145px;
+        height: 162px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #ffcc00;
+        align-items: center;
+        justify-content: center;
     }
 
 </style>
