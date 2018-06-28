@@ -2,10 +2,10 @@
 
 <!-- your side -->
 <div class="side">
-
+  <!-- active -->
   <div class="active-column">
     <div class="active-card">
-        <active-card :card="your.active[0]" />
+        <active-card v-if="board.your.active.length > 0" :card="board.your.active[0]" />
       </div>
   </div>
 
@@ -15,7 +15,7 @@
 
       <div class="column-1">
         <!-- bench -->
-          <div class="card" v-for="card in your.bench" :key="card.props.id">
+          <div class="card" v-for="card in board.your.bench" :key="card.props.id">
             <card :card="card" />
           </div>
       </div>
@@ -27,19 +27,21 @@
       </div>
 
       <div class="column-3">
-          <div class="prize-card" v-for="card in your.prize" :key="card.props.id">
+          <div class="prize-card" v-for="card in board.your.prize" :key="card.props.id">
             <card :card="card" />
           </div>
       </div>
 
     </div>
 
-    <div class="hand-row">
+    <div >
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-        <div class="card" v-for="card in your.hand" :key="card.props.id">
-          <card :card="card" />
-        </div>
+        <draggable class="hand-row" v-model="board.your.hand">
+          <div class="card" v-for="card in board.your.hand" :key="card.props.id">
+            <card :card="card" />
+          </div>
+        </draggable>
     </div>
 
   </div>
@@ -51,23 +53,30 @@
 <script>
 import Card from './Card';
 import ActiveCard from './ActiveCard';
-
+import draggable from 'vuedraggable';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
+import Deck from './../../../../faker/deck';
 export default {
   name: 'your-side',
   components: {
     Card,
-    ActiveCard
+    ActiveCard,
+    draggable
   },
-  props: {
-    your: {
-      required: true,
-      type: Object
-    }
+  created () {
+    this.setDeck({player: 'your', deck: Deck.deck});
+    this.setHand('your');
   },
-
   data () {
     return {
     };
+  },
+  methods: {
+    ...mapActions('board', ['setHand', 'draw']),
+    ...mapMutations('board', ['draw', 'setDeck'])
+  },
+  computed: {
+    ...mapGetters('board', {board: 'getBoard'})
   }
 };
 </script>
@@ -107,6 +116,7 @@ export default {
     justify-content: center;
     width: 100%;
     height:50%;
+    overflow-x: scroll;
   }
 
   .everything-row {

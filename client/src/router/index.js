@@ -14,27 +14,42 @@ export default new Router({
     {
       path: '/',
       name: 'Login',
-      component: Login
+      component: Login,
+      meta: {
+        requireAuth: false
+      }
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register
+      component: Register,
+      meta: {
+        requireAuth: false
+      }
     },
     {
       path: '/forgotPassword',
       name: 'ForgotPassword',
-      component: ForgotPassword
+      component: ForgotPassword,
+      meta: {
+        requireAuth: false
+      }
     },
     {
       path: '/game',
       name: 'GameBoard',
-      component: GameBoard
+      component: GameBoard,
+      meta: {
+        requireAuth: true
+      }
     },
     {
       path: '/upload',
       name: 'UploadDeck',
-      component: UploadDeck
+      component: UploadDeck,
+      meta: {
+        requireAuth: true
+      }
     }
   ]
 });

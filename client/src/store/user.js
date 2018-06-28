@@ -1,5 +1,4 @@
 export default {
-  strict: true,
   namespaced: true,
   state: {
     token: null,

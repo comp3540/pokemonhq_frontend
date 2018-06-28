@@ -5,7 +5,7 @@
 
   <div class="active-column">
     <div class="active-card">
-        <active-card :card="opponent.active[0]" />
+        <active-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
       </div>
   </div>
 
@@ -14,7 +14,7 @@
     <div class="actions-row"></div>
     <div class="hand-row">
     <!-- hands -->
-      <div class="smallcard" v-for="card in opponent.hand" :key="card.props.id">
+      <div class="smallcard" v-for="card in board.opponent.hand" :key="card.props.id">
         <card :card="card" />
       </div>
     </div>
@@ -23,7 +23,7 @@
 
         <div class="column-1">
         <!-- bench -->
-            <div class="card" v-for="card in opponent.bench" :key="card.props.id">
+            <div class="card" v-for="card in board.opponent.bench" :key="card.props.id">
             <card :card="card" />
             </div>
         </div>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="column-3">
-            <div class="prize-card" v-for="card in opponent.prize" :key="card.props.id">
+            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.props.id">
             <card :card="card" />
             </div>
         </div>
@@ -50,23 +50,28 @@
 <script>
 import Card from './Card';
 import ActiveCard from './ActiveCard';
-
+import { mapGetters, mapActions, mapMutations } from 'vuex';
+import Deck from './../../../../faker/deck';
 export default {
   name: 'opponent-side',
   components: {
     Card,
     ActiveCard
   },
-  props: {
-    opponent: {
-      required: true,
-      type: Object
-    }
+  created () {
+    this.setDeck({player: 'opponent', deck: Deck.deck});
+    this.setHand('opponent');
   },
-
   data () {
     return {
     };
+  },
+  methods: {
+    ...mapActions('board', ['setHand', 'draw']),
+    ...mapMutations('board', ['draw', 'setDeck'])
+  },
+  computed: {
+    ...mapGetters('board', {board: 'getBoard'})
   }
 };
 </script>

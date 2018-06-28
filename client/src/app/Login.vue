@@ -51,10 +51,7 @@ export default {
         var response = await AuthenticationService.login(this.params);
 
         // set the global user token
-        this.setToken(response.data.token);
-
-        // set the global user
-        this.setUser(response.data.user);
+        document.cookie = 'token=' + response.data.token;
 
         // go to card upload screen
         this.$router.push({

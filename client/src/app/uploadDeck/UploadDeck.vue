@@ -62,12 +62,8 @@ export default {
       }
     },
 
-    setDeck (deck) {
-      this.params.deck = deck;
-    },
-
     getUpload (event) {
-      this.myDecks = event.file;
+      this.params.deck = event.file;
     },
 
     checkDeck () {

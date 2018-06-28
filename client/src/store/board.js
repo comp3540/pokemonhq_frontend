@@ -1,5 +1,4 @@
 export default {
-  strict: true,
   namespaced: true,
   state: {
     board: {
@@ -25,17 +24,18 @@ export default {
     getBoard: state => state.board
   },
   mutations: {
-    setDeck (state, player, deck) {
-      // the chosen deck from the "deck upload screen" will be set here
-      this.state.board[player].deck = deck;
+    setDeck (state, payload) {
+      payload.deck.forEach((card) => {
+        state.board[payload.player].deck.push(card);
+      });
     },
 
     draw (state, player) {
       // remove top card from the deck (index[0])...
-      let deckTopCard = this.state.board[player].deck.shift();
+      let deckTopCard = state.board[player].deck.shift();
 
       // push deckTopCard to the end of the player's hand
-      this.state.board[player].hand.push(deckTopCard);
+      state.board[player].hand.push(deckTopCard);
     },
 
     discard (state, player, card) {
@@ -44,9 +44,10 @@ export default {
   },
   actions: {
     // set a user's hand. This can be used at the beginning of the game when a new game is started
-    setHand (commit, player) {
+    setHand (context, player) {
+      // dont know how to access state here to "slice" deck, so using loop
       for (let x = 1; x <= 7; x++) {
-        commit('draw', player);
+        context.commit('draw', player);
       }
     }
   }
