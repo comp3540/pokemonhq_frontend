@@ -17,7 +17,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService';
-import ValidationErrorHelper from '@/utilities/errors/ValidationError';
+import ValidationError from '@/utilities/errors/ValidationError';
 import InputHelper from '@/utilities/form/Input';
 export default {
   name: 'Register',
@@ -69,7 +69,7 @@ export default {
         if (error.response.status === 419) {
           // set the validation errors by associating them to the fields that did not
           // pass the backend validation
-          ValidationErrorHelper.set(this.errors, error.response.data);
+          ValidationError.set(this.errors, error.response.data);
         } else if (error.response.status === 400) {
           // Set the fail message to the response error message
           this.failMessage = error.response.data.message;

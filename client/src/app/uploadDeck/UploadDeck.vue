@@ -19,7 +19,7 @@
   </div>
 </template>
 <script type="text/javascript">
-import DeckApi from '@/services/DeckService';
+import DeckApi from '@/services/Deck';
 import MyDecks from '@/app/uploadDeck/components/MyDecks';
 import ValidationErrorHelper from '@/utilities/errors/ValidationError';
 export default {
@@ -66,12 +66,8 @@ export default {
       this.params.deck = deck;
     },
 
-    setMyDecks (decks) {
-      this.myDecks = decks;
-    },
-
     getUpload (event) {
-      this.setDeck(event.file);
+      this.myDecks = event.file;
     },
 
     checkDeck () {
@@ -87,7 +83,7 @@ export default {
     async getMyDecks () {
       try {
         let decks = await DeckApi.get();
-        this.setMyDecks(decks.data.decks);
+        this.myDecks = decks.data.decks;
       } catch (error) {
         this.failMessage = error.response.data.message;
       }
