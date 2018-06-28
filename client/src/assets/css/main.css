@@ -74,7 +74,7 @@ input{
     text-align: center;
 }
 
-#loginButton {
+.button {
     background-color: #ffd44a;
     border-radius: 15px;
     border: 3px solid #ffd44a;
@@ -82,7 +82,7 @@ input{
     color: #fff;
 }
 
-#loginButton:hover{
+.button:hover{
     color: #ff5e0e;
     background-color: #fff;
     border: 3px solid #ff5e0e;

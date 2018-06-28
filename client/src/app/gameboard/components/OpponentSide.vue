@@ -5,7 +5,7 @@
 
   <div class="active-column">
     <div class="active-card">
-        <active-card :card="opponent.active[0]" />
+        <active-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
       </div>
   </div>
 
@@ -14,7 +14,7 @@
     <div class="actions-row"> This area will be reserved for buttons and options. </div>
     <div class="hand-row">
     <!-- hands -->
-      <div class="hand-card" v-for="card in opponent.hand" :key="card.props.id">
+      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.props.id">
         <face-down-card :card="card" />
       </div>
     </div>
@@ -23,9 +23,9 @@
 
         <div class="column-1">
         <!-- bench -->
-            <div class="small-card" v-for="card in opponent.bench" :key="card.props.id">
-                <small-card :card="card" />
-            </div>
+          <div class="small-card" v-for="card in board.opponent.bench" :key="card.props.id">
+              <small-card :card="card" />
+          </div>
         </div>
 
         <div class="column-2">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="column-3">
-            <div class="prize-card" v-for="card in opponent.prize" :key="card.props.id">
+            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.props.id">
             <face-down-card :card="card" />
             </div>
         </div>
@@ -54,6 +54,8 @@
 <script>
 import Card from './Card';
 import ActiveCard from './ActiveCard';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
+import Deck from './../../../../faker/deck';
 import SmallCard from './SmallCard';
 import FaceDownCard from './FaceDownCard';
 
@@ -65,16 +67,20 @@ export default {
     SmallCard,
     FaceDownCard
   },
-  props: {
-    opponent: {
-      required: true,
-      type: Object
-    }
+  created () {
+    this.setDeck({player: 'opponent', deck: Deck.deck});
+    this.setHand('opponent');
   },
-
   data () {
     return {
     };
+  },
+  methods: {
+    ...mapActions('board', ['setHand', 'draw']),
+    ...mapMutations('board', ['draw', 'setDeck'])
+  },
+  computed: {
+    ...mapGetters('board', {board: 'getBoard'})
   }
 };
 </script>

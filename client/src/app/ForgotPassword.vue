@@ -3,7 +3,7 @@
     <p-header header="Forgot Password"/>
     <p-form @clearValidationErrors = "ValidationError.clear(fields, $event)">
       <p-input-text :field="fields.email" v-model="fields.email.value" />
-      <button id="loginButton" @click="passwordReset()">Login</button>
+      <button class="button" @click="passwordReset()">Login</button>
       <router-link :to="{ name: 'Login' }">Back to login!</router-link>
     </p-form>
     <br>

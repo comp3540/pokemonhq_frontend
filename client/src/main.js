@@ -6,6 +6,16 @@ import router from './router';
 import { sync } from 'vuex-router-sync';
 import store from '@/store/store';
 import components from '@/components';
+import Auth from '@/utilities/auth/Cookie';
+console.log(Auth.tokenIsset(document.cookie));
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth && !Auth.tokenIsset(document.cookie)) {
+    next({ path: '/' });
+  } else {
+    next();
+  }
+});
+
 Vue.config.productionTip = false;
 Vue.use(components);
 sync(store, router);
