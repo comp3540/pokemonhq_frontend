@@ -26,7 +26,15 @@ var deck = [
 	          clazz: 'POKEMON',
 	          stage: 'basic',
 	          evolvesFrom: null,
-	          status: 'none'
+	          status: 'none',
+	          abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
 	        }
 		},
 		{

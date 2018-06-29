@@ -9,7 +9,7 @@
     </div>
 
     <div class="row-2a" v-if="card.props.clazz === 'POKEMON'">
-        <div> {{card.props.name}} </div>
+        <div> {{card.props.name}} ID: {{card.props.id}}</div>
     </div>
 
     <div class="row-3a" v-if="card.props.clazz === 'POKEMON'" v-for="ability in card.props.abilities" :key="ability.id">
