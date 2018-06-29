@@ -4,7 +4,7 @@ export default {
     board: {
       your: {
         bench: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -17,17 +17,17 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         active: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -40,18 +40,18 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         deck: [],
         discard: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -64,17 +64,17 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         prize: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -87,20 +87,20 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         hand: []
       },
       opponent: {
         bench: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -113,17 +113,17 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         active: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -136,18 +136,18 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         deck: [],
         discard: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -160,17 +160,17 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         prize: [{
-      state: {
+          state: {
 
           },
           props: {
@@ -183,15 +183,15 @@ export default {
             evolvesFrom: null,
             status: 'none',
             abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
-              id: 20
-            }
-          ],
+              {
+                name: 'Thunderbolt',
+                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+                id: 20
+              }
+            ]
           }
-    }],
+        }],
         hand: []
       }
     }
