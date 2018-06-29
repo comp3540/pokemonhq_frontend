@@ -3,19 +3,195 @@ export default {
   state: {
     board: {
       your: {
-        bench: [],
-        active: [],
+        bench: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
+        active: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
         deck: [],
-        discard: [],
-        prize: [],
+        discard: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
+        prize: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
         hand: []
       },
       opponent: {
-        bench: [],
-        active: [],
+        bench: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
+        active: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
         deck: [],
-        discard: [],
-        prize: [],
+        discard: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
+        prize: [{
+      state: {
+
+          },
+          props: {
+            id: 6,
+            name: 'Pikachu',
+            initialHP: 40,
+            type: 'lightning',
+            clazz: 'POKEMON',
+            stage: 'basic',
+            evolvesFrom: null,
+            status: 'none',
+            abilities: [
+            {
+              name: 'Thunderbolt',
+              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+              energyReq: [{type: 'lightning', amount: 1, id: 100}, {type: 'colorless', amount: 1, id: 200}],
+              id: 20
+            }
+          ],
+          }
+    }],
         hand: []
       }
     }
