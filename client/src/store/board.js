@@ -25,7 +25,20 @@ export default {
               }
             ]
           }
-        }],
+        },
+        {
+          state: {
+
+          },
+          props: {
+            id: 102,
+            name: 'Red Card',
+            clazz: 'TRAINER',
+            category: 'item',
+            ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'
+          }
+        }
+        ],
         active: [{
           state: {
 
