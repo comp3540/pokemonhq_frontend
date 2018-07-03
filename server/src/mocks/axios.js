@@ -1,5 +1,5 @@
 // module.exports = (url) => {
-//   return new Promise ((resolve, reject) => {
-//     process.nextTick
-//   })
-// }
+//   return new Promise((resolve, reject) => {
+//     process.nextTick;
+//   });
+// };
