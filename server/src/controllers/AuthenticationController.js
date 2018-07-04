@@ -1,5 +1,5 @@
 // This file will be responsible for handling the authentication logic on the server
-const {User} = require('./../models');
+const User = require('./../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 
@@ -13,7 +13,8 @@ function jwtSignUser (user) {
 module.exports = {
   async register (req, res) {
     try {
-      const user = await User.create(req.body);
+      const user = new User(req.body);
+      await user.save();
       const userJson = user.toJSON();
       return res.status(200).send({
         message: 'The user has been created!',
@@ -31,9 +32,7 @@ module.exports = {
     try {
       const {email, password} = req.body;
       const user = await User.findOne({
-        where: {
-          email: email
-        }
+        email: email
       });
       if (!user) {
         return res.status(403).send({

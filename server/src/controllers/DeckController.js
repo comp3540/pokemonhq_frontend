@@ -1,16 +1,11 @@
 // This file will be responsible for handling the authentication logic on the server
-const {User} = require('./../models');
-const {Deck} = require('./../models');
+const User = require('./../models/User');
 module.exports = {
   async save (req, res) {
     try {
-      const user = await User.findOne({
-        where: {
-          id: req.user.id
-        }
-      });
-      const newDeck = await Deck.create(req.body);
-      await user.addDecks(newDeck);
+      const user = await User.findOne({ email: req.user.email });
+      user.deck.push(req.body);
+      await user.save();
       return res.status(200).send({
         message: 'Your deck has been successfully uploaded'
       });
@@ -23,14 +18,9 @@ module.exports = {
   },
   async get (req, res) {
     try {
-      const user = await User.findOne({
-        where: {
-          id: req.user.id
-        }
-      });
-      let allDecks = await user.getDecks();
+      const user = await User.findOne({email: req.user.email});
       return res.status(200).send({
-        decks: allDecks
+        decks: user.decks
       });
     } catch (err) {
       console.log(err);
