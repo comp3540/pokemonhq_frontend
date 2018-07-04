@@ -4,7 +4,7 @@ module.exports = {
   async save (req, res) {
     try {
       const user = await User.findOne({ email: req.user.email });
-      user.deck.push(req.body);
+      user.decks.push(req.body);
       await user.save();
       return res.status(200).send({
         message: 'Your deck has been successfully uploaded'
