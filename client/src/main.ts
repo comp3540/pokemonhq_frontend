@@ -10,6 +10,7 @@ import { sync } from 'vuex-router-sync';
 import store from '@/store/store';
 //@ts-ignore
 import components from '@/components';
+//@ts-ignore
 import Auth from '@/utilities/auth/Cookie';
 console.log(Auth.tokenIsset(document.cookie));
 router.beforeEach((to, from, next) => {
