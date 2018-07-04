@@ -5,7 +5,7 @@ import Register from '@/app/Register';
 import ForgotPassword from '@/app/ForgotPassword';
 import UploadDeck from '@/app/uploadDeck/UploadDeck';
 import GameBoard from '@/app/gameboard/GameBoard';
-
+import PageNotFound from '@/app/PageNotFound';
 Vue.use(Router);
 
 export default new Router({
@@ -50,6 +50,7 @@ export default new Router({
       meta: {
         requireAuth: true
       }
-    }
+    },
+    { path: '*', component: PageNotFound }
   ]
 });
