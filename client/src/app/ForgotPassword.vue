@@ -11,10 +11,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import AuthenticationService from '@/services/AuthenticationService';
 import ValidationError from '@/utilities/errors/ValidationError';
 import Input from '@/utilities/form/Input';
+
 export default {
   name: 'ForgotPassword',
   data () {

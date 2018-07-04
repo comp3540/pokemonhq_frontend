@@ -1,12 +1,12 @@
 // generic components
-import Text from './form/Text';
-import Password from './form/Password';
-import Form from './form/Form';
-import SuccessAlert from './alert/Success';
-import FailAlert from './alert/Fail';
-import Header from './Header';
-import File from './form/File';
-import TextArea from './form/TextArea';
+import Text from './form/Text.vue';
+import Password from './form/Password.vue';
+import Form from './form/Form.vue';
+import SuccessAlert from './alert/Success.vue';
+import FailAlert from './alert/Fail.vue';
+import Header from './Header.vue';
+import File from './form/File.vue';
+import TextArea from './form/TextArea.vue';
 
 // register components
 export default {

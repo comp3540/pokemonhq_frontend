@@ -54,14 +54,15 @@
 
 </template>
 
-<script>
-import Card from './Card';
-import ActiveCard from './ActiveCard';
+<script lang="ts">
+import Vue from 'vue';
+import Card from './Card.vue';
+import ActiveCard from './ActiveCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import Deck from './../../../../faker/deck';
-import SmallCard from './SmallCard';
-import FaceDownCard from './FaceDownCard';
+import SmallCard from './SmallCard.vue';
+import FaceDownCard from './FaceDownCard.vue';
 
 export default {
   name: 'your-side',
@@ -124,7 +125,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height:50%;
+    height:100%;
     overflow-x: scroll;
   }
 

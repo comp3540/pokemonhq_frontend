@@ -1,4 +1,6 @@
-const __values = Symbol('__values');
+//don't need this anymore
+
+/*const __values = Symbol('__values');
 
 export default class Enum {
   constructor (sym, value) {
@@ -51,3 +53,4 @@ export default class Enum {
       .find(([k, v]) => value === v.value)[1];
   }
 }
+*/

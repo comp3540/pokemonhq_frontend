@@ -44,7 +44,8 @@
 
 </template>
 
-<script type="text/javascript">
+<script lang="ts">
+    import Vue from 'vue';
 export default {
   name: 'small-card',
 

@@ -1,29 +1,31 @@
 import Card from '@/types/cards/Card';
-import Enum from '@/types/Enum';
+//import Enum from '@/types/Enum';     don't need this anymore
 
-class Stage extends Enum { }
-Stage.of({
-  BASIC: 'basic',
-  STAGE_ONE: 'stageone'
-});
+enum Stage{
+  BASIC = 'basic',
+  STAGE_ONE = 'stageone'
+}
 
-class Type extends Enum { }
-Type.of({
-  FIGHTING: 'fighting',
-  LIGHTNING: 'lightning',
-  PSYCHIC: 'psychic',
-  WATER: 'water',
-  COLORLESS: 'colorless'
-});
+enum Type{
+  FIGHTING = 'fighting',
+  LIGHTNING = 'lightning',
+  PSYCHIC = 'psychic',
+  WATER = 'water',
+  COLORLESS = 'colorless'
+}
 
 class RetreatCost {
+  type: string;
+  amount: number;
   constructor (o) {
-    this.type = Type.from(o.type);
+    this.type = Type[o.type];
     this.amount = o.amount;
   }
 }
 
 class CardAbility {
+  energyReq
+  ability
   constructor (o) {
     this.energyReq = o.energyReq.map(er => new EnergyReq(er));
     this.ability = o.ability;
@@ -31,22 +33,28 @@ class CardAbility {
 }
 
 class EnergyReq {
+  type: string;
+  amount: number;
   constructor (o) {
-    this.type = Type.from(o.type);
+    this.type = Type[o.type];
     this.amount = o.amount;
   }
 }
 
-class Status extends Enum { }
-Status.of({
-  POISONED: 'poisoned',
-  ASLEEP: 'asleep',
-  PARALYZED: 'paralyzed',
-  STUCK: 'stuck',
-  NONE: null
-});
+enum Status {
+  POISONED = 'poisoned',
+  ASLEEP = 'asleep',
+  PARALYZED = 'paralyzed',
+  STUCK = 'stuck',
+  NONE = '' //null
+}
 
 class State {
+  hp: number;
+  status: string;
+  energyCards
+  itemCards
+  evolvedFrom
   constructor (initialHp) {
     this.hp = initialHp;
     this.status = Status.NONE;
@@ -57,11 +65,18 @@ class State {
 }
 
 class Pokemon extends Card {
+  state
+  type: string;
+  stage: string;
+  initialHp: number;
+  evolvesFrom;
+  retreatCost;
+  abilities;
   constructor (o) {
     super(o);
     this.state = new State(o.initialHp);
-    this.type = Type.from(o.type);
-    this.stage = Stage.from(o.stage);
+    this.type = Type[o.type];
+    this.stage = Stage[o.stage];
     this.initialHp = o.initialHp;
     this.evolvesFrom = o.evolvesFrom;
     this.retreatCost = new RetreatCost(o.retreatCost);

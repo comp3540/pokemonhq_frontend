@@ -51,13 +51,15 @@
 
 </template>
 
-<script>
-import Card from './Card';
-import ActiveCard from './ActiveCard';
+<script lang="ts">
+import Vue from 'vue';
+import Card from './Card.vue';
+import ActiveCard from './ActiveCard.vue';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import Deck from './../../../../faker/deck';
-import SmallCard from './SmallCard';
-import FaceDownCard from './FaceDownCard';
+import SmallCard from './SmallCard.vue';
+import FaceDownCard from './FaceDownCard.vue';
+
 
 export default {
   name: 'opponent-side',

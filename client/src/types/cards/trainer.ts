@@ -1,17 +1,17 @@
 import Card from '@/types/cards/Card';
-import Enum from '@/types/Enum';
 
-class Category extends Enum {}
-Category.of({
-  ITEM: 'item',
-  SUPPORTER: 'supporter',
-  STADIUM: 'stadium'
-});
+enum Category {
+  ITEM = 'item',
+  SUPPORTER = 'supporter',
+  STADIUM = 'stadium'
+};
 
 class Trainer extends Card {
+  cat: string;
+  ability;
   constructor (o) {
     super(o);
-    this.cat = Category.from(o.cat);
+    this.cat = Category[o.cat];
     this.ability = o.ability;
   }
 }

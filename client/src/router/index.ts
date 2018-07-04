@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from '@/app/Login';
-import Register from '@/app/Register';
-import ForgotPassword from '@/app/ForgotPassword';
-import UploadDeck from '@/app/uploadDeck/UploadDeck';
-import GameBoard from '@/app/gameboard/GameBoard';
+import Login from '@/app/Login.vue';
+import Register from '@/app/Register.vue';
+import ForgotPassword from '@/app/ForgotPassword.vue';
+import UploadDeck from '@/app/uploadDeck/UploadDeck.vue';
+import GameBoard from '@/app/gameboard/GameBoard.vue';
 
 Vue.use(Router);
 
