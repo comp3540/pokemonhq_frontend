@@ -2,13 +2,8 @@ module.exports = {
   port: process.env.PORT || 8081,
   db: {
     database: process.env.DB_DATABASE || 'pokemonhq',
-    username: process.env.DB_USERNAME || 'pokemonhq',
-    password: process.env.DB_PASSWORD || 'pokemonhq',
-    options: {
-      dialect: process.env.DB_DIALECT || 'sqlite',
-      host: process.env.DB_HOST || 'localhost',
-      storage: './pokemonhq.sqlite'
-    }
+    username: process.env.DB_USERNAME || 'tommybaloukas123',
+    password: process.env.DB_PASSWORD || 'pokemonhq_1234567890'
   },
   authentication: {
     jwtSecret: process.env.JWT_SECRET || 'secret'
