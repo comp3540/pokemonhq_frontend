@@ -1,4 +1,6 @@
 // generic components
+
+//@ts-ignore
 import Text from './form/Text.vue';
 import Password from './form/Password.vue';
 import Form from './form/Form.vue';

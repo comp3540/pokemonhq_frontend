@@ -7,8 +7,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-export default {
+import Vue from "vue";
+
+export default Vue.extend({
   props: {
     message: {
       type: String
