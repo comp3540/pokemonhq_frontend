@@ -3,59 +3,93 @@
   <div class="kard">
 
     <!-- POKEMON -->
-    <div class="row-1a" v-if="card.props.clazz === 'POKEMON'">
-        <div class="stage" v-if="card.props.stage"> {{card.props.stage}} </div>
-        <div class="hp" v-if="card.props.initialHP"> {{card.props.initialHP}} </div>
+    <div :class="cardColor1" v-if="card instanceof Pokemon"> 
+        <div class="stage" v-if="card.stage"> {{card.stage}} </div>
+        <div class="hp" v-if="card.initialHp"> {{card.initialHp}} </div>
     </div>
 
-    <div class="row-2a" v-if="card.props.clazz === 'POKEMON'">
-        <div> {{card.props.name}} ID: {{card.props.id}}</div>
+    <div class="row-2a" v-if="card instanceof Pokemon">
+        <div> {{card.name}} ID: {{card.id}}</div>
     </div>
 
-    <div class="row-3a" v-if="card.props.clazz === 'POKEMON'" v-for="ability in card.props.abilities" :key="ability.id">
-        <div class="ability-name"> {{ability.name}} </div>
-        <div class="energy-req" v-for="energyReq in ability.energyReq" :key="energyReq.id">
+    <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
+        <div class="ability-name"> {{attack.ability.name}} </div>
+        <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             {{energyReq.type}}
             {{energyReq.amount}}
         </div>
     </div>
 
     <!-- TRAINER -->
-    <div class= "row-1b" v-if="card.props.clazz === 'TRAINER'">
-        <div class="category" v-if="card.props.category"> {{card.props.category}} </div>
+    <div class= "row-1b" v-if="card instanceof Trainer">
+        <div class="category" v-if="card.category"> {{card.category}} </div>
     </div>
 
-    <div class="row-2b" v-if="card.props.clazz === 'TRAINER'">
-        <div> {{card.props.name}} </div>
+    <div class="row-2b" v-if="card instanceof Trainer">
+        <div> {{card.name}} </div>
     </div>
 
-    <div class="row-3b" v-if="card.props.clazz === 'TRAINER'">
-        <div v-if="card.props.ability">
-                <div class="ability"> {{card.props.ability}} </div>
+    <div class="row-3b" v-if="card instanceof Trainer">
+        <div v-if="card.ability">
+                <div class="ability"> {{card.ability.definition}} </div>
         </div>
     </div>
 
     <!-- ENERGY -->
-    <div class= "energy-card" v-if="card.props.clazz === 'ENERGY'">
-        <div> {{card.props.name}} </div>
+    <div :class="cardColor2" v-if="card instanceof Energy">
+        <div> {{card.name}} </div>
     </div>
 
   </div>
 
 </template>
 
-<script type="text/javascript">
-export default {
-  name: 'small-card',
+<script lang="ts">
+import Vue from 'vue';
+import pokemon from '@/types/cards/pokemon';
+import energy from '@/types/cards/energy';
+import trainer from '@/types/cards/trainer';
 
+export default Vue.extend({
+  name: 'small-card',
   props: {
     card: {
       default: null,
       type: Object,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+  data() {
+      return {
+          // We inject some types for the templates to see,
+          Pokemon: pokemon.Pokemon,
+          Energy: energy.Energy,
+          Trainer: trainer.Trainer,
+      };
+  },
+  computed: {
+    cardColor1(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'row-1a': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fighting',
+        'psychic': ct === 'psychic',
+        };
+    },
+    cardColor2(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'energy-card': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
+    },
+  },
+});
 </script>
 
 <style scoped>
@@ -78,7 +112,21 @@ export default {
         height: 15%;
         flex-direction: row;
         border-radius: 10px 10px 0px 0px;
+    }
+
+    .lightning {
         background-color: #ffcc00;
+    }
+    .water {
+        background-color: rgb(84, 84, 216);
+    }
+
+    .fighting { 
+        background-color: #c95000;
+    }
+
+    .psychic {
+        background-color: #f110d3;
     }
 
     .row-1b {
@@ -122,7 +170,6 @@ export default {
     }
 
     .row-2a {
-        background-color: #ffcc00;
         height: 15%;
         justify-content: center;
         font-size: 14px;
@@ -141,7 +188,6 @@ export default {
         justify-content: flex-start;
         height: 70%;
         border-radius: 0px 0px 10px 10px;
-        background-color: #ffff33;
         align-content: flex-start;
         font-family: Helvetica;
         flex-wrap: wrap;
@@ -185,7 +231,6 @@ export default {
         font-size: 20px;
         text-align: center;
         border-radius: 10px;
-        background-color: #ffcc00;
         align-items: center;
         justify-content: center;
     }

@@ -10,11 +10,19 @@
   </div>
 
   <div class="super-column">
-
-    <div class="actions-row"> This area will be reserved for buttons and options. </div>
+    <!-- options bar -->
+    <div class="actions-row">
+      <div class="buttons">
+        <endTurn></endTurn> 
+        <forfeit></forfeit> 
+      </div>
+      <div class="log">
+        <log></log> 
+      </div>
+    </div>
     <div class="hand-row">
     <!-- hands -->
-      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.props.id">
+      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.id">
         <face-down-card :card="card" />
       </div>
     </div>
@@ -23,7 +31,7 @@
 
         <div class="column-1">
         <!-- bench -->
-          <div class="small-card" v-for="card in board.opponent.bench" :key="card.props.id">
+          <div class="small-card" v-for="card in board.opponent.bench" :key="card.id">
               <small-card :card="card" />
           </div>
         </div>
@@ -31,15 +39,15 @@
         <div class="column-2">
         <!-- deck and discard -->
             <div class="deck">
-            <face-down-card :card="card" />
+            <face-down-card :card="board.opponent.discard[0]" />
             </div>
             <div class="discard">
-            <face-down-card :card="card" />
+            <face-down-card :card="board.opponent.discard[0]" />
             </div>
         </div>
 
         <div class="column-3">
-            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.props.id">
+            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.id">
             <face-down-card :card="card" />
             </div>
         </div>
@@ -51,38 +59,46 @@
 
 </template>
 
-<script>
-import Card from './Card';
-import ActiveCard from './ActiveCard';
+<script lang="ts">
+import Vue from 'vue';
+import Card from './Card.vue';
+import ActiveCard from './ActiveCard.vue';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import Deck from './../../../../faker/deck';
-import SmallCard from './SmallCard';
-import FaceDownCard from './FaceDownCard';
+import deck from '../../../faker/deck';
+import SmallCard from './SmallCard.vue';
+import FaceDownCard from './FaceDownCard.vue';
+import endTurn from './button-endTurn.vue';
+import forfeit from './button-forfeit.vue';
+import log from './paragraphs-logs.vue';
 
-export default {
+
+export default Vue.extend({
   name: 'opponent-side',
   components: {
     Card,
     ActiveCard,
     SmallCard,
-    FaceDownCard
+    FaceDownCard,
+    endTurn,
+    forfeit,
+    log,
   },
-  created () {
-    this.setDeck({player: 'opponent', deck: Deck.deck});
+  created() {
+    this.setDeck({player: 'opponent', deck: deck.deck});
     this.setHand('opponent');
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
     ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck'])
+    ...mapMutations('board', ['draw', 'setDeck']),
   },
   computed: {
-    ...mapGetters('board', {board: 'getBoard'})
-  }
-};
+    ...mapGetters('board', {board: 'getBoard'}),
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -109,9 +125,24 @@ export default {
   }
 
   .actions-row {
+    display: flex;
     width: 100%;
     height: 30%;
     background-color:#e6e6e6;
+    flex-direction: column;
+  }
+
+  .buttons {
+    justify-content: space-around;
+    height:50%;
+    width: 100%;
+  }
+
+  .log {
+    align-content: flex-start;
+    text-align: left;
+    height: 50%;
+    width: 100%;
   }
 
   .hand-row {

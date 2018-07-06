@@ -11,35 +11,40 @@
   </div>
 </template>
 
-<script type="text/javascript">
-export default {
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
   props: {
     label: {
       required: true,
-      type: String
+      type: String,
     },
     error: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
-    upload (event) {
+    upload(event: any) { // Deal w/ this
       const file = event.target.files[0];
       const fr = new FileReader();
       const $this = this;
-      fr.onload = (event) => {
-        $this.$emit('upload', {file: event.target.result});
+      fr.onload = (loaded) => {
+        if (!loaded || !loaded.target || !loaded.target.result) {
+          return;
+        }
+
+        $this.$emit('upload', {file: loaded.target.result});
         $this.$emit('clearError');
       };
       fr.readAsText(file);
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <style type="text/css">
   .relative {

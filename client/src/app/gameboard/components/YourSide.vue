@@ -15,7 +15,7 @@
 
       <div class="column-1">
         <!-- bench -->
-        <div class="small-card" v-for="card in board.your.bench" :key="card.props.id">
+        <div class="small-card" v-for="card in board.your.bench" :key="card.id">
           <small-card :card="card" />
         </div>
       </div>
@@ -23,15 +23,15 @@
       <div class="column-2">
         <!-- deck and discard -->
         <div class="deck">
-          <face-down-card :card="card" />
+          <face-down-card :card="board.your.discard[0]" />
         </div>
         <div class="discard">
-          <face-down-card :card="card" />
+          <face-down-card :card="board.your.discard[0]" />
         </div>
       </div>
 
       <div class="column-3">
-          <div class="prize-card" v-for="card in board.your.prize" :key="card.props.id">
+          <div class="prize-card" v-for="card in board.your.prize" :key="card.id">
             <face-down-card :card="card" />
           </div>
       </div>
@@ -42,7 +42,7 @@
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
         <draggable class="hand-row" v-model="board.your.hand">
-          <div class="small-card" v-for="card in board.your.hand" :key="card.props.id">
+          <div class="small-card" v-for="card in board.your.hand" :key="card.id">
             <small-card :card="card" />
           </div>
         </draggable>
@@ -54,40 +54,38 @@
 
 </template>
 
-<script>
-import Card from './Card';
-import ActiveCard from './ActiveCard';
+<script lang="ts">
+
+import Vue from 'vue';
+import Card from './Card.vue';
+import ActiveCard from './ActiveCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import Deck from './../../../../faker/deck';
-import SmallCard from './SmallCard';
-import FaceDownCard from './FaceDownCard';
+import Deck from './../../../faker/deck';
+import SmallCard from './SmallCard.vue';
+import FaceDownCard from './FaceDownCard.vue';
 
-export default {
+export default Vue.extend({
   name: 'your-side',
   components: {
     Card,
     ActiveCard,
     SmallCard,
     FaceDownCard,
-    draggable
+    draggable,
   },
-  created () {
-    this.setDeck({player: 'your', deck: Deck.deck});
-    this.setHand('your');
-  },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
     ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck'])
+    ...mapMutations('board', ['draw', 'setDeck']),
   },
   computed: {
-    ...mapGetters('board', {board: 'getBoard'})
-  }
-};
+    ...mapGetters('board', {board: 'getBoard'}),
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -124,7 +122,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height:50%;
+    height:100%;
     overflow-x: scroll;
   }
 

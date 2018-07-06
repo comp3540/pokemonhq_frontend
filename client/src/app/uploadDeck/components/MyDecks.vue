@@ -9,22 +9,24 @@
     </div>
   </div>
 </template>
-<script type="text/javascript">
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'my-decks',
   props: {
     myDecks: {
-      type: Array
-    }
+      type: Array,
+    },
   },
-  data () {
+  data() {
     return {
-      preview: {}
+      preview: {},
     };
   },
   methods: {
-  }
-};
+  },
+});
 </script>
 <style type="text/css" scoped>
   #view {

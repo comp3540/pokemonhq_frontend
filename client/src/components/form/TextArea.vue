@@ -5,37 +5,38 @@
     <span class="help-block" v-if="error">{{error}}</span>
   </div>
 </template>
-<script type="text/javascript">
-export default {
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
   props: {
     label: {
       required: true,
-      type: String
+      type: String,
     },
     rows: {
       required: true,
-      type: String
+      type: String,
     },
     cols: {
       required: true,
-      type: String
+      type: String,
     },
     value: {
       required: true,
-      type: String
+      type: String,
     },
     error: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    input (text) {
+    input(text) {
       this.$emit('input', text);
       this.$emit('clearError');
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <style type="text/css">
   textarea {

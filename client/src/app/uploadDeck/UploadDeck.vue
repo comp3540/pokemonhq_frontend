@@ -18,39 +18,41 @@
     </div>
   </div>
 </template>
-<script type="text/javascript">
-import DeckApi from '@/services/Deck';
-import MyDecks from '@/app/uploadDeck/components/MyDecks';
-import ValidationErrorHelper from '@/utilities/errors/ValidationError';
-export default {
+<script lang="ts">
+import DeckApi from '../../services/Deck';
+import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
+import ValidationErrorHelper from '../../utilities/errors/ValidationError';
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'UploadDeck',
   components: {
-    MyDecks
+    MyDecks,
   },
-  data () {
+  data() {
     return {
       params: {
         name: '',
-        deck: ''
+        deck: '',
       },
       errors: {
         name: '',
-        deck: ''
+        deck: '',
       },
       failMessage: '',
       successMessage: '',
-      myDecks: []
+      myDecks: [],
     };
   },
-  created () {
+  created() {
     this.getMyDecks();
   },
 
   methods: {
-    async save () {
+    async save() {
       try {
         this.checkDeck();
-        let response = await DeckApi.save(this.params);
+        const response = await DeckApi.save(this.params);
         this.successMessage = response.data.message;
         this.getMyDecks();
       } catch (error) {
@@ -62,30 +64,30 @@ export default {
       }
     },
 
-    getUpload (event) {
+    getUpload(event: any) {
       this.params.deck = event.file;
     },
 
-    checkDeck () {
+    checkDeck() {
       // replace next line with spaces
-      var checkedDeck = this.params.deck.replace(/\n/g, ' ');
+      const checkedDeck = this.params.deck.replace(/\n/g, ' ');
       this.params.deck = checkedDeck;
     },
 
-    stringifyDeck () {
+    stringifyDeck() {
       this.params.deck = JSON.stringify(this.params.deck);
     },
 
-    async getMyDecks () {
+    async getMyDecks() {
       try {
-        let decks = await DeckApi.get();
+        const decks = await DeckApi.get();
         this.myDecks = decks.data.decks;
       } catch (error) {
         this.failMessage = error.response.data.message;
       }
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <style scoped>
   #upload input{

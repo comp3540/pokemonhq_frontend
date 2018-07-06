@@ -10,18 +10,19 @@
   </div>
 </template>
 
-<script type="text/javascript">
-export default {
-  name: 'facedown-card',
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
+  name: 'face-down-card',
 
   props: {
     card: {
       default: null,
       type: Object,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+});
 </script>
 
 <style scoped>
@@ -29,7 +30,7 @@ export default {
     .card-img {
         display: block;
         width: 100%;
-        height: 70px;
+        height: 40px;
         background-size: cover;
     }
 
@@ -37,7 +38,6 @@ export default {
         display: flex;
         flex-direction: column;
         align-content: space-between;
-        background-color: #ffcc00;
         color: black;
         text-align: center;
         border-radius: 10px;

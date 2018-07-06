@@ -12,50 +12,51 @@
   </div>
 </template>
 
-<script>
-import AuthenticationService from '@/services/AuthenticationService';
-import ValidationErrorHelper from '@/utilities/errors/ValidationError';
-import InputHelper from '@/utilities/form/Input';
+<script lang="ts">
+import Vue from 'vue';
+import AuthenticationService from '../services/AuthenticationService';
+import ValidationErrorHelper from '../utilities/errors/ValidationError';
+import InputHelper from '../utilities/form/Input';
 import { mapActions } from 'vuex';
-export default {
+export default Vue.extend({
   name: 'Login',
-  data () {
+  data() {
     return {
       params: { // all input fields
         email: '',
-        password: ''
+        password: '',
       },
       errors: {
         email: '',
-        password: ''
+        password: '',
       },
       // the message associated to the fail alert
-      failMessage: ''
+      failMessage: '',
     };
   },
 
   methods: {
     ...mapActions('user', [
       'setToken',
-      'setUser'
+      'setUser',
     ]),
 
     // this method will attempt to loging based on the input values filled by the user
-    async login () {
+    async login() {
       try {
         // set the fail message to an empty just in case it is set at this point
         this.failMessage = '';
 
         // call the login which is an asynchronous method, passing in the input values.
         // Once the method has finished execution save the response.
-        var response = await AuthenticationService.login(this.params);
+        const response = await AuthenticationService.login(this.params);
 
         // set the global user token
         document.cookie = 'token=' + response.data.token;
 
         // go to card upload screen
         this.$router.push({
-          name: 'UploadDeck'
+          name: 'UploadDeck',
         });
 
         // clear all input values
@@ -72,15 +73,15 @@ export default {
         }
       }
     },
-    logout () {
-      this.setToken(null);
-      this.setUser(null);
+    logout() {
+      (this as any).setToken(null);
+      (this as any).setUser(null);
       this.$router.push({
-        name: 'Login'
+        name: 'Login',
       });
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

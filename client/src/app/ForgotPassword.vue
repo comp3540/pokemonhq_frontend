@@ -11,40 +11,43 @@
   </div>
 </template>
 
-<script>
-import AuthenticationService from '@/services/AuthenticationService';
-import ValidationError from '@/utilities/errors/ValidationError';
-import Input from '@/utilities/form/Input';
-export default {
+<script lang="ts">
+import Vue from 'vue';
+import AuthenticationService from '../services/AuthenticationService';
+import ValidationError from '../utilities/errors/ValidationError';
+import Input from '../utilities/form/Input';
+
+export default Vue.extend({
   name: 'ForgotPassword',
-  data () {
+  data() {
     return {
-      ValidationError: ValidationError, // ValidationError helper
-      Input: Input, // Input helper
+      ValidationError, // ValidationError helper
+      Input, // Input helper
       fields: { // all input fields
         password: {
           name: 'password',
           value: '',
           label: 'Password',
-          error: ''
-        }
+          error: '',
+        },
       },
 
       // the message associated to the fail alert
-      failMessage: ''
+      successMessage: '',
+      failMessage: '',
     };
   },
 
   methods: {
     // this method will attempt to send a reset password email based on the input values filled by the user
-    async passwordReset () {
+    async passwordReset() {
       try {
         // set the fail message to an empty just in case it is set at this point
         this.failMessage = '';
 
         // call the passwordReset which is an asynchronous method, passing in the input values.
         // Once the method has finished execution save the response.
-        let response = await AuthenticationService.login(this.Input.getValue(this.fields));
+        const response = await AuthenticationService.login(this.Input.getValue(this.fields));
 
         // set the success message to the response which will contain a "message" field containing the
         // success message
@@ -63,9 +66,9 @@ export default {
           this.failMessage = error.response.data.message;
         }
       }
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
