@@ -18,59 +18,57 @@ export default {
             status: pokemon.Status.NONE,
             abilities: [
               {
-                name: 'Thunderbolt',
-                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                ability: {
+                  name: 'Thunderbolt',
+                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  id: 20,
+                },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                id: 20,
               },
             ],
-            retreatCost: '2',
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
           new pokemon.Pokemon({
             id: 2,
-            name: 'Pikachu',
+            name: 'Squirtle',
             initialHP: 40,
-            type: pokemon.Type.LIGHTNING,
+            type: pokemon.Type.WATER,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
             status: pokemon.Status.NONE,
             abilities: [
               {
-                name: 'Thunderbolt',
-                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                ability: {
+                  name: 'Waterfall',
+                  description: 'throws water',
+                  id: 20,
+                },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                id: 20,
               },
             ],
-            retreatCost: '2',
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
-        new trainer.Trainer ({
-          props: {
-            id: 102,
-            name: 'Red Card',
-            category: trainer.Category.ITEM,
-            ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.',
-          },
-        }),
         ],
         active: [
           new pokemon.Pokemon ({
             id: 6,
-            name: 'Pikachu',
+            name: 'Mr Mime',
             initialHP: 40,
-            type: pokemon.Type.LIGHTNING,
+            type: pokemon.Type.PSYCHIC,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
             status: pokemon.Status.NONE,
             abilities: [
               {
-                name: 'Thunderbolt',
-                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                ability: {
+                  name: 'Psychic attack',
+                  description: 'paralyse opponent',
+                  id: 20,
+                },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                id: 20,
               },
             ],
-            retreatCost: '2',
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
         ],
         deck: [],
@@ -85,13 +83,15 @@ export default {
             status: pokemon.Status.NONE,
             abilities: [
               {
-                name: 'Thunderbolt',
-                description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                ability: {
+                  name: 'Thunderbolt',
+                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  id: 20,
+                },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                id: 20,
               },
             ],
-            retreatCost: '2',
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
         ],
         prize: [
@@ -105,13 +105,15 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
             new pokemon.Pokemon({
               id: 5,
@@ -123,13 +125,15 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
             new pokemon.Pokemon ({
               id: 7,
@@ -141,13 +145,15 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
           ],
         hand: [
@@ -155,7 +161,83 @@ export default {
             id:3,
             name: 'lightning',
             type: energy.Type.LIGHTNING,
-          })
+          }),
+          new pokemon.Pokemon({
+            id: 9,
+            name: 'Machamp',
+            initialHP: 40,
+            type: pokemon.Type.FIGHTING,
+            stage: pokemon.Stage.BASIC,
+            evolvesFrom: null,
+            status: pokemon.Status.NONE,
+            abilities: [
+              {
+                ability: {
+                  name: 'Punch',
+                  description: 'punch the opponent',
+                  id: 20,
+                },
+                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+              },
+            ],
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+          }),
+          new pokemon.Pokemon ({
+            id: 6,
+            name: 'Mr Mime',
+            initialHP: 40,
+            type: pokemon.Type.PSYCHIC,
+            stage: pokemon.Stage.BASIC,
+            evolvesFrom: null,
+            status: pokemon.Status.NONE,
+            abilities: [
+              {
+                ability: {
+                  name: 'Psychic attack',
+                  description: 'paralyse opponent',
+                  id: 20,
+                },
+                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+              },
+            ],
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+          }),
+          new pokemon.Pokemon({
+            id: 2,
+            name: 'Squirtle',
+            initialHP: 40,
+            type: pokemon.Type.WATER,
+            stage: pokemon.Stage.BASIC,
+            evolvesFrom: null,
+            status: pokemon.Status.NONE,
+            abilities: [
+              {
+                ability: {
+                  name: 'Waterfall',
+                  description: 'throws water',
+                  id: 20,
+                },
+                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+              },
+            ],
+            retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+          }),
+          new trainer.Trainer ({
+            id: 102,
+            name: 'Red Card',
+            category: trainer.Category.ITEM,
+            ability: {id: 389,
+              name: 'Red Card',
+              definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
+        }),
+        new trainer.Trainer ({
+          id: 102,
+          name: 'Red Card',
+          category: trainer.Category.ITEM,
+          ability: {id: 389,
+            name: 'Red Card',
+            definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
+      }),
         ],
       },
       opponent: {
@@ -170,40 +252,36 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
             new pokemon.Pokemon({
               id: 9,
-              name: 'Pikachu',
+              name: 'Machamp',
               initialHP: 40,
-              type: pokemon.Type.LIGHTNING,
+              type: pokemon.Type.FIGHTING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Punch',
+                    description: 'punch the opponent',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
-          new trainer.Trainer ({
-            props: {
-              id: 102,
-              name: 'Red Card',
-              category: trainer.Category.ITEM,
-              ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.',
-            },
-          }),
           ],
           active: [
             new pokemon.Pokemon({
@@ -216,13 +294,15 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
           ],
           deck: [],
@@ -237,13 +317,15 @@ export default {
               status: pokemon.Status.NONE,
               abilities: [
                 {
-                  name: 'Thunderbolt',
-                  description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 20,
+                  },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                  id: 20,
                 },
               ],
-              retreatCost: '2',
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
           ],
           prize: [
@@ -257,13 +339,15 @@ export default {
                 status: pokemon.Status.NONE,
                 abilities: [
                   {
-                    name: 'Thunderbolt',
-                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    ability: {
+                      name: 'Thunderbolt',
+                      description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                      id: 20,
+                    },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                    id: 20,
                   },
                 ],
-                retreatCost: '2',
+                retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
               }),
               new pokemon.Pokemon({
                 id: 46,
@@ -275,13 +359,15 @@ export default {
                 status: pokemon.Status.NONE,
                 abilities: [
                   {
-                    name: 'Thunderbolt',
-                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    ability: {
+                      name: 'Thunderbolt',
+                      description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                      id: 20,
+                    },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                    id: 20,
                   },
                 ],
-                retreatCost: '2',
+                retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
               }),
               new pokemon.Pokemon({
                 id: 26,
@@ -293,13 +379,15 @@ export default {
                 status: pokemon.Status.NONE,
                 abilities: [
                   {
-                    name: 'Thunderbolt',
-                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    ability: {
+                      name: 'Thunderbolt',
+                      description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                      id: 20,
+                    },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
-                    id: 20,
                   },
                 ],
-                retreatCost: '2',
+                retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
               }),
             ],
           hand: [],

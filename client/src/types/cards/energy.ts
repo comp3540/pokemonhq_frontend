@@ -8,10 +8,10 @@ enum Type {
 }
 
 class Energy extends Card {
-  public type: string;
+  public type: Type;
   constructor(o: any) {
     super(o);
-    this.type = Type[o.type];
+    this.type = o.type;
   }
 }
 

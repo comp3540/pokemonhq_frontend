@@ -5,24 +5,24 @@
     <!-- for active card -->
     <div class="row-1a" v-if="card instanceof Pokemon">
         <div class="stage"> {{card.stage}} </div>
-        <div class="hp"> {{card.initialHP}} </div>
+        <div class="hp"> {{card.initialHp}} </div>
     </div>
 
     <div class="row-2a" v-if="card instanceof Pokemon">
         <div> {{card.name}} </div>
     </div>
 
-    <div class="row-3a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.id">
-        <div class="ability-name"> {{attack.name}} </div>
+    <div class="row-3a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.ability.id">
+        <div class="ability-name"> {{attack.ability.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             {{energyReq.type}}
             {{energyReq.amount}}
         </div>
-        <div class="ability-desc"> {{attack.description}} </div>
+        <div class="ability-desc"> {{attack.ability.description}} </div>
     </div>
 
     <div class="row-4a" v-if="card instanceof Pokemon">
-        <div class="retreat"> {{card.retreatCost}} </div>
+        <div class="retreat"> {{card.retreatCost.amount}} </div>
         <div class="status"> {{card.status}} </div>
 
     </div>

@@ -15,10 +15,10 @@ enum Type {
 }
 
 class RetreatCost {
-  public type: string;
+  public type: Type;
   public amount: number;
   constructor(o: any) {
-    this.type = Type[o.type];
+    this.type = o.type;
     this.amount = o.amount;
   }
 }
@@ -33,10 +33,10 @@ class CardAbility {
 }
 
 class EnergyReq {
-  public type: string;
+  public type: Type;
   public amount: number;
   constructor(o: any) {
-    this.type = Type[o.type];
+    this.type = o.type;
     this.amount = o.amount;
   }
 }
@@ -51,7 +51,7 @@ enum Status {
 
 class State {
   public hp: number;
-  public status: string;
+  public status: Status;
   public energyCards: any[];
   public itemCards: any[];
   public evolvedFrom?: Pokemon;
@@ -66,18 +66,19 @@ class State {
 
 class Pokemon extends Card {
   public state: State;
-  public type: string;
-  public stage: string;
+  public type: Type;
+  public stage: Stage;
   public initialHp: number;
   public evolvesFrom?: Pokemon;
   public retreatCost: RetreatCost;
   public abilities: CardAbility[];
   constructor(o: any) {
+    console.log(o);
     super(o);
     this.state = new State(o.initialHp);
-    this.type = Type[o.type];
-    this.stage = Stage[o.stage];
-    this.initialHp = o.initialHp;
+    this.type = o.type;
+    this.stage = o.stage;
+    this.initialHp = o.initialHP;
     this.evolvesFrom = o.evolvesFrom;
     this.retreatCost = new RetreatCost(o.retreatCost);
     this.abilities = o.abilities.map((ab: any) => new CardAbility(ab));
