@@ -1,4 +1,5 @@
 import Card from '@/types/cards/Card';
+import AbilityDef from '@/types/abilities/AbilityDef';
 
 enum Stage {
   BASIC = 'basic',
@@ -24,21 +25,10 @@ class RetreatCost {
 
 class CardAbility {
   public energyReq: EnergyReq;
-  public attack: AbilityDef; 
+  public attack: AbilityDef;
   constructor(o: any) {
     this.energyReq = o.energyReq.map((er: any) => new EnergyReq(er));
     this.attack = o.attack;
-  }
-}
-
-class AbilityDef {
-  public id: number;
-  public name: string;
-  public definition: string;
-  constructor(o: any){
-    this.id = o.id;
-    this.name = o.name;
-    this.definition = o.definition;
   }
 }
 
@@ -81,7 +71,7 @@ class Pokemon extends Card {
   public initialHp: number;
   public evolvesFrom?: Pokemon;
   public retreatCost: RetreatCost;
-  public abilities: any[];
+  public abilities: CardAbility[];
   constructor(o: any) {
     super(o);
     this.state = new State(o.initialHp);

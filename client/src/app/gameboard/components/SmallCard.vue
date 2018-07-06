@@ -56,14 +56,15 @@ export default Vue.extend({
     },
   },
   computed: {
-    cardColor() {
+    cardColor(this:any):any {
         const ct = this.card.type;
-        return { 'row-1a': true, '$ct': true,
+        return { 
+        'row-1a': true, 
         'lightning': ct === 'lightning',
         'water': ct === 'water',
         'fighting': ct === 'fightning',
-        'psychic': ct === 'psychic'
-        }
+        'psychic': ct === 'psychic',
+        };
     },
   },
 });
