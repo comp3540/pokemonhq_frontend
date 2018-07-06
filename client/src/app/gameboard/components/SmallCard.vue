@@ -46,6 +46,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import pokemon from '@/types/cards/pokemon';
+import energy from '@/types/cards/energy';
+import trainer from '@/types/cards/trainer';
+
 export default Vue.extend({
   name: 'small-card',
   props: {
@@ -54,6 +58,14 @@ export default Vue.extend({
       type: Object,
       required: true,
     },
+  },
+  data() {
+      return {
+          // We inject some types for the templates to see,
+          Pokemon: pokemon.Pokemon,
+          Energy: energy.Energy,
+          Trainer: trainer.Trainer,
+      };
   },
   computed: {
     cardColor(this:any):any {

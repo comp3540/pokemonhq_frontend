@@ -23,10 +23,10 @@
       <div class="column-2">
         <!-- deck and discard -->
         <div class="deck">
-          <face-down-card :card="card" />
+          <face-down-card :card="board.your.deck[0]" />
         </div>
         <div class="discard">
-          <face-down-card :card="card" />
+          <face-down-card :card="board.your.discard[0]" />
         </div>
       </div>
 
