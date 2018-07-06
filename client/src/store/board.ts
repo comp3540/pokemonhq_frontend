@@ -7,7 +7,7 @@ export default {
   state: {
     board: {
       your: {
-        bench: [{
+        bench: [
           new pokemon.Pokemon({
             id: 1,
             name: 'Pikachu',
@@ -25,8 +25,6 @@ export default {
               },
             ],
           }),
-        },
-        {
           new pokemon.Pokemon({
             id: 2,
             name: 'Pikachu',
@@ -44,8 +42,6 @@ export default {
               },
             ],
           }),
-        },
-        {
         new trainer.Trainer ({
           props: {
             id: 102,
@@ -54,10 +50,9 @@ export default {
             ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.',
           },
         }),
-        }
         ],
-        active: [{
-          new pokemon.Pokemon({
+        active: [
+          new pokemon.Pokemon ({
             id: 6,
             name: 'Pikachu',
             initialHP: 40,
@@ -74,9 +69,9 @@ export default {
               },
             ],
           }),
-        }],
+        ],
         deck: [],
-        discard: [{
+        discard: [
           new pokemon.Pokemon({
             id: 3,
             name: 'Pikachu',
@@ -94,9 +89,9 @@ export default {
               },
             ],
           }),
-        }],
-        prize: [{
-            new pokemon.Pokemon({
+        ],
+        prize: [
+            new pokemon.Pokemon ({
               id: 4,
               name: 'Pikachu',
               initialHP: 40,
@@ -113,8 +108,6 @@ export default {
                 },
               ],
             }),
-          },
-            {
             new pokemon.Pokemon({
               id: 5,
               name: 'Pikachu',
@@ -132,9 +125,7 @@ export default {
                 },
               ],
             }),
-          },
-            {
-            new pokemon.Pokemon({
+            new pokemon.Pokemon ({
               id: 7,
               name: 'Pikachu',
               initialHP: 40,
@@ -151,19 +142,17 @@ export default {
                 },
               ],
             }),
-          }],
-        hand: [{
+          ],
+        hand: [
           new energy.Energy({
             id:3,
             name: 'lightning',
-            type: energy.Energy.LIGHTNING,
+            type: energy.Type.LIGHTNING,
           })
-
-        }],
+        ],
       },
       opponent: {
-        bench: [{
-          bench: [{
+          bench: [
             new pokemon.Pokemon({
               id: 8,
               name: 'Pikachu',
@@ -181,8 +170,6 @@ export default {
                 },
               ],
             }),
-          },
-          {
             new pokemon.Pokemon({
               id: 9,
               name: 'Pikachu',
@@ -200,8 +187,6 @@ export default {
                 },
               ],
             }),
-          },
-          {
           new trainer.Trainer ({
             props: {
               id: 102,
@@ -210,9 +195,8 @@ export default {
               ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.',
             },
           }),
-          }
           ],
-          active: [{
+          active: [
             new pokemon.Pokemon({
               id: 10,
               name: 'Pikachu',
@@ -230,9 +214,9 @@ export default {
                 },
               ],
             }),
-          }],
+          ],
           deck: [],
-          discard: [{
+          discard: [
             new pokemon.Pokemon({
               id: 61,
               name: 'Pikachu',
@@ -250,8 +234,8 @@ export default {
                 },
               ],
             }),
-          }],
-          prize: [{
+          ],
+          prize: [
               new pokemon.Pokemon({
                 id: 16,
                 name: 'Pikachu',
@@ -269,8 +253,6 @@ export default {
                   },
                 ],
               }),
-            },
-              {
               new pokemon.Pokemon({
                 id: 46,
                 name: 'Pikachu',
@@ -288,8 +270,6 @@ export default {
                   },
                 ],
               }),
-            },
-              {
               new pokemon.Pokemon({
                 id: 26,
                 name: 'Pikachu',
@@ -307,10 +287,9 @@ export default {
                   },
                 ],
               }),
-            }],
+            ],
           hand: [],
       },
-    },
   },
 },
   getters: {
