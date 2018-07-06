@@ -9,19 +9,13 @@ import Vue from 'vue';
 export default Vue.extend ({
   name: 'button-endTurn',
 
-  props: {
-      default: null,
-      type: Object,
-    },
- });
+});
 
- </script>
+</script>
 
- 
+<style>
 
- <style>
-
- button{
+button{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 8px;
     color: cadetblue;
@@ -29,4 +23,4 @@ export default Vue.extend ({
     background-color: white;
 }
 
- </style>
+</style>

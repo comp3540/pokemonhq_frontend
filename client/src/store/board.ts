@@ -24,6 +24,7 @@ export default {
                 id: 20,
               },
             ],
+            retreatCost: '2',
           }),
           new pokemon.Pokemon({
             id: 2,
@@ -41,6 +42,7 @@ export default {
                 id: 20,
               },
             ],
+            retreatCost: '2',
           }),
         new trainer.Trainer ({
           props: {
@@ -68,6 +70,7 @@ export default {
                 id: 20,
               },
             ],
+            retreatCost: '2',
           }),
         ],
         deck: [],
@@ -88,6 +91,7 @@ export default {
                 id: 20,
               },
             ],
+            retreatCost: '2',
           }),
         ],
         prize: [
@@ -107,6 +111,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
             new pokemon.Pokemon({
               id: 5,
@@ -124,6 +129,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
             new pokemon.Pokemon ({
               id: 7,
@@ -141,6 +147,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
           ],
         hand: [
@@ -169,6 +176,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
             new pokemon.Pokemon({
               id: 9,
@@ -186,6 +194,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
           new trainer.Trainer ({
             props: {
@@ -213,6 +222,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
           ],
           deck: [],
@@ -233,6 +243,7 @@ export default {
                   id: 20,
                 },
               ],
+              retreatCost: '2',
             }),
           ],
           prize: [
@@ -252,6 +263,7 @@ export default {
                     id: 20,
                   },
                 ],
+                retreatCost: '2',
               }),
               new pokemon.Pokemon({
                 id: 46,
@@ -269,6 +281,7 @@ export default {
                     id: 20,
                   },
                 ],
+                retreatCost: '2',
               }),
               new pokemon.Pokemon({
                 id: 26,
@@ -286,6 +299,7 @@ export default {
                     id: 20,
                   },
                 ],
+                retreatCost: '2',
               }),
             ],
           hand: [],

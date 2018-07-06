@@ -13,16 +13,16 @@
 
     <div class="actions-row">
       <div class="buttons">
-        <div :button-endTurn="button-endTurn"> </div> <!-- idk -->
-        <div :button-forfeit="button-forfeit"> </div> <!-- idk -->
+        <endTurn></endTurn> <!-- idk -->
+        <forfeit></forfeit> <!-- idk -->
       </div>
       <div class="log">
-        <div :log="paragraphs-logs"> <div> <!-- idk -->
+        <log></log> <!-- idk -->
       </div>
     </div>
     <div class="hand-row">
     <!-- hands -->
-      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.props.id">
+      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.id">
         <face-down-card :card="card" />
       </div>
     </div>
@@ -31,7 +31,7 @@
 
         <div class="column-1">
         <!-- bench -->
-          <div class="small-card" v-for="card in board.opponent.bench" :key="card.props.id">
+          <div class="small-card" v-for="card in board.opponent.bench" :key="card.id">
               <small-card :card="card" />
           </div>
         </div>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="column-3">
-            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.props.id">
+            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.id">
             <face-down-card :card="card" />
             </div>
         </div>

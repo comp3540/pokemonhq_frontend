@@ -25,10 +25,10 @@ class RetreatCost {
 
 class CardAbility {
   public energyReq: EnergyReq;
-  public attack: AbilityDef;
+  public ability: AbilityDef;
   constructor(o: any) {
     this.energyReq = o.energyReq.map((er: any) => new EnergyReq(er));
-    this.attack = o.attack;
+    this.ability = o.ability;
   }
 }
 

@@ -9,18 +9,14 @@ import Vue from 'vue';
 export default Vue.extend ({
   name: 'log',
 
-  props: {
-      default: null,
-      type: Object,
-    },
- });
+});
 
- </script>
+</script>
 
- <style>
+<style>
 
- p{
+    p {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
- </style>
+</style>

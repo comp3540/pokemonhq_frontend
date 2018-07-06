@@ -1,6 +1,6 @@
 <template>
 
-  <div class="kard">
+  <div :class="cardColor1">
 
     <!-- for active card -->
     <div class="row-1a" v-if="card instanceof Pokemon">
@@ -12,13 +12,13 @@
         <div> {{card.name}} </div>
     </div>
 
-    <div class="row-3a" v-if="card.abilities" v-for="ability in card.abilities" :key="ability.id">
-        <div class="ability-name"> {{ability.name}} </div>
-        <div class="energy-req" v-for="energyReq in ability.energyReq" :key="energyReq.id">
+    <div class="row-3a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.ability.id">
+        <div class="ability-name"> {{attack.ability.name}} </div>
+        <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             {{energyReq.type}}
             {{energyReq.amount}}
         </div>
-        <div class="ability-desc"> {{ability.description}} </div>
+        <div class="ability-desc"> {{attack.ability.description}} </div>
     </div>
 
     <div class="row-4a" v-if="card instanceof Pokemon">
@@ -45,6 +45,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import pokemon from '@/types/cards/pokemon';
+import energy from '@/types/cards/energy';
+import trainer from '@/types/cards/trainer';
 
 export default Vue.extend({
   name: 'active-card',
@@ -53,6 +56,36 @@ export default Vue.extend({
     card: {
       default: null,
       type: Object,
+    },
+  },
+  data() {
+      return {
+          // We inject some types for the templates to see,
+          Pokemon: pokemon.Pokemon,
+          Energy: energy.Energy,
+          Trainer: trainer.Trainer,
+      };
+  },
+  computed: {
+    cardColor1(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'kard': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
+    },
+   cardColor2(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'row-3a': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
     },
   },
 });
@@ -64,13 +97,27 @@ export default Vue.extend({
         display: flex;
         flex-direction: column;
         align-content: space-between;
-        background-color: #ffcc00;
         width: 300px;
         height: 350px;
         color: black;
         text-align: center;
         border-radius: 10px;
         line-height: 35px;
+    }
+
+    .lightning {
+        background-color: #ffcc00;
+    }
+    .water {
+        background-color: rgb(84, 84, 216);
+    }
+
+    .fighting { 
+        background-color: #c95000;
+    }
+
+    .psychic {
+        background-color: #f110d3;
     }
 
     .row-1a {
@@ -110,7 +157,6 @@ export default Vue.extend({
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        background-color: #ffff33;
         height: 67%;
         align-content: flex-start;
         font-family: Helvetica;

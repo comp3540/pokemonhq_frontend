@@ -15,7 +15,7 @@
 
       <div class="column-1">
         <!-- bench -->
-        <div class="small-card" v-for="card in board.your.bench" :key="card.props.id">
+        <div class="small-card" v-for="card in board.your.bench" :key="card.id">
           <small-card :card="card" />
         </div>
       </div>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="column-3">
-          <div class="prize-card" v-for="card in board.your.prize" :key="card.props.id">
+          <div class="prize-card" v-for="card in board.your.prize" :key="card.id">
             <face-down-card :card="card" />
           </div>
       </div>
@@ -42,7 +42,7 @@
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
         <draggable class="hand-row" v-model="board.your.hand">
-          <div class="small-card" v-for="card in board.your.hand" :key="card.props.id">
+          <div class="small-card" v-for="card in board.your.hand" :key="card.id">
             <small-card :card="card" />
           </div>
         </draggable>
