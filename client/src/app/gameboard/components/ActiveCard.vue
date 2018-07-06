@@ -3,16 +3,16 @@
   <div class="kard">
 
     <!-- for active card -->
-    <div class="row-1a" v-if="card.props.clazz === 'POKEMON'">
-        <div class="stage"> {{card.props.stage}} </div>
-        <div class="hp"> {{card.props.initialHP}} </div>
+    <div class="row-1a" v-if="card instanceof Pokemon">
+        <div class="stage"> {{card.stage}} </div>
+        <div class="hp"> {{card.initialHP}} </div>
     </div>
 
-    <div class="row-2a" v-if="card.props.clazz === 'POKEMON'">
-        <div> {{card.props.name}} </div>
+    <div class="row-2a" v-if="card instanceof Pokemon">
+        <div> {{card.name}} </div>
     </div>
 
-    <div class="row-3a" v-if="card.props.abilities" v-for="ability in card.props.abilities" :key="ability.id">
+    <div class="row-3a" v-if="card.abilities" v-for="ability in card.abilities" :key="ability.id">
         <div class="ability-name"> {{ability.name}} </div>
         <div class="energy-req" v-for="energyReq in ability.energyReq" :key="energyReq.id">
             {{energyReq.type}}
@@ -21,23 +21,23 @@
         <div class="ability-desc"> {{ability.description}} </div>
     </div>
 
-    <div class="row-4a" v-if="card.props.clazz === 'POKEMON'">
-        <div class="retreat"> {{card.props.retreatCost}} </div>
-        <div class="status"> {{card.props.status}} </div>
+    <div class="row-4a" v-if="card instanceof Pokemon">
+        <div class="retreat"> {{card.retreatCost}} </div>
+        <div class="status"> {{card.status}} </div>
 
     </div>
 
     <!-- for trainer card -->
-    <div class="row-1b" v-if="card.props.clazz === 'TRAINER'">
-        <div class="category"> {{card.props.category}} </div>
+    <div class="row-1b" v-if="card instanceof Trainer">
+        <div class="category"> {{card.category}} </div>
     </div>
 
-    <div class="row-2b" v-if="card.props.clazz === 'TRAINER'">
-        <div> {{card.props.name}} </div>
+    <div class="row-2b" v-if="card instanceof Trainer">
+        <div> {{card.name}} </div>
     </div>
 
-    <div class="row-3b" v-if="card.props.clazz === 'TRAINER'">
-        <div class="ability"> {{card.props.ability}} </div>
+    <div class="row-3b" v-if="card instanceof Trainer">
+        <div class="ability"> {{card.ability}} </div>
     </div>
 
   </div>

@@ -3,7 +3,7 @@
   <div class="kard">
 
     <!-- POKEMON -->
-    <div :class="cardColor" v-if="card instanceof Pokemon"> 
+    <div :class="cardColor1" v-if="card instanceof Pokemon"> 
         <div class="stage" v-if="card.stage"> {{card.stage}} </div>
         <div class="hp" v-if="card.initialHP"> {{card.initialHP}} </div>
     </div>
@@ -36,7 +36,7 @@
     </div>
 
     <!-- ENERGY -->
-    <div :class="cardColor" v-if="card instanceof Energy">
+    <div :class="cardColor2" v-if="card instanceof Energy">
         <div> {{card.name}} </div>
     </div>
 
@@ -68,10 +68,20 @@ export default Vue.extend({
       };
   },
   computed: {
-    cardColor(this:any):any {
+    cardColor1(this:any):any {
         const ct = this.card.type;
         return { 
         'row-1a': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
+    },
+    cardColor2(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'energy-card': true, 
         'lightning': ct === 'lightning',
         'water': ct === 'water',
         'fighting': ct === 'fightning',

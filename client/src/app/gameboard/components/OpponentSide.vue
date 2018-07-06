@@ -11,7 +11,15 @@
 
   <div class="super-column">
 
-    <div class="actions-row"> This area will be reserved for buttons and options. </div>
+    <div class="actions-row">
+      <div class="buttons">
+        <div :button-endTurn="button-endTurn"> </div> <!-- idk -->
+        <div :button-forfeit="button-forfeit"> </div> <!-- idk -->
+      </div>
+      <div class="log">
+        <div :log="paragraphs-logs"> <div> <!-- idk -->
+      </div>
+    </div>
     <div class="hand-row">
     <!-- hands -->
       <div class="hand-card" v-for="card in board.opponent.hand" :key="card.props.id">
@@ -59,6 +67,9 @@ import { mapGetters, mapActions, mapMutations } from 'vuex';
 import deck from '../../../faker/deck';
 import SmallCard from './SmallCard.vue';
 import FaceDownCard from './FaceDownCard.vue';
+import endTurn from './button-endTurn.vue';
+import forfeit from './button-forfeit.vue';
+import log from './paragraphs-logs.vue';
 
 
 export default Vue.extend({
@@ -68,6 +79,9 @@ export default Vue.extend({
     ActiveCard,
     SmallCard,
     FaceDownCard,
+    endTurn,
+    forfeit,
+    log,
   },
   created() {
     this.setDeck({player: 'opponent', deck: deck.deck});
@@ -111,9 +125,24 @@ export default Vue.extend({
   }
 
   .actions-row {
+    display: flex;
     width: 100%;
     height: 30%;
     background-color:#e6e6e6;
+    flex-direction: column;
+  }
+
+  .buttons {
+    justify-content: space-around;
+    height:50%;
+    width: 100%;
+  }
+
+  .log {
+    align-content: flex-start;
+    text-align: left;
+    height: 50%;
+    width: 100%;
   }
 
   .hand-row {
