@@ -75,8 +75,6 @@ export default Vue.extend({
     draggable,
   },
   created() {
-    this.setDeck({player: 'your', deck: Deck.deck});
-    this.setHand('your');
   },
   data() {
     return {
