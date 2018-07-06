@@ -15,9 +15,11 @@
 
       <div class="column-1">
         <!-- bench -->
-        <div class="small-card" v-for="card in board.your.bench" :key="card.id">
-          <small-card :card="card" />
-        </div>
+        <draggable class="hand-row" v-model="board.your.bench" :options="{group:'board'}">
+          <div class="small-card" v-for="card in board.your.bench" :key="card.id">
+            <small-card :card="card" />
+          </div>
+        </draggable>
       </div>
 
       <div class="column-2">
@@ -41,7 +43,7 @@
     <div >
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-        <draggable class="hand-row" v-model="board.your.hand">
+        <draggable class="hand-row" v-model="board.your.hand" :options="{group:'board'}">
           <div class="small-card" v-for="card in board.your.hand" :key="card.id">
             <small-card :card="card" />
           </div>
