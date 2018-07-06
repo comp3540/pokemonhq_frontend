@@ -8,11 +8,11 @@
         <div class="hp" v-if="card.initialHP"> {{card.initialHP}} </div>
     </div>
 
-    <div class="row-2a" v-if="card instanceof Pokemon">
+    <div :class="cardColor3" v-if="card instanceof Pokemon">
         <div> {{card.name}} ID: {{card.id}}</div>
     </div>
 
-    <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.id">
+    <div :class="cardColor4" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.id">
         <div class="ability-name"> {{attack.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             {{energyReq.type}}
@@ -82,6 +82,26 @@ export default Vue.extend({
         const ct = this.card.type;
         return { 
         'energy-card': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
+    },
+    cardColor3(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'row-2a': true, 
+        'lightning': ct === 'lightning',
+        'water': ct === 'water',
+        'fighting': ct === 'fightning',
+        'psychic': ct === 'psychic',
+        };
+    },
+    cardColor4(this:any):any {
+        const ct = this.card.type;
+        return { 
+        'row-3a': true, 
         'lightning': ct === 'lightning',
         'water': ct === 'water',
         'fighting': ct === 'fightning',
@@ -170,7 +190,6 @@ export default Vue.extend({
     }
 
     .row-2a {
-        background-color: #ffcc00;
         height: 15%;
         justify-content: center;
         font-size: 14px;
@@ -189,7 +208,6 @@ export default Vue.extend({
         justify-content: flex-start;
         height: 70%;
         border-radius: 0px 0px 10px 10px;
-        background-color: #ffff33;
         align-content: flex-start;
         font-family: Helvetica;
         flex-wrap: wrap;
