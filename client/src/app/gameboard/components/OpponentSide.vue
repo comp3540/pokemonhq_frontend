@@ -39,10 +39,10 @@
         <div class="column-2">
         <!-- deck and discard -->
             <div class="deck">
-            <face-down-card :card="card" />
+            <face-down-card :card="board.opponent.discard[0]" />
             </div>
             <div class="discard">
-            <face-down-card :card="card" />
+            <face-down-card :card="board.opponent.discard[0]" />
             </div>
         </div>
 
