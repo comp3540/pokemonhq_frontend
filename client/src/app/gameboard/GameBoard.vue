@@ -21,58 +21,7 @@ export default Vue.extend({
   },
 
   methods: {
-    fakeCardPokemon(id: number) {
-      return {
-        state: {
-
-        },
-        props: {
-          id,
-          name: 'Pikachu',
-          initialHP: 40,
-          type: 'lightning',
-          clazz: 'POKEMON',
-          stage: 'basic',
-          evolvesFrom: null,
-          abilities: [
-            {
-              name: 'Thunderbolt',
-              description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-              energyReq: [{type: 'lightning', amount: 1, id}, {type: 'colorless', amount: 1, id}],
-              id,
-            },
-          ],
-          status: 'no status',
-          retreatCost: 2,
-        },
-      };
-    },
-    fakeCardEnergy(id: number) {
-      return {
-        state: {
-
-        },
-        props: {
-          id,
-          name: 'lightning',
-          clazz: 'ENERGY',
-        },
-      };
-    },
-    fakeCardTrainer(id: number) {
-      return {
-        state: {
-
-        },
-        props: {
-          id,
-          name: 'Red Card',
-          clazz: 'TRAINER',
-          category: 'item',
-          ability: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.',
-        },
-      };
-    },
+    
   },
 });
 </script>

@@ -1,5 +1,4 @@
 import Card from '@/types/cards/Card';
-// import Enum from '@/types/Enum';     don't need this anymore
 
 enum Stage {
   BASIC = 'basic',
@@ -25,10 +24,21 @@ class RetreatCost {
 
 class CardAbility {
   public energyReq: EnergyReq;
-  public ability: number; // This is dum but for now
+  public attack: AbilityDef; 
   constructor(o: any) {
     this.energyReq = o.energyReq.map((er: any) => new EnergyReq(er));
-    this.ability = o.ability;
+    this.attack = o.attack;
+  }
+}
+
+class AbilityDef {
+  public id: number;
+  public name: string;
+  public definition: string;
+  constructor(o: any){
+    this.id = o.id;
+    this.name = o.name;
+    this.definition = o.definition;
   }
 }
 

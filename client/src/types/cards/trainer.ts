@@ -7,11 +7,11 @@ enum Category {
 }
 
 class Trainer extends Card {
-  public cat: string;
-  public ability: number; // dum but temporary
+  public category: string;
+  public ability: string; // dum but temporary
   constructor(o: any) {
     super(o);
-    this.cat = Category[o.cat];
+    this.category = Category[o.category];
     this.ability = o.ability;
   }
 }
