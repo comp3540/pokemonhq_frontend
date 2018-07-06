@@ -12,8 +12,8 @@
         <div> {{card.name}} ID: {{card.id}}</div>
     </div>
 
-    <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
-        <div class="ability-name"> {{attack.ability.name}} </div>
+    <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.id">
+        <div class="ability-name"> {{attack.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             {{energyReq.type}}
             {{energyReq.amount}}

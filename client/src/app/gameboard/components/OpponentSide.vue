@@ -10,14 +10,14 @@
   </div>
 
   <div class="super-column">
-
+    <!-- options bar -->
     <div class="actions-row">
       <div class="buttons">
-        <endTurn></endTurn> <!-- idk -->
-        <forfeit></forfeit> <!-- idk -->
+        <endTurn></endTurn> 
+        <forfeit></forfeit> 
       </div>
       <div class="log">
-        <log></log> <!-- idk -->
+        <log></log> 
       </div>
     </div>
     <div class="hand-row">
