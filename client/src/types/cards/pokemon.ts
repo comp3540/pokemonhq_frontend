@@ -75,7 +75,7 @@ class Pokemon extends Card {
   constructor(o: any) {
     console.log(o);
     super(o);
-    this.state = new State(o.initialHp);
+    this.state = new State(o.initialHP);
     this.type = o.type;
     this.stage = o.stage;
     this.initialHp = o.initialHP;

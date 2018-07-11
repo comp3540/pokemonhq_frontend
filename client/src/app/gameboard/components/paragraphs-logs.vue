@@ -1,6 +1,6 @@
 <template>
 
-  <p>log: </p>
+  <div class="plog"> &nbsp;&nbsp;log: </div>
 
 </template>
 
@@ -15,8 +15,9 @@ export default Vue.extend ({
 
 <style>
 
-    p {
+    .plog {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
     }
 
 </style>

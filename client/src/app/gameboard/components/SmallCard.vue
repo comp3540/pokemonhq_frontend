@@ -1,11 +1,12 @@
 <template>
 
-  <div class="kard">
+  <div :class="cardColor1">
 
     <!-- POKEMON -->
-    <div :class="cardColor1" v-if="card instanceof Pokemon"> 
-        <div class="stage" v-if="card.stage"> {{card.stage}} </div>
-        <div class="hp" v-if="card.initialHp"> {{card.initialHp}} </div>
+    <div class="row-1a" v-if="card instanceof Pokemon"> 
+        <div class="stage"> {{card.stage}} </div>
+        <div class="currentHp"> {{card.state.hp}} </div>
+        <div class="hp"> {{card.initialHp}} </div>
     </div>
 
     <div class="row-2a" v-if="card instanceof Pokemon">
@@ -15,8 +16,8 @@
     <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
         <div class="ability-name"> {{attack.ability.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
-            {{energyReq.type}}
-            {{energyReq.amount}}
+            <div :class="`symbol-${energyReq.type} card-img`"> </div> 
+            <div class="amount"> &nbsp;: {{energyReq.amount}} </div>
         </div>
     </div>
 
@@ -36,8 +37,8 @@
     </div>
 
     <!-- ENERGY -->
-    <div :class="cardColor2" v-if="card instanceof Energy">
-        <div> {{card.name}} </div>
+    <div class="energy-card" v-if="card instanceof Energy">
+        <div :class="`symbol-${card.name} card-img-energy-card`"> </div>
     </div>
 
   </div>
@@ -68,24 +69,14 @@ export default Vue.extend({
       };
   },
   computed: {
-    cardColor1(this:any):any {
+    cardColor1(this: any): any {
         const ct = this.card.type;
-        return { 
-        'row-1a': true, 
-        'lightning': ct === 'lightning',
-        'water': ct === 'water',
-        'fighting': ct === 'fighting',
-        'psychic': ct === 'psychic',
-        };
-    },
-    cardColor2(this:any):any {
-        const ct = this.card.type;
-        return { 
-        'energy-card': true, 
-        'lightning': ct === 'lightning',
-        'water': ct === 'water',
-        'fighting': ct === 'fightning',
-        'psychic': ct === 'psychic',
+        return {
+        kard: true,
+        lightning: ct === 'lightning',
+        water: ct === 'water',
+        fighting: ct === 'fighting',
+        psychic: ct === 'psychic',
         };
     },
   },
@@ -104,29 +95,51 @@ export default Vue.extend({
         text-align: center;
         border-radius: 10px;
         line-height: 25px;
+        border-style: solid;
+        border-color:#00000067;
+    }
+    .card-img {
+        display: block;
+        width: 30%;
+        height: 12px;
+        margin-top: 2px; 
+        margin-left: 2px;
+        background-size: cover;
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(2px 2px 2px #222);
+    }
+
+    .card-img-energy-card {
+        display: block;
+        width: 70%;
+        height: 100px;
+        background-size: cover;
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(5px 5px 5px #222);
     }
 
     .row-1a {
         display: flex;
         justify-content: space-between;
         height: 15%;
+        background-color:#04ffff94;
         flex-direction: row;
         border-radius: 10px 10px 0px 0px;
     }
 
     .lightning {
-        background-color: #ffcc00;
+        background-color: #ffe600;
     }
     .water {
         background-color: rgb(84, 84, 216);
     }
 
     .fighting { 
-        background-color: #c95000;
+        background-color: #ff6600;
     }
 
     .psychic {
-        background-color: #f110d3;
+        background-color: #e90d9f;
     }
 
     .row-1b {
@@ -151,12 +164,21 @@ export default Vue.extend({
         font-size: 13px;
     }
 
+    .currentHp {
+        color: rgb(179, 20, 20);
+        font-family: Helvetica;
+        font-size: 13px;
+    }
+
     .hp {
         align-content: flex-start;
-        color: rgb(179, 20, 20);
+        color: rgb(0, 0, 0);
         width: 15%;
         font-family: Helvetica;
         font-size: 13px;
+        background-color: rgba(255, 255, 255, 0.514);
+        border-radius: 0px 10px 0px 0px;
+        font-weight: bold;
     }
 
     .category {
@@ -173,6 +195,7 @@ export default Vue.extend({
         height: 15%;
         justify-content: center;
         font-size: 14px;
+        background-color: #ffffff85;
     }
 
     .row-2b {
@@ -216,7 +239,9 @@ export default Vue.extend({
     }
 
     .energy-req {
-        width:50%;
+        display: flex;
+        flex-direction: row;
+        width:30%;
         font-size: 10px;
     }
 

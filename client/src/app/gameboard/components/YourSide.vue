@@ -22,13 +22,15 @@
 
       <div class="column-2">
         <!-- deck and discard -->
-        <div class="deck">
-          <face-down-card :card="board.your.discard[0]" />
+            <div class="deck">
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-deck"> &nbsp;:40 </div>
+            </div>
+            <div class="discard">
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-discard"> &nbsp;:10 </div>
+            </div>
         </div>
-        <div class="discard">
-          <face-down-card :card="board.your.discard[0]" />
-        </div>
-      </div>
 
       <div class="column-3">
           <div class="prize-card" v-for="card in board.your.prize" :key="card.id">
@@ -193,6 +195,9 @@ export default Vue.extend({
   }
 
   .deck, .discard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color:cadetblue;
     color: white;
     height: 4em;
