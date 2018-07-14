@@ -11,8 +11,7 @@ export default {
           new pokemon.Pokemon({
             id: 1,
             name: 'Pikachu',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.LIGHTNING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -32,8 +31,7 @@ export default {
           new pokemon.Pokemon({
             id: 2,
             name: 'Squirtle',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.WATER,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -55,8 +53,7 @@ export default {
           new pokemon.Pokemon ({
             id: 6,
             name: 'Mr Mime',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.PSYCHIC,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -87,8 +84,7 @@ export default {
           new pokemon.Pokemon({
             id: 3,
             name: 'Pikachu',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.LIGHTNING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -110,8 +106,7 @@ export default {
             new pokemon.Pokemon ({
               id: 4,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -131,8 +126,7 @@ export default {
             new pokemon.Pokemon({
               id: 5,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -152,8 +146,7 @@ export default {
             new pokemon.Pokemon ({
               id: 7,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -180,8 +173,7 @@ export default {
           new pokemon.Pokemon({
             id: 9,
             name: 'Machamp',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.FIGHTING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -201,8 +193,7 @@ export default {
           new pokemon.Pokemon ({
             id: 6,
             name: 'Mr Mime',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.PSYCHIC,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -222,8 +213,7 @@ export default {
           new pokemon.Pokemon({
             id: 2,
             name: 'Squirtle',
-            initialHP: 40,
-            state: {hp: 30, status: pokemon.Status.NONE},
+            initialHp: 40,
             type: pokemon.Type.WATER,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -263,8 +253,7 @@ export default {
             new pokemon.Pokemon({
               id: 8,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -284,8 +273,7 @@ export default {
             new pokemon.Pokemon({
               id: 9,
               name: 'Machamp',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.FIGHTING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -307,8 +295,7 @@ export default {
             new pokemon.Pokemon({
               id: 10,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -331,8 +318,7 @@ export default {
             new pokemon.Pokemon({
               id: 61,
               name: 'Pikachu',
-              initialHP: 40,
-              state: {hp: 30, status: pokemon.Status.NONE},
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -354,8 +340,7 @@ export default {
               new pokemon.Pokemon({
                 id: 16,
                 name: 'Pikachu',
-                initialHP: 40,
-                state: {hp: 30, status: pokemon.Status.NONE},
+                initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
                 stage: pokemon.Stage.BASIC,
                 evolvesFrom: null,
@@ -375,8 +360,7 @@ export default {
               new pokemon.Pokemon({
                 id: 46,
                 name: 'Pikachu',
-                initialHP: 40,
-                state: {hp: 30, status: pokemon.Status.NONE},
+                initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
                 stage: pokemon.Stage.BASIC,
                 evolvesFrom: null,
@@ -396,8 +380,7 @@ export default {
               new pokemon.Pokemon({
                 id: 26,
                 name: 'Pikachu',
-                initialHP: 40,
-                state: {hp: 30, status: pokemon.Status.NONE},
+                initialHp: 40,
                 stage: pokemon.Stage.BASIC,
                 type: pokemon.Type.LIGHTNING,
                 evolvesFrom: null,

@@ -1,19 +1,29 @@
 <template>
 
-  <div :class="cardColor1">
+  <div :class="cardColor">
 
     <!-- for active card -->
+    <!-- stage and hp -->
     <div class="row-1a" v-if="card instanceof Pokemon">
         <div class="stage"> {{card.stage}} </div>
-        <div class="currentHp"> current: {{card.state.hp}} </div> <!-- doesn't print -->
+        <div class="currentHp"> current: {{card.state.hp}} </div> 
         <div class="hp"> {{card.initialHp}} </div>
     </div>
 
+    <!-- name -->
     <div class="row-2a" v-if="card instanceof Pokemon">
-        <div> {{card.name}} </div>
+        <div class="name"> {{card.name}} </div>
+        <!-- <div class="evolved-from" v-if="card.state.evolvedFrom instanceOf Pokemon"> ({{card.state.evolvedFrom}}) </div> -->
     </div>
 
-    <div class="row-3a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.ability.id">
+    <!-- number of energy or item cards attached -->
+    <div class="row-3a" v-if="card instanceof Pokemon">
+        <div class="energy-attached"> energy: {{card.state.energyCards}} </div> <!-- unfinished -->
+        <div class="item-attached"> items: {{card.state.itemCards}} </div> <!-- unfinished -->
+    </div>
+
+    <!-- abilities -->
+    <div class="row-4a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.ability.id">
         <div class="ability-name"> {{attack.ability.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             <div :class="`symbol-${energyReq.type} card-img`"> </div> 
@@ -22,7 +32,8 @@
         <div class="ability-desc"> {{attack.ability.description}} </div>
     </div>
 
-    <div class="row-4a" v-if="card instanceof Pokemon">
+    <!-- retreat cost and status -->
+    <div class="row-5a" v-if="card instanceof Pokemon">
         <div class="retreat"> 
             <div :class="`symbol-${card.retreatCost.type} card-img-retreat`"> 
             </div>
@@ -30,7 +41,7 @@
                 &nbsp;: {{card.retreatCost.amount}} 
             </div>
         </div>
-        <div class="status"> status: {{card.state.status}} </div> <!-- doesn't print -->
+        <div class="status"> status: {{card.state.status}} </div> 
 
     </div>
 
@@ -74,7 +85,7 @@ export default Vue.extend({
       };
   },
   computed: {
-    cardColor1(this: any): any {
+    cardColor(this: any): any {
         const ct = this.card.type;
         return {
             kard: true,
@@ -181,16 +192,50 @@ export default Vue.extend({
     }
 
     .row-2a {
-        height: 10%;
+        display: flex;
+        flex-direction: row;
+        height: 7%;
+        width: 100%;
         justify-content: center;
         background-color: #ffffff85;
+    }
+
+    .name {
+        width: 70%
+    }
+
+    .evolved-from {
+        width: 30%;
+        font-family: Helvetica;
+        font-size: 16px;
     }
 
     .row-3a {
         display: flex;
         flex-direction: row;
+        width: 100%;
+        height: 7%;
+        background-color: #ffffff85;
+        color: rgb(97, 97, 97);
+        font-family: Helvetica;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 27px;
+    }
+
+    .energy-attached {
+        width: 50%;
+    }
+
+    .item-attached {
+        width: 50%;
+    }
+
+    .row-4a {
+        display: flex;
+        flex-direction: row;
         justify-content: flex-start;
-        height: 70%;
+        height: 66%;
         align-content: flex-start;
         font-family: Helvetica;
         flex-wrap: wrap;
@@ -219,7 +264,7 @@ export default Vue.extend({
         text-align: left;
     }
 
-    .row-4a {
+    .row-5a {
         display: flex;
         height: 10%;
         justify-content: space-between;

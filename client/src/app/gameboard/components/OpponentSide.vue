@@ -70,10 +70,10 @@ import { mapGetters, mapActions, mapMutations } from 'vuex';
 import deck from '../../../faker/deck';
 import SmallCard from './SmallCard.vue';
 import FaceDownCard from './FaceDownCard.vue';
-import endTurn from './button-endTurn.vue';
-import forfeit from './button-forfeit.vue';
-import log from './paragraphs-logs.vue';
-import coin from './coinFlip.vue';
+import endTurn from './ButtonEndTurn.vue';
+import forfeit from './ButtonForfeit.vue';
+import log from './Logs.vue';
+import coin from './CoinFlip.vue';
 
 export default Vue.extend({
   name: 'opponent-side',

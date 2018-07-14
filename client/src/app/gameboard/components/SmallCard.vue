@@ -13,7 +13,13 @@
         <div> {{card.name}} ID: {{card.id}}</div>
     </div>
 
-    <div class="row-3a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
+    <!-- number of energy or item cards attached -->
+    <div class="row-3a" v-if="card instanceof Pokemon">
+        <div class="energy-attached"> e: {{card.state.energyCards}} </div> <!-- unfinished -->
+        <div class="item-attached"> i: {{card.state.itemCards}} </div> <!-- unfinished -->
+    </div>
+
+    <div class="row-4a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
         <div class="ability-name"> {{attack.ability.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
             <div :class="`symbol-${energyReq.type} card-img`"> </div> 
@@ -208,8 +214,29 @@ export default Vue.extend({
     .row-3a {
         display: flex;
         flex-direction: row;
+        width: 100%;
+        height: 7%;
+        background-color: #ffffff85;
+        color: rgb(97, 97, 97);
+        font-family: Helvetica;
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 7px;
+    }
+
+    .energy-attached {
+        width: 50%;
+    }
+
+    .item-attached {
+        width: 50%;
+    }
+
+    .row-4a {
+        display: flex;
+        flex-direction: row;
         justify-content: flex-start;
-        height: 70%;
+        height: 63%;
         border-radius: 0px 0px 10px 10px;
         align-content: flex-start;
         font-family: Helvetica;

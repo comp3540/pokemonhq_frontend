@@ -75,10 +75,10 @@ class Pokemon extends Card {
   constructor(o: any) {
     console.log(o);
     super(o);
-    this.state = new State(o.initialHP);
+    this.state = new State(o.initialHp);
     this.type = o.type;
     this.stage = o.stage;
-    this.initialHp = o.initialHP;
+    this.initialHp = o.initialHp;
     this.evolvesFrom = o.evolvesFrom;
     this.retreatCost = new RetreatCost(o.retreatCost);
     this.abilities = o.abilities.map((ab: any) => new CardAbility(ab));

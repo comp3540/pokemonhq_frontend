@@ -3,7 +3,7 @@
   <div id="mainContainer">
     <div class="coin">
         <div class="coin front"></div>
-        <div class="back"><p>BACK</p></div>
+        <div class="back"><p>\nTAILS</p></div>
     </div>
   </div>
 
