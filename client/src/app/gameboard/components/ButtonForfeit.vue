@@ -16,11 +16,11 @@ export default Vue.extend ({
 <style>
 
 button {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 8px;
-    color: cadetblue;
-    border: 2px solid cadetblue;
-    background-color: white;
+    color: rgb(22, 0, 73);
+    border: 2px solid rgb(0, 1, 65);
+    border-radius: 20px;
+    background-color: rgb(77, 109, 255);
 }
 
  </style>

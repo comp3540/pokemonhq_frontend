@@ -29,8 +29,8 @@ export default Vue.extend({
 
     .card-img {
         display: block;
-        width: 100%;
-        height: 40px;
+        width: 25px;
+        height: 41px;
         background-size: cover;
     }
 

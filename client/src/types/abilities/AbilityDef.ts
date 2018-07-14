@@ -7,4 +7,4 @@ export default class AbilityDef {
       this.name = o.name;
       this.definition = o.definition;
     }
-};
+}

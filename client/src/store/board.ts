@@ -11,7 +11,7 @@ export default {
           new pokemon.Pokemon({
             id: 1,
             name: 'Pikachu',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.LIGHTNING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -21,7 +21,7 @@ export default {
                 ability: {
                   name: 'Thunderbolt',
                   description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                  id: 20,
+                  id: 38,
                 },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
@@ -31,7 +31,7 @@ export default {
           new pokemon.Pokemon({
             id: 2,
             name: 'Squirtle',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.WATER,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -41,9 +41,9 @@ export default {
                 ability: {
                   name: 'Waterfall',
                   description: 'throws water',
-                  id: 20,
+                  id: 37,
                 },
-                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                energyReq: [{type: pokemon.Type.WATER, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
             ],
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
@@ -53,7 +53,7 @@ export default {
           new pokemon.Pokemon ({
             id: 6,
             name: 'Mr Mime',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.PSYCHIC,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -63,9 +63,17 @@ export default {
                 ability: {
                   name: 'Psychic attack',
                   description: 'paralyse opponent',
-                  id: 20,
+                  id: 36,
                 },
-                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                energyReq: [{type: pokemon.Type.PSYCHIC, amount: 2, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+              },
+              {
+                ability: {
+                  name: 'Psychic attack',
+                  description: 'paralyse opponent',
+                  id: 35,
+                },
+                energyReq: [{type: pokemon.Type.PSYCHIC, amount: 2, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
             ],
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
@@ -76,7 +84,7 @@ export default {
           new pokemon.Pokemon({
             id: 3,
             name: 'Pikachu',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.LIGHTNING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -86,7 +94,7 @@ export default {
                 ability: {
                   name: 'Thunderbolt',
                   description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                  id: 20,
+                  id: 34,
                 },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
@@ -98,7 +106,7 @@ export default {
             new pokemon.Pokemon ({
               id: 4,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -108,7 +116,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 33,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -118,7 +126,7 @@ export default {
             new pokemon.Pokemon({
               id: 5,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -128,7 +136,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 32,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -138,7 +146,7 @@ export default {
             new pokemon.Pokemon ({
               id: 7,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -148,7 +156,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 31,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -158,14 +166,14 @@ export default {
           ],
         hand: [
           new energy.Energy({
-            id:3,
+            id: 3,
             name: 'lightning',
             type: energy.Type.LIGHTNING,
           }),
           new pokemon.Pokemon({
             id: 9,
             name: 'Machamp',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.FIGHTING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -175,9 +183,9 @@ export default {
                 ability: {
                   name: 'Punch',
                   description: 'punch the opponent',
-                  id: 20,
+                  id: 30,
                 },
-                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                energyReq: [{type: pokemon.Type.FIGHTING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
             ],
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
@@ -185,7 +193,7 @@ export default {
           new pokemon.Pokemon ({
             id: 6,
             name: 'Mr Mime',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.PSYCHIC,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -195,7 +203,7 @@ export default {
                 ability: {
                   name: 'Psychic attack',
                   description: 'paralyse opponent',
-                  id: 20,
+                  id: 29,
                 },
                 energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
@@ -205,7 +213,7 @@ export default {
           new pokemon.Pokemon({
             id: 2,
             name: 'Squirtle',
-            initialHP: 40,
+            initialHp: 40,
             type: pokemon.Type.WATER,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -215,9 +223,9 @@ export default {
                 ability: {
                   name: 'Waterfall',
                   description: 'throws water',
-                  id: 20,
+                  id: 28,
                 },
-                energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                energyReq: [{type: pokemon.Type.WATER, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
               },
             ],
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
@@ -231,7 +239,7 @@ export default {
               definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
         }),
         new trainer.Trainer ({
-          id: 102,
+          id: 103,
           name: 'Red Card',
           category: trainer.Category.ITEM,
           ability: {id: 389,
@@ -245,7 +253,7 @@ export default {
             new pokemon.Pokemon({
               id: 8,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -255,7 +263,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 27,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -265,7 +273,7 @@ export default {
             new pokemon.Pokemon({
               id: 9,
               name: 'Machamp',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.FIGHTING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -275,9 +283,9 @@ export default {
                   ability: {
                     name: 'Punch',
                     description: 'punch the opponent',
-                    id: 20,
+                    id: 26,
                   },
-                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                  energyReq: [{type: pokemon.Type.FIGHTING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
               ],
               retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
@@ -287,7 +295,7 @@ export default {
             new pokemon.Pokemon({
               id: 10,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -297,7 +305,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 25,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -310,7 +318,7 @@ export default {
             new pokemon.Pokemon({
               id: 61,
               name: 'Pikachu',
-              initialHP: 40,
+              initialHp: 40,
               type: pokemon.Type.LIGHTNING,
               stage: pokemon.Stage.BASIC,
               evolvesFrom: null,
@@ -320,7 +328,7 @@ export default {
                   ability: {
                     name: 'Thunderbolt',
                     description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                    id: 20,
+                    id: 24,
                   },
                   energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                 },
@@ -332,7 +340,7 @@ export default {
               new pokemon.Pokemon({
                 id: 16,
                 name: 'Pikachu',
-                initialHP: 40,
+                initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
                 stage: pokemon.Stage.BASIC,
                 evolvesFrom: null,
@@ -342,7 +350,7 @@ export default {
                     ability: {
                       name: 'Thunderbolt',
                       description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                      id: 20,
+                      id: 23,
                     },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                   },
@@ -352,7 +360,7 @@ export default {
               new pokemon.Pokemon({
                 id: 46,
                 name: 'Pikachu',
-                initialHP: 40,
+                initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
                 stage: pokemon.Stage.BASIC,
                 evolvesFrom: null,
@@ -362,7 +370,7 @@ export default {
                     ability: {
                       name: 'Thunderbolt',
                       description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                      id: 20,
+                      id: 22,
                     },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                   },
@@ -372,17 +380,16 @@ export default {
               new pokemon.Pokemon({
                 id: 26,
                 name: 'Pikachu',
-                initialHP: 40,
-                type: pokemon.Type.LIGHTNING,
+                initialHp: 40,
                 stage: pokemon.Stage.BASIC,
+                type: pokemon.Type.LIGHTNING,
                 evolvesFrom: null,
-                status: pokemon.Status.NONE,
                 abilities: [
                   {
                     ability: {
                       name: 'Thunderbolt',
                       description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
-                      id: 20,
+                      id: 21,
                     },
                     energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
                   },

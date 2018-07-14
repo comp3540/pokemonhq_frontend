@@ -12,9 +12,10 @@
   <div class="super-column">
     <!-- options bar -->
     <div class="actions-row">
-      <div class="buttons">
+      <div class="interact-row">
         <endTurn></endTurn> 
         <forfeit></forfeit> 
+        <coin></coin>
       </div>
       <div class="log">
         <log></log> 
@@ -39,10 +40,12 @@
         <div class="column-2">
         <!-- deck and discard -->
             <div class="deck">
-            <face-down-card :card="board.opponent.discard[0]" />
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-deck"> &nbsp;:35 </div>
             </div>
             <div class="discard">
-            <face-down-card :card="board.opponent.discard[0]" />
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-discard"> &nbsp;:9 </div>
             </div>
         </div>
 
@@ -67,10 +70,10 @@ import { mapGetters, mapActions, mapMutations } from 'vuex';
 import deck from '../../../faker/deck';
 import SmallCard from './SmallCard.vue';
 import FaceDownCard from './FaceDownCard.vue';
-import endTurn from './button-endTurn.vue';
-import forfeit from './button-forfeit.vue';
-import log from './paragraphs-logs.vue';
-
+import endTurn from './ButtonEndTurn.vue';
+import forfeit from './ButtonForfeit.vue';
+import log from './Logs.vue';
+import coin from './CoinFlip.vue';
 
 export default Vue.extend({
   name: 'opponent-side',
@@ -82,6 +85,7 @@ export default Vue.extend({
     endTurn,
     forfeit,
     log,
+    coin,
   },
   created() {
     this.setDeck({player: 'opponent', deck: deck.deck});
@@ -128,11 +132,13 @@ export default Vue.extend({
     display: flex;
     width: 100%;
     height: 30%;
-    background-color:#e6e6e6;
+    background-color:#b80000;
     flex-direction: column;
+    border-radius: 0px 0px 0px 20px;
   }
 
-  .buttons {
+  .interact-row {
+    display: flex;
     justify-content: space-around;
     height:50%;
     width: 100%;
@@ -141,8 +147,9 @@ export default Vue.extend({
   .log {
     align-content: flex-start;
     text-align: left;
-    height: 50%;
-    width: 100%;
+    height: 30%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.479);
   }
 
   .hand-row {
@@ -229,6 +236,9 @@ export default Vue.extend({
   }
 
   .deck, .discard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color:cadetblue;
     color: white;
     height: 4em;
