@@ -41,11 +41,11 @@
         <!-- deck and discard -->
             <div class="deck">
               <face-down-card :card="board.opponent.discard[0]" />
-              <div class="amount-deck"> &nbsp;:35 </div>
+              <div class="amount-deck"> &nbsp;:{{board.opponent.deck.length}} </div>
             </div>
             <div class="discard">
               <face-down-card :card="board.opponent.discard[0]" />
-              <div class="amount-discard"> &nbsp;:9 </div>
+              <div class="amount-discard"> &nbsp;:{{board.opponent.deck.length}} </div>
             </div>
         </div>
 
@@ -110,7 +110,7 @@ export default Vue.extend({
 
   .side {
     background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid #ff6600;
     color: #545454;
     display: flex;
     flex-direction: row;
@@ -157,7 +157,7 @@ export default Vue.extend({
     flex-direction: row;
     justify-content: center;
     width: 60%;
-    height:20%;
+    height: 20%;
   }
 
   .everything-row {
@@ -190,7 +190,6 @@ export default Vue.extend({
   }
 
   .hand-card {
-    background-color:cadetblue;
     height: 2em;
     width: 2em;
     margin: 4px;
@@ -199,19 +198,17 @@ export default Vue.extend({
   }
 
   .small-card {
-    border: 3px solid orange;
     width: 145px;
     height: 22vh;
     margin: 5px;
     text-align: center;
-    line-height: 75px;
+    /*line-height: 75px;*/
     font-size: 20px;
     border-radius: 10px;
   }
 
   .active-card{
     display: flex;
-    background-color:#b30000;
     width: 90%;
     height: 47vh;
     color: white;
@@ -225,8 +222,6 @@ export default Vue.extend({
   }
 
   .prize-card {
-    border: 1px solid #b30000;
-    background-color: white;
     color: #b30000;
     width: 2em;
     height: 3em;
@@ -239,7 +234,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color:cadetblue;
+    background-color: #0099cc;
     color: white;
     height: 4em;
     width: 4em;

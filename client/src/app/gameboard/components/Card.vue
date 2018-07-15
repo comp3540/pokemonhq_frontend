@@ -10,7 +10,7 @@ import Vue from 'vue';
 import Card from '../../../types/cards/Card';
 import pokemon from '../../../types/cards/pokemon';
 import energy from '../../../types/cards/energy';
-import trainer from '../../../types/cards/trainer';
+import * as trainer from '../../../types/cards/trainer';
 export default Vue.extend({
   name: 'card',
   props: {

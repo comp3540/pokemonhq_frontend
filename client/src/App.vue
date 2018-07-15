@@ -4,6 +4,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
   @import './assets/css/main.css';
+  @import './assets/css/tooltip.scss';
 </style>

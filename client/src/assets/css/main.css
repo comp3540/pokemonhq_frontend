@@ -112,3 +112,7 @@ input{
     background-color: #fff;
     border: 3px solid #ff5e0e;
 }
+
+body {
+    margin: 0;
+}

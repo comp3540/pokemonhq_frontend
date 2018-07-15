@@ -1,6 +1,8 @@
 <template>
 
-  <div :class="cardColor1">
+<v-popover placement="top-start">
+
+  <div :class="cardColor" class="tooltip-target">
 
     <!-- POKEMON -->
     <div class="row-1a" v-if="card instanceof Pokemon"> 
@@ -10,13 +12,27 @@
     </div>
 
     <div class="row-2a" v-if="card instanceof Pokemon">
-        <div> {{card.name}} ID: {{card.id}}</div>
+            <div class="evolved-from" v-if="card.state.evolvedFrom"> 
+                {{card.state.evolvedFrom.name}} <span class="arrow"> &rarr;&nbsp; </span> 
+            </div> 
+        <div class="name" :class="{'more-room': !card.state.evolvedFrom}"> {{card.name}} </div>
     </div>
 
     <!-- number of energy or item cards attached -->
     <div class="row-3a" v-if="card instanceof Pokemon">
-        <div class="energy-attached"> e: {{card.state.energyCards}} </div> <!-- unfinished -->
-        <div class="item-attached"> i: {{card.state.itemCards}} </div> <!-- unfinished -->
+        <div class="energy-attached" :class="{'more-room': !card.state.itemCard}"> e: 
+            <div class="energy-symbol" v-for="energycard in card.state.energyCards" :key="energycard.instanceId"> 
+                <div :class="`symbol-${energycard.type} card-img`"> </div> 
+            </div> 
+        </div> 
+        <div class="item-attached tooltip-target" v-if="card.state.itemCard"> 
+            <v-popover placement="top-start">
+                i: {{card.state.itemCard.name}} 
+                <template slot="popover">
+                    <big-card :card="card.state.itemCard"/>
+                </template>
+            </v-popover>
+        </div> 
     </div>
 
     <div class="row-4a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
@@ -49,17 +65,23 @@
 
   </div>
 
+  <template slot="popover">
+    <big-card :card="card"/>
+  </template>
+
+</v-popover>
+
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import BigCard from 'BigCard.vue';
+import BigCard from './BigCard.vue';
 import pokemon from '@/types/cards/pokemon';
 import energy from '@/types/cards/energy';
-import trainer from '@/types/cards/trainer';
+import * as trainer from '@/types/cards/trainer';
 import VTooltip from 'v-tooltip';
 
-Vue.use(VTooltip)
+Vue.use(VTooltip);
 
 export default Vue.extend({
   name: 'small-card',
@@ -70,6 +92,7 @@ export default Vue.extend({
       required: true,
     },
   },
+  components: { BigCard },
   data() {
       return {
           // We inject some types for the templates to see,
@@ -79,7 +102,7 @@ export default Vue.extend({
       };
   },
   computed: {
-    cardColor1(this: any): any {
+    cardColor(this: any): any {
         const ct = this.card.type;
         return {
         kard: true,
@@ -93,7 +116,7 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
     .kard {
         display: flex;
@@ -110,7 +133,7 @@ export default Vue.extend({
     }
     .card-img {
         display: block;
-        width: 30%;
+        width: 12px;
         height: 12px;
         margin-top: 2px; 
         margin-left: 2px;
@@ -202,7 +225,10 @@ export default Vue.extend({
     }
 
     .row-2a {
+        display: flex;
+        flex-direction: row;
         height: 15%;
+        width: 100%;
         justify-content: center;
         font-size: 14px;
         background-color: #ffffff85;
@@ -215,21 +241,39 @@ export default Vue.extend({
         font-size: 14px;
     }
 
+    .evolved-from {
+        font-family: Helvetica;
+        font-size: 11px;
+        line-height: 25px;
+    }
+
+    .more-room {
+        width: 100%;
+    }
+
     .row-3a {
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 7%;
+        height: 12%;
         background-color: #ffffff85;
         color: rgb(97, 97, 97);
         font-family: Helvetica;
         font-weight: bold;
         font-size: 10px;
-        line-height: 7px;
+        line-height: 15px;
     }
 
     .energy-attached {
+        display: flex;
+        flex: wrap;
         width: 50%;
+        justify-content: flex-start;
+        line-height: 15px;
+    }
+
+    .more-room {
+        width: 100%;
     }
 
     .item-attached {
@@ -240,7 +284,7 @@ export default Vue.extend({
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        height: 63%;
+        height: 58%;
         border-radius: 0px 0px 10px 10px;
         align-content: flex-start;
         font-family: Helvetica;
@@ -284,11 +328,9 @@ export default Vue.extend({
         display:flex;
         width: 145px;
         height: 162px;
-        font-size: 20px;
-        text-align: center;
-        border-radius: 10px;
         align-items: center;
         justify-content: center;
     }
 
 </style>
+

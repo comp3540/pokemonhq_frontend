@@ -12,14 +12,28 @@
 
     <!-- name -->
     <div class="row-2a" v-if="card instanceof Pokemon">
-        <div class="name"> {{card.name}} </div>
-        <!-- <div class="evolved-from" v-if="card.state.evolvedFrom instanceOf Pokemon"> ({{card.state.evolvedFrom}}) </div> -->
+            <div class="evolved-from" v-if="card.state.evolvedFrom"> 
+                {{card.state.evolvedFrom.name}} <span class="arrow"> &rarr;&nbsp; </span> 
+            </div> 
+        <div class="name" :class="{'more-room': !card.state.evolvedFrom}"> {{card.name}} </div>
     </div>
 
     <!-- number of energy or item cards attached -->
     <div class="row-3a" v-if="card instanceof Pokemon">
-        <div class="energy-attached"> energy: {{card.state.energyCards}} </div> <!-- unfinished -->
-        <div class="item-attached"> items: {{card.state.itemCards}} </div> <!-- unfinished -->
+        <div class="energy-attached" :class="{'more-room': !card.state.itemCard}"> energy: 
+            <div class="energy-symbol" v-for="energycard in card.state.energyCards" :key="energycard.instanceId"> 
+                <div :class="`symbol-${energycard.type} card-img`"> </div> 
+            </div> 
+        </div> 
+        <div class="item-attached tooltip-target" v-if="card.state.itemCard">
+            <v-popover placement="top-start"> 
+                  item: {{card.state.itemCard.name}} 
+                <template slot="popover">
+                    <big-card :card="card.state.itemCard"/>
+                </template>
+            </v-popover>
+        </div> 
+            
     </div>
 
     <!-- abilities -->
@@ -46,8 +60,8 @@
     </div>
 
     <!-- for trainer card -->
-    <div class="row-1b" v-if="card instanceof Trainer">
-        <div class="category"> {{card.category}} </div>
+    <div class= "row-1b" v-if="card instanceof Trainer">
+        <div class="category" v-if="card.category"> {{card.category}} </div>
     </div>
 
     <div class="row-2b" v-if="card instanceof Trainer">
@@ -55,7 +69,14 @@
     </div>
 
     <div class="row-3b" v-if="card instanceof Trainer">
-        <div class="ability"> {{card.ability}} </div>
+        <div v-if="card.ability">
+                <div class="ability"> {{card.ability.definition}} </div>
+        </div>
+    </div>
+
+    <!-- for energy cards -->
+    <div class="energy-card" v-if="card instanceof Energy">
+        <div :class="`symbol-${card.name} card-img-energy-card`"> </div>
     </div>
 
   </div>
@@ -65,7 +86,10 @@
 import Vue from 'vue';
 import pokemon from '@/types/cards/pokemon';
 import energy from '@/types/cards/energy';
-import trainer from '@/types/cards/trainer';
+import * as trainer from '@/types/cards/trainer';
+import VTooltip from 'v-tooltip';
+
+Vue.use(VTooltip);
 
 export default Vue.extend({
   name: 'big-card',
@@ -88,10 +112,10 @@ export default Vue.extend({
     cardColor(this: any): any {
         const ct = this.card.type;
         return {
-            kard: true,
+            bkard: true,
             lightning: ct === 'lightning',
             water: ct === 'water',
-            fighting: ct === 'fightning',
+            fighting: ct === 'fighting',
             psychic: ct === 'psychic',
         };
     },
@@ -101,7 +125,7 @@ export default Vue.extend({
 
 <style scoped>
 
-    .kard {
+    .bkard {
         display: flex;
         flex-direction: column;
         align-content: space-between;
@@ -117,7 +141,7 @@ export default Vue.extend({
 
     .card-img {
         display: block;
-        width: 30%;
+        width: 15px;
         height: 15px;
         margin-top: 2px; 
         margin-left: 2px;
@@ -137,6 +161,15 @@ export default Vue.extend({
         filter: drop-shadow(2px 2px 2px #222);
     }
 
+    .card-img-energy-card {
+        display: block;
+        width: 70%;
+        height: 210px;
+        background-size: cover;
+        -webkit-filter: drop-shadow(2px 2px 2px #222);
+        filter: drop-shadow(5px 5px 5px #222);
+    }
+
     .lightning {
         background-color: #ffe600;
     }
@@ -150,6 +183,10 @@ export default Vue.extend({
 
     .psychic {
         background-color: #e90d9f;
+    }
+
+    .arrow {
+        font-size: 30px;
     }
 
     .row-1a {
@@ -194,27 +231,23 @@ export default Vue.extend({
     .row-2a {
         display: flex;
         flex-direction: row;
-        height: 7%;
+        height: 10%;
         width: 100%;
         justify-content: center;
         background-color: #ffffff85;
     }
 
-    .name {
-        width: 70%
-    }
-
     .evolved-from {
-        width: 30%;
         font-family: Helvetica;
         font-size: 16px;
+        line-height: 25px;
     }
 
     .row-3a {
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 7%;
+        height: 10%;
         background-color: #ffffff85;
         color: rgb(97, 97, 97);
         font-family: Helvetica;
@@ -224,7 +257,14 @@ export default Vue.extend({
     }
 
     .energy-attached {
+        display: flex;
+        flex: wrap;
         width: 50%;
+        justify-content: flex-start;
+    }
+
+    .more-room {
+        width: 100%;
     }
 
     .item-attached {
@@ -235,7 +275,7 @@ export default Vue.extend({
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        height: 66%;
+        height: 60%;
         align-content: flex-start;
         font-family: Helvetica;
         flex-wrap: wrap;
@@ -294,7 +334,7 @@ export default Vue.extend({
     .row-1b {
         display: flex;
         justify-content: space-between;
-        height: 15%;
+        height: 10%;
         border-radius: 10px 10px 0px 0px;
         background-color: #cacaca;
         flex-direction: row;
@@ -302,7 +342,7 @@ export default Vue.extend({
 
     .row-2b {
         background-color: #4f61b3;
-        height: 15%;
+        height: 10%;
         justify-content: center;
         font-size: 18px;
     }
@@ -311,7 +351,7 @@ export default Vue.extend({
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        height: 70%;
+        height: 80%;
         border-radius: 0px 0px 10px 10px;
         background-color: #cacaca;
         align-content: flex-start;
@@ -324,7 +364,7 @@ export default Vue.extend({
     .category {
         width: 50%;
         border-radius: 10px 0px 0px 0px;
-        font-size: 14px;
+        font-size: 20px;
         font-family: monospace;
         background-color: rgb(151, 0, 0);
         color: white;
@@ -332,7 +372,15 @@ export default Vue.extend({
     }
 
     .ability {
-        font-size: 10px;
+        font-size: 14px;
+    }
+
+    .energy-card {
+        display: flex;
+        width: 300px;
+        height: 400px;
+        align-items: center;
+        justify-content: center;
     }
 
 </style>
