@@ -61,7 +61,6 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import Card from './Card.vue';
 import BigCard from './BigCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
@@ -72,7 +71,6 @@ import FaceDownCard from './FaceDownCard.vue';
 export default Vue.extend({
   name: 'your-side',
   components: {
-    Card,
     BigCard,
     SmallCard,
     FaceDownCard,
