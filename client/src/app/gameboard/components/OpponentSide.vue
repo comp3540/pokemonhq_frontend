@@ -5,7 +5,7 @@
 
   <div class="active-column">
     <div class="active-card">
-        <active-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
+        <big-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
       </div>
   </div>
 
@@ -65,7 +65,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Card from './Card.vue';
-import ActiveCard from './ActiveCard.vue';
+import BigCard from './BigCard.vue';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import deck from '../../../faker/deck';
 import SmallCard from './SmallCard.vue';
@@ -79,7 +79,7 @@ export default Vue.extend({
   name: 'opponent-side',
   components: {
     Card,
-    ActiveCard,
+    BigCard,
     SmallCard,
     FaceDownCard,
     endTurn,

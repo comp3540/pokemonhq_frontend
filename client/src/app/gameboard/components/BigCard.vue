@@ -68,7 +68,7 @@ import energy from '@/types/cards/energy';
 import trainer from '@/types/cards/trainer';
 
 export default Vue.extend({
-  name: 'active-card',
+  name: 'big-card',
 
   props: {
     card: {
