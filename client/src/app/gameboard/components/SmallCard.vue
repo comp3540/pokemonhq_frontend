@@ -53,9 +53,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import BigCard from 'BigCard.vue';
 import pokemon from '@/types/cards/pokemon';
 import energy from '@/types/cards/energy';
 import trainer from '@/types/cards/trainer';
+import VTooltip from 'v-tooltip';
+
+Vue.use(VTooltip)
 
 export default Vue.extend({
   name: 'small-card',

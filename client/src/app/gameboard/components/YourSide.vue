@@ -5,7 +5,7 @@
   <!-- active -->
   <div class="active-column">
     <div class="active-card">
-        <active-card v-if="board.your.active.length > 0" :card="board.your.active[0]" />
+        <big-card v-if="board.your.active.length > 0" :card="board.your.active[0]" />
       </div>
   </div>
 
@@ -62,7 +62,7 @@
 
 import Vue from 'vue';
 import Card from './Card.vue';
-import ActiveCard from './ActiveCard.vue';
+import BigCard from './BigCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import Deck from './../../../faker/deck';
@@ -73,7 +73,7 @@ export default Vue.extend({
   name: 'your-side',
   components: {
     Card,
-    ActiveCard,
+    BigCard,
     SmallCard,
     FaceDownCard,
     draggable,
