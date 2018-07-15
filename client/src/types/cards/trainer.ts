@@ -1,13 +1,13 @@
 import Card from '@/types/cards/Card';
 import AbilityDef from '@/types/abilities/AbilityDef';
 
-enum Category {
+export enum Category {
   ITEM = 'item',
   SUPPORTER = 'supporter',
   STADIUM = 'stadium',
 }
 
-class Trainer extends Card {
+export class Trainer extends Card {
   public category: Category;
   public ability: AbilityDef; // dum but temporary
   constructor(o: any) {
@@ -16,8 +16,3 @@ class Trainer extends Card {
     this.ability = o.ability;
   }
 }
-
-export default {
-  Trainer,
-  Category,
-};

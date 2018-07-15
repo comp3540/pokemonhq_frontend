@@ -1,6 +1,6 @@
 import pokemon from '@/types/cards/pokemon';
 import energy from '@/types/cards/energy';
-import trainer from '@/types/cards/trainer';
+import * as trainer from '@/types/cards/trainer';
 
 export default {
   namespaced: true,
@@ -9,9 +9,52 @@ export default {
       your: {
         bench: [
           new pokemon.Pokemon({
-            id: 1,
+            instanceId: 1,
             name: 'Pikachu',
             initialHp: 40,
+            state: {
+              energyCards: [
+                new energy.Energy({
+                  instanceId: 3,
+                  name: 'lightning',
+                  type: energy.Type.FIGHTING,
+                }),
+                new energy.Energy({
+                  instanceId: 90,
+                  name: 'lightning',
+                  type: energy.Type.FIGHTING,
+                }),
+              ],
+              itemCard: new trainer.Trainer ({
+                instanceId: 102,
+                name: 'Red Card',
+                category: trainer.Category.ITEM,
+                ability: {id: 389,
+                  name: 'Red Card',
+                  definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
+            }),
+            evolvedFrom: new pokemon.Pokemon({
+              instanceId: 3,
+              name: 'Pikachu',
+              initialHp: 40,
+              type: pokemon.Type.LIGHTNING,
+              stage: pokemon.Stage.BASIC,
+              evolvesFrom: null,
+              status: pokemon.Status.NONE,
+              abilities: [
+                {
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 34,
+                  },
+                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                },
+              ],
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+            }),
+
+            },
             type: pokemon.Type.LIGHTNING,
             stage: pokemon.Stage.BASIC,
             evolvesFrom: null,
@@ -29,7 +72,7 @@ export default {
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
           new pokemon.Pokemon({
-            id: 2,
+            instanceId: 2,
             name: 'Squirtle',
             initialHp: 40,
             type: pokemon.Type.WATER,
@@ -51,12 +94,54 @@ export default {
         ],
         active: [
           new pokemon.Pokemon ({
-            id: 6,
+            instanceId: 6,
             name: 'Mr Mime',
             initialHp: 40,
+            state: {
+              energyCards: [
+                new energy.Energy({
+                  instanceId: 3,
+                  name: 'lightning',
+                  type: energy.Type.FIGHTING,
+                }),
+                new energy.Energy({
+                  instanceId: 90,
+                  name: 'lightning',
+                  type: energy.Type.FIGHTING,
+                }),
+              ],
+              itemCard: new trainer.Trainer ({
+                instanceId: 102,
+                name: 'Red Card',
+                category: trainer.Category.ITEM,
+                ability: {id: 389,
+                  name: 'Red Card',
+                  definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
+            }),
+            evolvedFrom: new pokemon.Pokemon({
+              instanceId: 3,
+              name: 'Pikachu',
+              initialHp: 40,
+              type: pokemon.Type.LIGHTNING,
+              stage: pokemon.Stage.BASIC,
+              evolvesFrom: null,
+              status: pokemon.Status.NONE,
+              abilities: [
+                {
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 34,
+                  },
+                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                },
+              ],
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+            }),
+            },
             type: pokemon.Type.PSYCHIC,
-            stage: pokemon.Stage.BASIC,
-            evolvesFrom: null,
+            stage: pokemon.Stage.STAGE_ONE,
+            evolvesFrom:  null,
             status: pokemon.Status.NONE,
             abilities: [
               {
@@ -82,7 +167,7 @@ export default {
         deck: [],
         discard: [
           new pokemon.Pokemon({
-            id: 3,
+            instanceId: 3,
             name: 'Pikachu',
             initialHp: 40,
             type: pokemon.Type.LIGHTNING,
@@ -104,7 +189,7 @@ export default {
         ],
         prize: [
             new pokemon.Pokemon ({
-              id: 4,
+              instanceId: 4,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
@@ -123,8 +208,68 @@ export default {
               ],
               retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
+            new pokemon.Pokemon ({
+              instanceId: 4,
+              name: 'Pikachu',
+              initialHp: 340,
+              type: pokemon.Type.LIGHTNING,
+              stage: pokemon.Stage.BASIC,
+              evolvesFrom: null,
+              status: pokemon.Status.NONE,
+              abilities: [
+                {
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 33,
+                  },
+                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                },
+              ],
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+            }),
+            new pokemon.Pokemon ({
+              instanceId: 4,
+              name: 'Pikachu',
+              initialHp: 240,
+              type: pokemon.Type.LIGHTNING,
+              stage: pokemon.Stage.BASIC,
+              evolvesFrom: null,
+              status: pokemon.Status.NONE,
+              abilities: [
+                {
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 33,
+                  },
+                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                },
+              ],
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+            }),
+            new pokemon.Pokemon ({
+              instanceId: 4,
+              name: 'Pikachu',
+              initialHp: 140,
+              type: pokemon.Type.LIGHTNING,
+              stage: pokemon.Stage.BASIC,
+              evolvesFrom: null,
+              status: pokemon.Status.NONE,
+              abilities: [
+                {
+                  ability: {
+                    name: 'Thunderbolt',
+                    description: 'Flip a coin. If heads, your opponent`s active pokemon is now paralysed.',
+                    id: 33,
+                  },
+                  energyReq: [{type: pokemon.Type.LIGHTNING, amount: 1, id: 100}, {type: pokemon.Type.COLORLESS, amount: 1, id: 200}],
+                },
+              ],
+              retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
+            }),
             new pokemon.Pokemon({
-              id: 5,
+              instanceId: 5,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
@@ -144,11 +289,11 @@ export default {
               retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
             new pokemon.Pokemon ({
-              id: 7,
+              instanceId: 7,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
-              stage: pokemon.Stage.BASIC,
+              stage: pokemon.Stage.STAGE_ONE,
               evolvesFrom: null,
               status: pokemon.Status.NONE,
               abilities: [
@@ -166,12 +311,12 @@ export default {
           ],
         hand: [
           new energy.Energy({
-            id: 3,
+            instanceId: 3,
             name: 'lightning',
             type: energy.Type.LIGHTNING,
           }),
           new pokemon.Pokemon({
-            id: 9,
+            instanceId: 9,
             name: 'Machamp',
             initialHp: 40,
             type: pokemon.Type.FIGHTING,
@@ -191,7 +336,7 @@ export default {
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
           new pokemon.Pokemon ({
-            id: 6,
+            instanceId: 6,
             name: 'Mr Mime',
             initialHp: 40,
             type: pokemon.Type.PSYCHIC,
@@ -211,11 +356,11 @@ export default {
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
           new pokemon.Pokemon({
-            id: 2,
+            instanceId: 2,
             name: 'Squirtle',
             initialHp: 40,
             type: pokemon.Type.WATER,
-            stage: pokemon.Stage.BASIC,
+            stage: pokemon.Stage.STAGE_ONE,
             evolvesFrom: null,
             status: pokemon.Status.NONE,
             abilities: [
@@ -231,15 +376,15 @@ export default {
             retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
           }),
           new trainer.Trainer ({
-            id: 102,
+            instanceId: 102,
             name: 'Red Card',
-            category: trainer.Category.ITEM,
+            category: trainer.Category.SUPPORTER,
             ability: {id: 389,
               name: 'Red Card',
               definition: 'Your opponent shuffles his or her hand into his or her deck and draws 4 cards.'},
         }),
         new trainer.Trainer ({
-          id: 103,
+          instanceId: 103,
           name: 'Red Card',
           category: trainer.Category.ITEM,
           ability: {id: 389,
@@ -251,7 +396,7 @@ export default {
       opponent: {
           bench: [
             new pokemon.Pokemon({
-              id: 8,
+              instanceId: 8,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
@@ -271,7 +416,7 @@ export default {
               retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
             }),
             new pokemon.Pokemon({
-              id: 9,
+              instanceId: 9,
               name: 'Machamp',
               initialHp: 40,
               type: pokemon.Type.FIGHTING,
@@ -293,7 +438,7 @@ export default {
           ],
           active: [
             new pokemon.Pokemon({
-              id: 10,
+              instanceId: 10,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
@@ -316,7 +461,7 @@ export default {
           deck: [],
           discard: [
             new pokemon.Pokemon({
-              id: 61,
+              instanceId: 61,
               name: 'Pikachu',
               initialHp: 40,
               type: pokemon.Type.LIGHTNING,
@@ -338,7 +483,7 @@ export default {
           ],
           prize: [
               new pokemon.Pokemon({
-                id: 16,
+                instanceId: 16,
                 name: 'Pikachu',
                 initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
@@ -358,7 +503,7 @@ export default {
                 retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
               }),
               new pokemon.Pokemon({
-                id: 46,
+                instanceId: 46,
                 name: 'Pikachu',
                 initialHp: 40,
                 type: pokemon.Type.LIGHTNING,
@@ -378,7 +523,7 @@ export default {
                 retreatCost: {type: pokemon.Type.COLORLESS, amount: 2},
               }),
               new pokemon.Pokemon({
-                id: 26,
+                instanceId: 26,
                 name: 'Pikachu',
                 initialHp: 40,
                 stage: pokemon.Stage.BASIC,
