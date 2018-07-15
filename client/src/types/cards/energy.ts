@@ -11,7 +11,7 @@ class Energy extends Card {
   public type: Type;
   constructor(o: any) {
     super(o);
-    this.type = o.type;
+    this.type = (<any>Type)[o.type];
   }
 }
 

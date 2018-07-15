@@ -24,7 +24,7 @@ class RetreatCost {
 }
 
 class CardAbility {
-  public energyReq: EnergyReq;
+  public energyReq: EnergyReq[];
   public ability: AbilityDef;
   constructor(o: any) {
     this.energyReq = o.energyReq.map((er: any) => new EnergyReq(er));
@@ -36,7 +36,7 @@ class EnergyReq {
   public type: Type;
   public amount: number;
   constructor(o: any) {
-    this.type = o.type;
+    this.type = (<any>Type)[o.type];
     this.amount = o.amount;
   }
 }
@@ -76,8 +76,8 @@ class Pokemon extends Card {
     console.log(o);
     super(o);
     this.state = new State(o.initialHp);
-    this.type = o.type;
-    this.stage = o.stage;
+    this.type = (<any>Type)[o.type];
+    this.stage = (<any>Stage)[o.stage];
     this.initialHp = o.initialHp;
     this.evolvesFrom = o.evolvesFrom;
     this.retreatCost = new RetreatCost(o.retreatCost);

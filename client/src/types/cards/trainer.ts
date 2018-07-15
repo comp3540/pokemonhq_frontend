@@ -12,7 +12,7 @@ class Trainer extends Card {
   public ability: AbilityDef; // dum but temporary
   constructor(o: any) {
     super(o);
-    this.category = o.category;
+    this.category = (<any>Category)[o.category];
     this.ability = o.ability;
   }
 }
