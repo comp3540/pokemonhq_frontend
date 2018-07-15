@@ -64,7 +64,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Card from './Card.vue';
 import BigCard from './BigCard.vue';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import deck from '../../../faker/deck';
@@ -78,7 +77,6 @@ import coin from './CoinFlip.vue';
 export default Vue.extend({
   name: 'opponent-side',
   components: {
-    Card,
     BigCard,
     SmallCard,
     FaceDownCard,
