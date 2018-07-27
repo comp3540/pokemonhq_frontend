@@ -8,6 +8,7 @@ const DeckControllerPolicy = require('./policies/DeckControllerPolicy');
 const isAuthenticatedPolicy = require('./policies/isAuthenticatedPolicy');
 
 module.exports = (app) => {
+  // api routes
   app.post('/api/register', AuthenticationControllerPolicy.register, AuthenticationController.register);
   app.post('/api/login', AuthenticationControllerPolicy.login, AuthenticationController.login);
   app.post('/api/deck', isAuthenticatedPolicy, DeckControllerPolicy.save, DeckController.save);
