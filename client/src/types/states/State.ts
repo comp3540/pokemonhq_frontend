@@ -34,7 +34,7 @@ export class State {
    public your: PlayerState;
    public opponent: PlayerState;
    constructor(o: any){
-     this.activePlayer = (<any>Player)[o.activePlayer];
+     this.activePlayer = o.activePlayer;
      this.turnState = new TurnState();
      this.your = new PlayerState(o.your);
      this.opponent = new PlayerState(o.opponent);

@@ -34,12 +34,13 @@ export default Vue.extend({
     return {
       params: {
         name: '',
-        deck: '',
+        deck: [],
       },
       errors: {
         name: '',
         deck: '',
       },
+      upload: '',
       failMessage: '',
       successMessage: '',
       myDecks: [],
@@ -52,7 +53,7 @@ export default Vue.extend({
   methods: {
     async save() {
       try {
-        this.checkDeck();
+        this.checkUpload();
         const response = await DeckApi.save(this.params);
         this.successMessage = response.data.message;
         this.getMyDecks();
@@ -66,17 +67,12 @@ export default Vue.extend({
     },
 
     getUpload(event: any) {
-      this.params.deck = event.file;
+      this.upload = event.file;
     },
 
-    checkDeck() {
+    checkUpload() {
       // replace next line with spaces
-      const checkedDeck = this.params.deck.replace(/\n/g, ' ');
-      this.params.deck = checkedDeck;
-    },
-
-    stringifyDeck() {
-      this.params.deck = JSON.stringify(this.params.deck);
+      this.params.deck = this.upload.replace(/\n/g, ' ').split(' ');
     },
 
     async getMyDecks() {
