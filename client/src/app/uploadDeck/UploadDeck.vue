@@ -20,6 +20,7 @@
 </template>
 <script lang="ts">
 import DeckApi from '../../services/Deck';
+import CardApi from '../../services/Card';
 import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
 import ValidationErrorHelper from '../../utilities/errors/ValidationError';
 import Vue from 'vue';
@@ -85,7 +86,7 @@ export default Vue.extend({
       } catch (error) {
         this.failMessage = error.response.data.message;
       }
-    },
+    }
   },
 });
 </script>

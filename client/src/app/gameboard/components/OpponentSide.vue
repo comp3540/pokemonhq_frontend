@@ -88,19 +88,18 @@ export default Vue.extend({
     coin,
   },
   created() {
-    this.setDeck({player: 'opponent', deck: deck.deck});
-    this.setHand('opponent');
+    this.setCard();
   },
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck']),
+    ...mapActions('board', ['setHand', 'setCard']),
+    ...mapMutations('board', ['setDeck','setCards']),
   },
   computed: {
-    ...mapGetters('board', {board: 'getBoard'}),
+    ...mapGetters('board', {board: 'getState', cards: 'getCards'}),
   },
 });
 </script>

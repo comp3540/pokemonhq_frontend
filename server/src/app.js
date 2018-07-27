@@ -12,7 +12,10 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(history());
-app.use(express.static(path.join(__dirname, './../../client/dist')));
+
+app.use('/', express.static(path.join(__dirname, './../../client/dist')));
+app.use('/prolog', express.static(path.join(__dirname, './../prolog')));
+
 require('./routes')(app);
 require('./passport');
 

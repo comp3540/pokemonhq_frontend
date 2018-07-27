@@ -78,16 +78,19 @@ export default Vue.extend({
     FaceDownCard,
     draggable,
   },
+  created() {
+    this.setCard();
+  },
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck']),
+    ...mapActions('board', ['setHand', 'draw', 'setCard']),
+    ...mapMutations('board', ['draw', 'setDeck','setCards']),
   },
   computed: {
-    ...mapGetters('board', {board: 'getBoard'}),
+    ...mapGetters('board', {board: 'getState', cards: 'getCards'}),
   },
 });
 </script>

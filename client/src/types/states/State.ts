@@ -1,13 +1,14 @@
 import Card from '@/types/cards/Card';
-import pokemon from '@/types/cards/pokemon';
-import trainer from '@/types/cards/trainer';
-import energy from '@/types/cards/energy';
-enum Player {
+import * as pokemon from '@/types/cards/pokemon';
+import * as trainer from '@/types/cards/trainer';
+import * as energy from '@/types/cards/energy';
+
+export enum Player {
   OPPONENT = 'opponent',
   YOUR = 'your'
 }
 
-class TurnState{ //booleans
+export class TurnState{ //booleans
   public isFirstTurn: boolean;
   public energyPlayed: boolean;
   public yourMulligan: boolean; 
@@ -27,7 +28,7 @@ class TurnState{ //booleans
   }
 }
 
-class State {
+export class State {
    public activePlayer: Player;
    public turnState: TurnState;
    public your: PlayerState;
@@ -40,9 +41,9 @@ class State {
    }
 }
 
-class PlayerState {
-  public active: Card[];
-  public bench: Card[];
+export class PlayerState {
+  public active: pokemon.Pokemon[];
+  public bench: pokemon.Pokemon[];
   public deck: Card[];
   public discard: Card[];
   public hand: Card[];
@@ -59,18 +60,13 @@ class PlayerState {
 }
 
 function deserialize(cardObj: any){
-  if(Object.hasOwnProperty('pokemon')){
-    return new pokemon.Pokemon(cardObj);
-  } else if(Object.hasOwnProperty('trainer')) {
-    return new trainer.Trainer(cardObj);
-  } else if(Object.hasOwnProperty('energy')) {
-    return new energy.Energy(cardObj);
+  if(cardObj.card.hasOwnProperty('pokemon')){
+    return new pokemon.Pokemon(Object.assign({}, cardObj.card.pokemon));
+  } else if(cardObj.card.hasOwnProperty('trainer')) {
+    return new trainer.Trainer(Object.assign({}, cardObj.card.trainer));
+  } else if(cardObj.card.hasOwnProperty('energy')) {
+    return new energy.Energy(Object.assign({}, cardObj.card.energy));
   } else {
-    console.log('The card does not exist:' + cardObj);
+    console.log('The card does not exist: ' + cardObj);
   }
-}
-
-
-export default {
-  State
 }

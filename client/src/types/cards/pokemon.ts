@@ -1,12 +1,12 @@
 import Card from '@/types/cards/Card';
 import AbilityDef from '@/types/abilities/AbilityDef';
 
-enum Stage {
+export enum Stage {
   BASIC = 'basic',
   STAGE_ONE = 'stageone',
 }
 
-enum Type {
+export enum Type {
   FIGHTING = 'fighting',
   LIGHTNING = 'lightning',
   PSYCHIC = 'psychic',
@@ -14,7 +14,7 @@ enum Type {
   COLORLESS = 'colorless',
 }
 
-class RetreatCost {
+export class RetreatCost {
   public type: Type;
   public amount: number;
   constructor(o: any) {
@@ -23,25 +23,25 @@ class RetreatCost {
   }
 }
 
-class CardAbility {
+export class CardAbility {
   public energyReq: EnergyReq[];
-  public ability: AbilityDef;
+  public ability: Number;
   constructor(o: any) {
-    this.energyReq = o.energyReq.map((er: any) => new EnergyReq(er));
+    this.energyReq = o.required.map((er: any) => new EnergyReq(er.req));
     this.ability = o.ability;
   }
 }
 
-class EnergyReq {
+export class EnergyReq {
   public type: Type;
   public amount: number;
   constructor(o: any) {
-    this.type = (<any>Type)[o.type];
+    this.type = o.type;
     this.amount = o.amount;
   }
 }
 
-enum Status {
+export enum Status {
   POISONED = 'poisoned',
   ASLEEP = 'asleep',
   PARALYZED = 'paralyzed',
@@ -49,7 +49,7 @@ enum Status {
   NONE = '', // null
 }
 
-class State {
+export class State {
   public hp: number;
   public status: Status;
   public energyCards: any[];
@@ -64,7 +64,7 @@ class State {
   }
 }
 
-class Pokemon extends Card {
+export class Pokemon extends Card {
   public state: State;
   public type: Type;
   public stage: Stage;
@@ -73,24 +73,13 @@ class Pokemon extends Card {
   public retreatCost: RetreatCost;
   public abilities: CardAbility[];
   constructor(o: any) {
-    console.log(o);
     super(o);
-    this.state = new State(o.initialHp);
-    this.type = (<any>Type)[o.type];
-    this.stage = (<any>Stage)[o.stage];
-    this.initialHp = o.initialHp;
-    this.evolvesFrom = o.evolvesFrom;
-    this.retreatCost = new RetreatCost(o.retreatCost);
-    this.abilities = o.abilities.map((ab: any) => new CardAbility(ab));
+    this.state = new State(o.hp);
+    this.type = o.energy;
+    this.stage = o.stage;
+    this.initialHp = o.hp;
+    this.evolvesFrom = o.evolves;
+    this.retreatCost = new RetreatCost(o.retreat);
+    this.abilities = o.attacks.map((ab: any) => new CardAbility(ab.attack));
   }
 }
-
-export default {
-  Pokemon,
-  Type,
-  State,
-  Status,
-  EnergyReq,
-  RetreatCost,
-  Stage,
-};
