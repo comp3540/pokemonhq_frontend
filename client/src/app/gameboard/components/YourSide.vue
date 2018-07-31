@@ -15,7 +15,7 @@
 
       <div class="column-1">
         <!-- bench -->
-        <draggable class="hand-row" v-model="board.your.bench" :options="{group:'board'}">
+        <draggable id="YB" class="hand-row" v-model="board.your.bench" :options="{group:'board'}" :move="moveHand">
           <div class="small-card" v-for="card in board.your.bench" :key="card.id">
             <small-card :card="card" />
           </div>
@@ -45,7 +45,7 @@
     <div >
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-        <draggable class="hand-row" v-model="board.your.hand" :options="{group:'board'}">
+        <draggable id="YH" class="hand-row" v-model="board.your.hand" :options="{group:'board'}">
           <div class="small-card" v-for="card in board.your.hand" :key="card.id">
             <small-card :card="card" />
           </div>
@@ -83,6 +83,14 @@ export default Vue.extend({
   methods: {
     ...mapActions('board', ['setHand', 'draw']),
     ...mapMutations('board', ['draw', 'setDeck']),
+    
+    moveHand(evt) {
+      const card = evt.draggedContext.element;
+      const from = evt.from.id;
+      const to = evt.to.id;
+      console.log('Move',card.name,'from',from,'to',to);
+      return false;
+    }
   },
   computed: {
     ...mapGetters('board', {board: 'getBoard'}),
