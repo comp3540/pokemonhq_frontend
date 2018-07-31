@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import * as statez from '@/types/states/State';
 import Card from '@/types/cards/Card';
 import CardService from './../services/Card';
 import AbilityService from './../services/Ability';
+=======
+import pokemon from '@/types/cards/pokemon';
+import energy from '@/types/cards/energy';
+import * as trainer from '@/types/cards/trainer';
+>>>>>>> devel
 
 export default {
   namespaced: true,

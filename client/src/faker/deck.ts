@@ -4,7 +4,7 @@ const	deck = [
 
           },
           props: {
-            id: 7,
+            instanceId: 7,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -27,7 +27,7 @@ const	deck = [
 
           },
           props: {
-            id: 6,
+            instanceId: 6,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -50,7 +50,7 @@ const	deck = [
 
           },
           props: {
-            id: 5,
+            instanceId: 5,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -73,7 +73,7 @@ const	deck = [
 
           },
           props: {
-            id: 4,
+            instanceId: 4,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -96,7 +96,7 @@ const	deck = [
 
           },
           props: {
-            id: 3,
+            instanceId: 3,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -119,7 +119,7 @@ const	deck = [
 
           },
           props: {
-            id: 2,
+            instanceId: 2,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',
@@ -142,7 +142,7 @@ const	deck = [
 
           },
           props: {
-            id: 1,
+            instanceId: 1,
             name: 'Pikachu',
             initialHP: 40,
             type: 'lightning',

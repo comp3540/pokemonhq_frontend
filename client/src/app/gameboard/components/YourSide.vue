@@ -15,7 +15,7 @@
 
       <div class="column-1">
         <!-- bench -->
-        <draggable class="hand-row" v-model="board.your.bench" :options="{group:'board'}">
+        <draggable id="YB" class="hand-row" v-model="board.your.bench" :options="{group:'board'}" :move="moveHand">
           <div class="small-card" v-for="card in board.your.bench" :key="card.id">
             <small-card :card="card" />
           </div>
@@ -25,12 +25,12 @@
       <div class="column-2">
         <!-- deck and discard -->
             <div class="deck">
-              <face-down-card :card="board.opponent.discard[0]" />
-              <div class="amount-deck"> &nbsp;:40 </div>
+              <face-down-card :card="board.your.deck[0]" />
+              <div class="amount-deck"> &nbsp;:{{board.your.deck.length}} </div>
             </div>
             <div class="discard">
-              <face-down-card :card="board.opponent.discard[0]" />
-              <div class="amount-discard"> &nbsp;:10 </div>
+              <face-down-card :card="board.your.discard[0]" />
+              <div class="amount-discard"> &nbsp;:{{board.your.discard.length}} </div>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
     <div >
       <!-- hands -->
         <!-- don't really need hand row for now, but just in case we choose to chabge its colour -->
-        <draggable class="hand-row" v-model="board.your.hand" :options="{group:'board'}">
+        <draggable id="YH" class="hand-row" v-model="board.your.hand" :options="{group:'board'}">
           <div class="small-card" v-for="card in board.your.hand" :key="card.id">
             <small-card :card="card" />
           </div>
@@ -61,7 +61,6 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import Card from './Card.vue';
 import BigCard from './BigCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
@@ -72,7 +71,6 @@ import FaceDownCard from './FaceDownCard.vue';
 export default Vue.extend({
   name: 'your-side',
   components: {
-    Card,
     BigCard,
     SmallCard,
     FaceDownCard,
@@ -88,6 +86,13 @@ export default Vue.extend({
   methods: {
     ...mapActions('board', ['setHand', 'draw', 'setCard']),
     ...mapMutations('board', ['draw', 'setDeck','setCards']),
+    moveHand(evt) {
+      const card = evt.draggedContext.element;
+      const from = evt.from.id;
+      const to = evt.to.id;
+      console.log('Move',card.name,'from',from,'to',to);
+      return false;
+    }
   },
   computed: {
     ...mapGetters('board', {board: 'getState', cards: 'getCards'}),
@@ -100,7 +105,6 @@ export default Vue.extend({
 
   .side {
     background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
     color: #545454;
     display: flex;
     flex-direction: row;
@@ -163,19 +167,17 @@ export default Vue.extend({
   }
 
   .small-card {
-    border: 3px solid orange;
     width: 145px;
     height: 22vh;
     margin: 5px;
     text-align: center;
-    line-height: 75px;
+    /*line-height: 75px;*/
     font-size: 20px;
     border-radius: 10px;
   }
 
   .active-card{
     display: flex;
-    background-color:#b30000;
     width: 90%;
     height: 47vh;
     color: white;
@@ -189,8 +191,6 @@ export default Vue.extend({
   }
 
   .prize-card {
-    border: 1px solid #b30000;
-    background-color: white;
     color: #b30000;
     width: 2em;
     height: 3em;
@@ -203,7 +203,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color:cadetblue;
+    background-color: #0099cc;
     color: white;
     height: 4em;
     width: 4em;

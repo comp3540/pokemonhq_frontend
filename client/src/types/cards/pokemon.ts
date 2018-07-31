@@ -1,5 +1,7 @@
 import Card from '@/types/cards/Card';
 import AbilityDef from '@/types/abilities/AbilityDef';
+import energy from '@/types/cards/energy';
+import * as trainer from '@/types/cards/trainer';
 
 export enum Stage {
   BASIC = 'basic',
@@ -53,14 +55,14 @@ export class State {
   public hp: number;
   public status: Status;
   public energyCards: any[];
-  public itemCards: any[];
+  public itemCard: trainer.Trainer | undefined;
   public evolvedFrom?: Pokemon;
-  constructor(initialHp: number) {
+  constructor(initialHp: number, o: any = {}) {
     this.hp = initialHp;
-    this.status = Status.NONE;
-    this.energyCards = [];
-    this.itemCards = [];
-    this.evolvedFrom = undefined;
+    this.status = o.status || Status.NONE;
+    this.energyCards =o.energyCards ?  o.energyCards.map((ec:any) => new energy.Energy(ec)) : [];
+    this.itemCard = o.itemCard ? new trainer.Trainer(o.itemCard) : undefined;
+    this.evolvedFrom = o.evolvedFrom;
   }
 }
 
