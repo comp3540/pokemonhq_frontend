@@ -13,7 +13,10 @@
         </p-form>
       </div>
       <div class="col-md-6 left-border">
-        <my-decks :myDecks="myDecks"></my-decks>
+        <my-decks :myDecks="myDecks" @selectedDeck="selectedDeck = $event"></my-decks>
+        <label>Shuffle?</label>
+        <input type="checkbox" :disabled="selectedDeck.length <= 0" v-model="shuffled" />
+        <button class="btn btn-success" :disabled="selectedDeck <= 0" @click="play()">Play!</button>
       </div>
     </div>
   </div>
@@ -24,6 +27,8 @@ import CardApi from '../../services/Card';
 import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
 import ValidationErrorHelper from '../../utilities/errors/ValidationError';
 import Vue from 'vue';
+import _ from 'lodash';
+import { mapMutations } from 'vuex';
 
 export default Vue.extend({
   name: 'UploadDeck',
@@ -34,7 +39,7 @@ export default Vue.extend({
     return {
       params: {
         name: '',
-        deck: [],
+        deck: '',
       },
       errors: {
         name: '',
@@ -44,13 +49,15 @@ export default Vue.extend({
       failMessage: '',
       successMessage: '',
       myDecks: [],
+      selectedDeck: [],
+      shuffled:false
     };
   },
   created() {
     this.getMyDecks();
   },
-
   methods: {
+    ...mapMutations('board', ['setDeck']),
     async save() {
       try {
         this.checkUpload();
@@ -72,9 +79,8 @@ export default Vue.extend({
 
     checkUpload() {
       // replace next line with spaces
-      this.params.deck = this.upload.replace(/\n/g, ' ').split(' ');
+      this.upload.replace(/\n/g, ' ');
     },
-
     async getMyDecks() {
       try {
         const decks = await DeckApi.get();
@@ -82,6 +88,18 @@ export default Vue.extend({
       } catch (error) {
         this.failMessage = error.response.data.message;
       }
+    },
+    shuffle(){
+      this.selectedDeck = _.shuffle(this.selectedDeck);
+    },
+    play () {
+      if (this.shuffled) {
+        this.shuffle();
+      }
+      this.setDeck({player:'your',deck:this.selectedDeck});
+      this.$router.push({
+        name: 'GameBoard',
+      });
     }
   },
 });
@@ -93,5 +111,9 @@ export default Vue.extend({
   }
   .left-border {
     border-left: 1px solid lightgrey;
+  }
+  .btn{
+    margin-right: 5px;
+    margin-top: 5px;
   }
 </style>

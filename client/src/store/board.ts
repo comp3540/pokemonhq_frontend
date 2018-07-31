@@ -6,8 +6,6 @@ import AbilityService from './../services/Ability';
 export default {
   namespaced: true,
   state: {
-    cards: [],
-    abilities: [],
     state: new statez.State({
         activePlayer: statez.Player.YOUR,
         your: {
@@ -29,15 +27,13 @@ export default {
       }),
   },
   getters: {
-    getState: (state: any) => state.state,
-    getCards: (state: any) => state.cards,
-    getAbilities: (state:any) => state.abilities
+    getState: (state: any) => state.state
   },
   mutations: {
 
     setDeck(state: any, payload: any) {
       payload.deck.forEach((card: any) => {
-        state.board[payload.player].deck.push(card);
+        state.state[payload.player].deck.push(card);
       });
     },
 
@@ -45,30 +41,8 @@ export default {
       state.cards = payload;
     },
 
-    setAbilities(state: any, payload: any) {
-      state.abilities = payload;
-    },
-
-    setState(state: any){
-      state.state = new statez.State({
-        activePlayer: statez.Player.YOUR,
-        your: {
-          active: [state.cards[0]],
-          bench: [state.cards[2],state.cards[20],state.cards[30]],
-          discard: [state.cards[6], state.cards[7], state.cards[8]],
-          deck: [state.cards[21], state.cards[22], state.cards[23], state.cards[24]],
-          hand: [state.cards[11], state.cards[12], state.cards[13], state.cards[14],state.cards[15]],
-          prize: [state.cards[36], state.cards[37]]
-        },
-        opponent: {
-          active: [state.cards[1]],
-          bench: [state.cards[2],state.cards[20],state.cards[30]],
-          discard: [state.cards[6], state.cards[7], state.cards[8]],
-          deck: [state.cards[21], state.cards[22], state.cards[23], state.cards[24]],
-          hand: [state.cards[11], state.cards[12], state.cards[13], state.cards[14],state.cards[15]],
-          prize: [state.cards[36], state.cards[37]]
-        }
-      })
+    setState(state: any, payload: any){
+      state.state = new statez.State(payload.state);
     },
 
     draw(state: any, player: string) {

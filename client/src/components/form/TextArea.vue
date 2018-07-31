@@ -1,7 +1,7 @@
 <template>
   <div class="form-group" :class="{'has-error' : error !== ''}">
     <label class="control-label">{{label}}:</label>
-    <textarea :rows="rows" :cols="cols" :value="value" @input="input($event.target.value)" />
+    <textarea class="form-control" :rows="rows" :cols="cols" :value="value" @input="input($event.target.value)" />
     <span class="help-block" v-if="error">{{error}}</span>
   </div>
 </template>
