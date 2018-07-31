@@ -86,15 +86,15 @@ export default Vue.extend({
     coin,
   },
   created() {
-    this.setCard();
+    
   },
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions('board', ['setHand', 'setCard']),
-    ...mapMutations('board', ['setDeck','setCards']),
+    ...mapActions('board', ['setHand']),
+    ...mapMutations('board', ['setDeck']),
   },
   computed: {
     ...mapGetters('board', {board: 'getState', cards: 'getCards'}),

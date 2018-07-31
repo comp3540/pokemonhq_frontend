@@ -77,15 +77,17 @@ export default Vue.extend({
     draggable,
   },
   created() {
-    this.setCard();
+    this.setHand('your');
   },
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions('board', ['setHand', 'draw', 'setCard']),
-    ...mapMutations('board', ['draw', 'setDeck','setCards']),
+
+    ...mapActions('board', ['setHand', 'draw']),
+    ...mapMutations('board', ['draw', 'setDeck']),
+
     moveHand(evt) {
       const card = evt.draggedContext.element;
       const from = evt.from.id;

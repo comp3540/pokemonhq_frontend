@@ -54,7 +54,7 @@
 
     <div class="row-3b" v-if="card instanceof Trainer">
         <div v-if="card.ability">
-                <div class="ability"> {{card.ability.definition}} </div>
+            <div class="ability"> {{card.ability.definition}} </div>
         </div>
     </div>
 
@@ -75,7 +75,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import BigCard from 'BigCard.vue';
+import BigCard from './BigCard.vue';
 import * as pokemon from '@/types/cards/pokemon';
 import * as energy from '@/types/cards/energy';
 import * as trainer from '@/types/cards/trainer';

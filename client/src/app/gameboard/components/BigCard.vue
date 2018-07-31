@@ -83,19 +83,14 @@
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
-<<<<<<< HEAD
 import * as pokemon from '@/types/cards/pokemon';
 import * as energy from '@/types/cards/energy';
-import * as trainer from '@/types/cards/trainer';
-=======
-import pokemon from '@/types/cards/pokemon';
-import energy from '@/types/cards/energy';
 import * as trainer from '@/types/cards/trainer';
 import VTooltip from 'v-tooltip';
 
 Vue.use(VTooltip);
->>>>>>> devel
 
 export default Vue.extend({
   name: 'big-card',

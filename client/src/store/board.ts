@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 import * as statez from '@/types/states/State';
-import Card from '@/types/cards/Card';
-import CardService from './../services/Card';
-import AbilityService from './../services/Ability';
-=======
-import pokemon from '@/types/cards/pokemon';
-import energy from '@/types/cards/energy';
-import * as trainer from '@/types/cards/trainer';
->>>>>>> devel
 
 export default {
   namespaced: true,
@@ -38,9 +29,7 @@ export default {
   mutations: {
 
     setDeck(state: any, payload: any) {
-      payload.deck.forEach((card: any) => {
-        state.state[payload.player].deck.push(card);
-      });
+      state.state[payload.player].setDeck(payload.deck);
     },
 
     setCards(state: any, payload: any) {
@@ -53,10 +42,10 @@ export default {
 
     draw(state: any, player: string) {
       // remove top card from the deck (index[0])...
-      const deckTopCard = state.board[player].deck.shift();
+      const deckTopCard = state.state[player].deck.shift();
 
       // push deckTopCard to the end of the player's hand
-      state.board[player].hand.push(deckTopCard);
+      state.state[player].hand.push(deckTopCard);
     },
 
     discard(state: any, {player, card}: any) {
@@ -71,17 +60,6 @@ export default {
       for (let x = 1; x <= 7; x++) {
         context.commit('draw', player);
       }
-    },
-
-    async setCard (context: any) {
-      let response = await CardService.get();
-      context.commit('setCards', response);
-      context.commit('setState');
-    },
-
-    async setAbilities(context: any) {
-      let response = await AbilityService.get();
-      context.commit('setAbilities', response);
     }
   },
 };

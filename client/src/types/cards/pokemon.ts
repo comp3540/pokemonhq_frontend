@@ -1,6 +1,6 @@
 import Card from '@/types/cards/Card';
 import AbilityDef from '@/types/abilities/AbilityDef';
-import energy from '@/types/cards/energy';
+import * as energy from '@/types/cards/energy';
 import * as trainer from '@/types/cards/trainer';
 
 export enum Stage {
@@ -38,7 +38,7 @@ export class EnergyReq {
   public type: Type;
   public amount: number;
   constructor(o: any) {
-    this.type = o.type;
+    this.type = o.energy;
     this.amount = o.amount;
   }
 }

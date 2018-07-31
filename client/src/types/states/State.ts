@@ -57,6 +57,11 @@ export class PlayerState {
      this.hand = o.hand.map((card: any) => deserialize(card));
      this.prize = o.prize.map((card: any) => deserialize(card));
   }
+
+  setDeck (o) {
+    this.deck = o.map((card: any) => deserialize(card));
+  }
+
 }
 
 function deserialize(cardObj: any){
