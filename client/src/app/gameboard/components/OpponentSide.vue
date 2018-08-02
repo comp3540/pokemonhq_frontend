@@ -45,7 +45,7 @@
             </div>
             <div class="discard">
               <face-down-card :card="board.opponent.discard[0]" />
-              <div class="amount-discard"> &nbsp;:{{board.opponent.deck.length}} </div>
+              <div class="amount-discard"> &nbsp;:{{board.opponent.discard.length}} </div>
             </div>
         </div>
 
@@ -86,15 +86,15 @@ export default Vue.extend({
     coin,
   },
   created() {
-    
+    this.setHand('opponent');
   },
   data() {
     return {
     };
   },
   methods: {
-    ...mapActions('board', ['setHand']),
-    ...mapMutations('board', ['setDeck']),
+    ...mapActions('board', ['setHand', 'draw']),
+    ...mapMutations('board', ['draw', 'setDeck']),
   },
   computed: {
     ...mapGetters('board', {board: 'getState', cards: 'getCards'}),

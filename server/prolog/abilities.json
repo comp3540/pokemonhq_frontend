@@ -228,5 +228,37 @@
   {
     "interpretation":"Red Card: The opponent places all the cards in their hand onto their deck; shuffles their deck; draws 4 cards.",
     "name":"Red Card"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 1.",
+    "name":"Bull Crap Card 1"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 2.",
+    "name":"Bull Crap Card 2"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 3.",
+    "name":"Bull Crap Card 3"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 4.",
+    "name":"Bull Crap Card 4"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 5.",
+    "name":"Bull Crap Card 5"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 6.",
+    "name":"Bull Crap Card 6"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 7.",
+    "name":"Bull Crap Card 7"
+  },
+  {
+    "interpretation":"Bullcrap Card: Bullcrap 8.",
+    "name":"Bull Crap Card 8"
   }
 ]

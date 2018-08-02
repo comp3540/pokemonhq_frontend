@@ -98,6 +98,7 @@ export default Vue.extend({
         this.shuffle();
       }
       this.setDeck({player:'your', deck:this.selectedDeck});
+      this.setDeck({player:'opponent', deck:this.selectedDeck});
       this.$router.push({
         name: 'GameBoard',
       });
