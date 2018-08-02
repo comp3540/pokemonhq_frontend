@@ -28,7 +28,7 @@ export default {
       if (cards[ind - 1]) {
         deck[position] = Object.assign({}, cards[ind - 1]);
       } else {
-        throw 'The card at index: ' + (ind +1) + ' does not exist. Please upload a valid deck file.  Game cannot be started until you have fixed the issue';
+        throw 'The card at index: ' + (ind +1) + ' is invalid. Please upload a valid deck file.  Game cannot be started until you have fixed the issue';
       }
     })
   }
