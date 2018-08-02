@@ -12,7 +12,7 @@ export class Trainer extends Card {
   public ability: AbilityDef; // dum but temporary
   constructor(o: any) {
     super(o);
-    this.category = o.category;
+    this.category = o.type;
     this.ability = o.ability;
   }
 }

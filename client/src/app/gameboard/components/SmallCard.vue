@@ -54,13 +54,13 @@
 
     <div class="row-3b" v-if="card instanceof Trainer">
         <div v-if="card.ability">
-            <div class="ability"> {{card.ability.definition}} </div>
+            <div class="ability"> {{card.ability.interpretation}} </div>
         </div>
     </div>
 
     <!-- ENERGY -->
     <div class="energy-card" v-if="card instanceof Energy">
-        <div :class="`symbol-${card.name} card-img-energy-card`"> </div>
+        <div :class="`symbol-${card.name.toLowerCase()} card-img-energy-card`"> </div>
     </div>
 
   </div>
