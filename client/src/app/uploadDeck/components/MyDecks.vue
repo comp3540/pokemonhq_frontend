@@ -8,7 +8,6 @@
     <div id="view" v-if="mapped">
       <card-output v-for="card in mapped" :card="card.card" :key="card.card.id"></card-output>
     </div>
-    <p-alert-fail :message="failMessage" @close="failMessage = ''" />
   </div>
 </template>
 <script lang="ts">
