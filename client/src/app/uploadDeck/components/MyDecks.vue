@@ -50,6 +50,7 @@ export default Vue.extend({
     mapDeck (deck) {
       this.active = deck;
       let deckArray = deck.split(" ");
+      console.log(deckArray);
       Mapper.cardsToDeck(this.cards, deckArray);
       this.mappedDeck = deckArray;
       this.$emit('selectedDeck', this.mappedDeck);

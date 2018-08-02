@@ -6,7 +6,7 @@
         <p-form>
           <p-input-text label="Deck name" :error="errors.name" @clearError="errors.name== ''" v-model="params.name" />
           <p-input-file label="Upload Your Deck" id="upload" @upload="getUpload($event)"/>
-          <p-text-area label="Preview Deck" rows="10" cols="30" v-model="params.deck" :error="errors.deck" @clearError = "errors.deck = ''"/>
+          <p-text-area label="Preview Deck" rows="10" cols="30" v-model="upload" :error="errors.deck" @clearError = "errors.deck = ''"/>
           <p-alert-success :message="successMessage" @close="successMessage = ''" />
           <p-alert-fail :message="failMessage" @close="failMessage = ''" />
           <button class="button" @click="save">Upload!</button>
@@ -79,7 +79,7 @@ export default Vue.extend({
 
     checkUpload() {
       // replace next line with spaces
-      this.upload.replace(/\n/g, ' ');
+      this.params.deck = this.upload.replace(/\n/g, ' ');
     },
     async getMyDecks() {
       try {
