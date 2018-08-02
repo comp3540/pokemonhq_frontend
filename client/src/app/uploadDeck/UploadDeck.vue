@@ -13,10 +13,10 @@
         </p-form>
       </div>
       <div class="col-md-6 left-border">
-        <my-decks :myDecks="myDecks" @selectedDeck="selectedDeck = $event"></my-decks>
+        <my-decks :myDecks="myDecks" @selectedDeck="selectedDeck = $event" @error="majorErrorSet($event)"></my-decks>
         <label>Shuffle?</label>
         <input type="checkbox" :disabled="selectedDeck.length <= 0" v-model="shuffled" />
-        <button class="btn btn-success" :disabled="selectedDeck <= 0" @click="play()">Play!</button>
+        <button class="btn btn-success" :disabled="majorError || selectedDeck <= 0" @click="play()">Play!</button>
       </div>
     </div>
   </div>
@@ -47,6 +47,7 @@ export default Vue.extend({
       },
       upload: '',
       failMessage: '',
+      majorError:false,
       successMessage: '',
       myDecks: [],
       selectedDeck: [],
@@ -100,6 +101,10 @@ export default Vue.extend({
       this.$router.push({
         name: 'GameBoard',
       });
+    },
+    majorErrorSet(event) {
+      this.failMessage = event;
+      this.majorError = true;
     }
   },
 });

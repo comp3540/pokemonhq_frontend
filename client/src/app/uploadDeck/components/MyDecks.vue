@@ -8,6 +8,7 @@
     <div id="view" v-if="mapped">
       <card-output v-for="card in mapped" :card="card.card" :key="card.card.id"></card-output>
     </div>
+    <p-alert-fail :message="failMessage" @close="failMessage = ''" />
   </div>
 </template>
 <script lang="ts">
@@ -44,16 +45,19 @@ export default Vue.extend({
         this.cards = await CardApi.get();
         Mapper.abilitiesToCards(this.abilities, this.cards);
       } catch (e) {
-        console.log(e);
+        this.$emit('error', e);
       }
     },
     mapDeck (deck) {
-      this.active = deck;
-      let deckArray = deck.split(" ");
-      console.log(deckArray);
-      Mapper.cardsToDeck(this.cards, deckArray);
-      this.mappedDeck = deckArray;
-      this.$emit('selectedDeck', this.mappedDeck);
+      try {
+        this.active = deck;
+        let deckArray = deck.split(" ");
+        Mapper.cardsToDeck(this.cards, deckArray);
+        this.mappedDeck = deckArray;
+        this.$emit('selectedDeck', this.mappedDeck);
+      } catch (e) {
+        this.$emit('error', e);
+      }
     }
   },
   computed: {
