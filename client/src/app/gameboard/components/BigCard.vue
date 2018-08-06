@@ -37,22 +37,22 @@
     </div>
 
     <!-- abilities -->
-    <div class="row-4a" v-if="card.abilities" v-for="attack in card.abilities" :key="attack.ability.id">
-        <div class="ability-name"> {{attack.ability.name}} </div>
-        <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
+    <div class="row-4a" v-if="card.attacks" v-for="attack in card.attacks">
+        <div class="ability-name"> {{attack.attack.ability.name}} </div>
+        <div class="energy-req" v-for="energyReq in attack.attack.required">
             <div :class="`symbol-${energyReq.type} card-img`"> </div> 
             <div class="amount"> &nbsp;: {{energyReq.amount}} </div>
         </div>
-        <div class="ability-desc"> {{attack.ability.interpretation}} </div>
+        <div class="ability-desc"> {{attack.attack.ability.interpretation}} </div>
     </div>
 
     <!-- retreat cost and status -->
     <div class="row-5a" v-if="card instanceof Pokemon">
         <div class="retreat"> 
-            <div :class="`symbol-${card.retreatCost.type} card-img-retreat`"> 
+            <div :class="`symbol-${card.retreat.type} card-img-retreat`">
             </div>
             <div class="retreat-cost">
-                &nbsp;: {{card.retreatCost.amount}} 
+                &nbsp;: {{card.retreat.amount}}
             </div>
         </div>
         <div class="status"> status: {{card.state.status}} </div> 
