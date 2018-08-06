@@ -23,12 +23,11 @@
 </template>
 <script lang="ts">
 import DeckApi from '../../services/Deck';
-import CardApi from '../../services/Card';
 import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
 import ValidationErrorHelper from '../../utilities/errors/ValidationError';
 import Vue from 'vue';
 import _ from 'lodash';
-import { mapMutations } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 
 export default Vue.extend({
   name: 'UploadDeck',
@@ -51,14 +50,17 @@ export default Vue.extend({
       successMessage: '',
       myDecks: [],
       selectedDeck: [],
-      shuffled:false
+      shuffled:false,
+      state: {}
     };
   },
   created() {
     this.getMyDecks();
+    this.getStateRemote();
   },
   methods: {
-    ...mapMutations('board', ['setDeck']),
+    ...mapActions('board', ['getStateRemote']),
+    ...mapMutations('board', ['setDeck','setState']),
     async save() {
       try {
         this.checkUpload();

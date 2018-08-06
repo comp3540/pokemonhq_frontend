@@ -1,10 +1,10 @@
 export default class AbilityDef {
     public id: number;
     public name: string;
-    public definition: string;
+    public interpretation: string;
     constructor(o: any) {
       this.id = o.id;
       this.name = o.name;
-      this.definition = o.definition;
+      this.interpretation = o.interpretation;
     }
 }

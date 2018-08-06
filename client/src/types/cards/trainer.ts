@@ -8,11 +8,13 @@ export enum Category {
 }
 
 export class Trainer extends Card {
-  public category: Category;
+  public type: Category;
   public ability: AbilityDef; // dum but temporary
+  public cardType: string;
   constructor(o: any) {
     super(o);
-    this.category = o.type;
+    this.cardType = 'trainer';
+    this.type = o.type;
     this.ability = o.ability;
   }
 }

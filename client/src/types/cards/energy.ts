@@ -9,9 +9,11 @@ export enum Type {
 
 export class Energy extends Card {
   public type: Type;
+  public cardType: string;
   constructor(o: any) {
     super(o);
     this.type = o.type;
+    this.cardType = 'energy';
   }
 }
 

@@ -8,7 +8,6 @@ import Auth from '@/utilities/auth/Cookie';
 Vue.use(components);
 Vue.config.productionTip = false;
 
-
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth && !Auth.tokenIsset(document.cookie)) {
     next({ path: '/' });

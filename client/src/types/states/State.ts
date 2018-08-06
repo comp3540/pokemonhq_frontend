@@ -58,20 +58,33 @@ export class PlayerState {
      this.prize = o.prize.map((card: any) => deserialize(card));
   }
 
-  setDeck (o) {
+  setDeck (o: any) {
     this.deck = o.map((card: any) => deserialize(card));
   }
 
 }
 
 function deserialize(cardObj: any){
-  if(cardObj.card.hasOwnProperty('pokemon')){
-    return new pokemon.Pokemon(Object.assign({}, cardObj.card.pokemon));
-  } else if(cardObj.card.hasOwnProperty('trainer')) {
-    return new trainer.Trainer(Object.assign({}, cardObj.card.trainer));
-  } else if(cardObj.card.hasOwnProperty('energy')) {
-    return new energy.Energy(Object.assign({}, cardObj.card.energy));
-  } else {
-    console.log('The card does not exist: ' + cardObj);
-  }
+    if (cardObj.hasOwnProperty('card')) {
+        if(cardObj.card.hasOwnProperty('pokemon')){
+            return new pokemon.Pokemon(Object.assign({}, cardObj.card.pokemon));
+        } else if(cardObj.card.hasOwnProperty('trainer')) {
+            return new trainer.Trainer(Object.assign({}, cardObj.card.trainer));
+        } else if(cardObj.card.hasOwnProperty('energy')) {
+            return new energy.Energy(Object.assign({}, cardObj.card.energy));
+        } else {
+            throw 'There was an error deserializing your cards...';
+        }
+    } else {
+        if (cardObj.hasOwnProperty('cardType') && cardObj.cardType === 'pokemon') {
+            return new pokemon.Pokemon(Object.assign({}, cardObj));
+        } else if (cardObj.hasOwnProperty('cardType') && cardObj.cardType === 'energy') {
+            return new energy.Energy(Object.assign({}, cardObj));
+        } else if (cardObj.hasOwnProperty('cardType') && cardObj.cardType === 'trainer') {
+            return new trainer.Trainer(Object.assign({}, cardObj));
+        } else {
+            throw 'There was an error deserializing your cards...';
+        }
+    }
+
 }

@@ -53,7 +53,7 @@
     </div>
 
   </div>
-
+  <p-alert-fail :message="failMessage" @close="failMessage = ''" />
 </div>
 
 </template>
@@ -61,10 +61,10 @@
 <script lang="ts">
 
 import Vue from 'vue';
+import StateApi from '../../../services/State';
 import BigCard from './BigCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import Deck from './../../../faker/deck';
 import SmallCard from './SmallCard.vue';
 import FaceDownCard from './FaceDownCard.vue';
 
@@ -78,15 +78,17 @@ export default Vue.extend({
   },
   created() {
     this.setHand('your');
+    this.saveState();
   },
   data() {
     return {
+      failMessage: ''
     };
   },
   methods: {
 
-    ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck']),
+    ...mapActions('board', ['setHand', 'draw', 'saveState']),
+    ...mapMutations('board', ['draw', 'setDeck','setState']),
 
     moveHand(evt) {
       const card = evt.draggedContext.element;
@@ -97,7 +99,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    ...mapGetters('board', {board: 'getState', cards: 'getCards'}),
+    ...mapGetters('board', {board: 'getState'}),
   },
 });
 </script>
