@@ -60,7 +60,7 @@
 
     <!-- ENERGY -->
     <div class="energy-card" v-if="card instanceof Energy">
-        <div :class="`symbol-${card.name.toLowerCase()} card-img-energy-card`"> </div>
+        <div :class="`symbol-${card.type.toLowerCase()} card-img-energy-card`"> </div>
     </div>
 
   </div>

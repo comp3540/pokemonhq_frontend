@@ -111,7 +111,7 @@ export default Vue.extend({
     },
     save () {
       let $this = this;
-      setInterval($this.saveState, 30000);
+      setInterval($this.saveState, 15000);
     }
   },
   computed: {
