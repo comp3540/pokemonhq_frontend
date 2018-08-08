@@ -18,4 +18,8 @@ export default {
     });
     return exists;
   },
+
+  setToken (token: string) {
+      document.cookie = 'token=' + token;
+  }
 };

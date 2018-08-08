@@ -40,8 +40,29 @@ export default {
     },
 
     setState(state: any, payload: any){
-      console.log(payload.state.content);
-      state.state = new statez.State(payload.state.content);
+      state.state = new statez.State(payload.state);
+    },
+
+    resetState (state: any, payload: any) {
+      state.state = new statez.State({
+        activePlayer: statez.Player.YOUR,
+        your: {
+          active: [],
+          bench: [],
+          discard: [],
+          deck: [],
+          hand: [],
+          prize: []
+        },
+        opponent: {
+          active: [],
+          bench: [],
+          discard: [],
+          deck: [],
+          hand: [],
+          prize: []
+        }
+      });
     },
 
     draw(state: any, player: string) {
@@ -67,17 +88,16 @@ export default {
       }
     },
 
-    async getStateRemote (context: any) {
-        try {
-          const state = await StateApi.get();
-          context.commit('setState',{state: state.state});
-        } catch (error) {
-          console.log(error);
+    async getLatestState (context: any) {
+        const state = await StateApi.get();
+        if (state.hasOwnProperty('state')) {
+            context.commit('setState',{state: state.state.content});
+        } else {
+          throw 'You do not have a saved game. Please start a new one';
         }
       },
       async saveState (context:any, state: any) {
         try {
-          console.log(context.state.state);
           StateApi.save({content:context.state.state});
         } catch (error) {
           console.log(error.response.data.message);

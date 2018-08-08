@@ -61,7 +61,6 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import StateApi from '../../../services/State';
 import BigCard from './BigCard.vue';
 import draggable from 'vuedraggable';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
@@ -77,8 +76,10 @@ export default Vue.extend({
     draggable,
   },
   created() {
-    this.setHand('your');
-    this.saveState();
+    this.init();
+  },
+  mounted () {
+    this.save();
   },
   data() {
     return {
@@ -96,6 +97,21 @@ export default Vue.extend({
       const to = evt.to.id;
       console.log('Move',card.name,'from',from,'to',to);
       return false;
+    },
+    init () {
+      if (this.board.your.hand.length === 0) {
+       if (this.board.your.deck.length === 0) {
+         this.$router.push({
+            name: 'UploadDeck',
+        });
+       } else {
+         this.setHand('your');  
+       }
+      }
+    },
+    save () {
+      let $this = this;
+      setInterval($this.saveState, 30000);
     }
   },
   computed: {

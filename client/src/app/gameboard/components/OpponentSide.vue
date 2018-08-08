@@ -86,7 +86,7 @@ export default Vue.extend({
     coin,
   },
   created() {
-    this.setHand('opponent');
+    this.init();
   },
   data() {
     return {
@@ -95,6 +95,11 @@ export default Vue.extend({
   methods: {
     ...mapActions('board', ['setHand', 'draw']),
     ...mapMutations('board', ['draw', 'setDeck']),
+      init () {
+          if (this.board.opponent.hand.length === 0) {
+              this.setHand('opponent');
+          }
+      }
   },
   computed: {
     ...mapGetters('board', {board: 'getState', cards: 'getCards'}),

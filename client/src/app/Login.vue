@@ -16,6 +16,7 @@
 import Vue from 'vue';
 import AuthenticationService from '../services/AuthenticationService';
 import ValidationErrorHelper from '../utilities/errors/ValidationError';
+import Auth from '../utilities/auth/Cookie';
 import InputHelper from '../utilities/form/Input';
 import { mapActions } from 'vuex';
 export default Vue.extend({
@@ -52,7 +53,7 @@ export default Vue.extend({
         const response = await AuthenticationService.login(this.params);
 
         // set the global user token
-        document.cookie = 'token=' + response.data.token;
+        Auth.setToken(response.data.token);
 
         // go to card upload screen
         this.$router.push({

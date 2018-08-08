@@ -16,7 +16,9 @@
         <my-decks :myDecks="myDecks" @selectedDeck="selectedDeck = $event" @error="majorErrorSet($event)"></my-decks>
         <label>Shuffle?</label>
         <input type="checkbox" :disabled="selectedDeck.length <= 0" v-model="shuffled" />
-        <button class="btn btn-success" :disabled="majorError || selectedDeck <= 0" @click="play()">Play!</button>
+        <button class="btn btn-success" :disabled="majorError || selectedDeck <= 0" @click="newGame()">New Game!</button>
+        OR
+        <button class="btn btn-success" @click="resumeGame()">Resume Game!</button>
       </div>
     </div>
   </div>
@@ -56,11 +58,10 @@ export default Vue.extend({
   },
   created() {
     this.getMyDecks();
-    this.getStateRemote();
   },
   methods: {
-    ...mapActions('board', ['getStateRemote']),
-    ...mapMutations('board', ['setDeck','setState']),
+    ...mapActions('board', ['getLatestState']),
+    ...mapMutations('board', ['setDeck','setState','resetState']),
     async save() {
       try {
         this.checkUpload();
@@ -95,15 +96,32 @@ export default Vue.extend({
     shuffle(){
       this.selectedDeck = _.shuffle(this.selectedDeck);
     },
-    play () {
+    newGame () {
       if (this.shuffled) {
         this.shuffle();
       }
+      this.resetState();
       this.setDeck({player:'your', deck:this.selectedDeck});
       this.setDeck({player:'opponent', deck:this.selectedDeck});
       this.$router.push({
         name: 'GameBoard',
       });
+    },
+    async resumeGame () {
+      try {
+        await this.getLatestState();
+        this.$router.push({
+            name: 'GameBoard',
+        });
+      } catch (error) {
+        if (error.hasOwnProperty('response')) {
+          this.failMessage = error.response.data.message;
+        } else {
+          console.log(error);
+          this.failMessage = error;
+        }
+      }
+
     },
     majorErrorSet(event) {
       this.failMessage = event;
