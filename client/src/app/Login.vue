@@ -56,7 +56,7 @@ export default Vue.extend({
         Auth.setToken(response.data.token);
 
         // go to card upload screen
-        this.$router.push({
+        this.$router.replace({
           name: 'UploadDeck',
         });
 
@@ -75,8 +75,7 @@ export default Vue.extend({
       }
     },
     logout() {
-      (this as any).setToken(null);
-      (this as any).setUser(null);
+      Auth.deleteToken();
       this.$router.push({
         name: 'Login',
       });

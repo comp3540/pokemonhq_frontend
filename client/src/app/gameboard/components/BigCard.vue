@@ -7,7 +7,7 @@
     <div class="row-1a" v-if="card instanceof Pokemon">
         <div class="stage"> {{card.stage}} </div>
         <div class="currentHp"> current: {{card.state.hp}} </div> 
-        <div class="hp"> {{card.initialHp}} </div>
+        <div class="hp"> {{card.hp}} </div>
     </div>
 
     <!-- name -->
@@ -40,8 +40,8 @@
     <div class="row-4a" v-if="card.attacks" v-for="attack in card.attacks">
         <div class="ability-name"> {{attack.attack.ability.name}} </div>
         <div class="energy-req" v-for="energyReq in attack.attack.required">
-            <div :class="`symbol-${energyReq.type} card-img`"> </div> 
-            <div class="amount"> &nbsp;: {{energyReq.amount}} </div>
+            <div :class="`symbol-${energyReq.req.energy} card-img`"> </div> 
+            <div class="amount"> &nbsp;: {{energyReq.req.amount}} </div>
         </div>
         <div class="ability-desc"> {{attack.attack.ability.interpretation}} </div>
     </div>
@@ -61,7 +61,7 @@
 
     <!-- for trainer card -->
     <div class= "row-1b" v-if="card instanceof Trainer">
-        <div class="category" v-if="card.category"> {{card.category}} </div>
+        <div class="category" v-if="card.type"> {{card.type}} </div>
     </div>
 
     <div class="row-2b" v-if="card instanceof Trainer">
@@ -111,7 +111,7 @@ export default Vue.extend({
   },
   computed: {
     cardColor(this: any): any {
-        const ct = this.card.type;
+        const ct = this.card.energy || this.card.type;
         return {
             bkard: true,
             lightning: ct === 'lightning',

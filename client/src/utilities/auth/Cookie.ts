@@ -12,7 +12,7 @@ export default {
   tokenIsset(cookies: string) {
     let exists = false;
     cookies.split(';').forEach((item) => {
-      if (item.split('=')[0].trim() === 'token') {
+      if (item.split('=')[0].trim() === 'token' && item.split('=')[1].trim() !== '') {
         exists = true;
       }
     });
@@ -20,6 +20,11 @@ export default {
   },
 
   setToken (token: string) {
-      document.cookie = 'token=' + token;
+      console.log(token);
+      document.cookie = 'token=' + token + ';Path=/;';
+  },
+
+  deleteToken(){
+    document.cookie = 'token=;Path=/;Expired=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 };

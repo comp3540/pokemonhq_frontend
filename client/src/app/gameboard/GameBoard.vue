@@ -1,13 +1,19 @@
 <template>
-<div id="container">
-  <opponent-side></opponent-side>
-  <your-side></your-side>
-</div><!--end of CONTAINER-->
+ <div>
+   <div>
+      <logout></logout>
+   </div>
+   <div id="container">
+    <opponent-side></opponent-side>
+    <your-side></your-side>
+  </div><!--end of CONTAINER-->
+ </div>
 </template>
 
 <script lang="ts">
 import YourSide from './components/YourSide.vue';
 import OpponentSide from './components/OpponentSide.vue';
+import Logout from '@/app/Logout.vue';
 import Vue from 'vue';
 
 export default Vue.extend({
@@ -15,6 +21,7 @@ export default Vue.extend({
   components: {
     YourSide,
     OpponentSide,
+    Logout
   },
   data() {
     return {};

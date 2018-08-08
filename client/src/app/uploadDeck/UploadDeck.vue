@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <logout></logout>
     <p-header header="DECK UPLOAD"></p-header>
     <div class="row">
       <div class="col-md-6">
@@ -26,6 +27,7 @@
 <script lang="ts">
 import DeckApi from '../../services/Deck';
 import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
+import Logout from '@/app/Logout.vue';
 import ValidationErrorHelper from '../../utilities/errors/ValidationError';
 import Vue from 'vue';
 import _ from 'lodash';
@@ -35,6 +37,7 @@ export default Vue.extend({
   name: 'UploadDeck',
   components: {
     MyDecks,
+    Logout
   },
   data() {
     return {
@@ -103,14 +106,14 @@ export default Vue.extend({
       this.resetState();
       this.setDeck({player:'your', deck:this.selectedDeck});
       this.setDeck({player:'opponent', deck:this.selectedDeck});
-      this.$router.push({
+      this.$router.replace({
         name: 'GameBoard',
       });
     },
     async resumeGame () {
       try {
         await this.getLatestState();
-        this.$router.push({
+        this.$router.replace({
             name: 'GameBoard',
         });
       } catch (error) {

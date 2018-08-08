@@ -8,7 +8,7 @@
     <div class="row-1a" v-if="card instanceof Pokemon"> 
         <div class="stage"> {{card.stage}} </div>
         <div class="currentHp"> {{card.state.hp}} </div>
-        <div class="hp"> {{card.initialHp}} </div>
+        <div class="hp"> {{card.hp}} </div>
     </div>
 
     <div class="row-2a" v-if="card instanceof Pokemon">
@@ -35,17 +35,17 @@
         </div> 
     </div>
 
-    <div class="row-4a" v-if="card instanceof Pokemon" v-for="attack in card.abilities" :key="attack.ability.id">
-        <div class="ability-name"> {{attack.ability.name}} </div>
-        <div class="energy-req" v-for="energyReq in attack.energyReq" :key="energyReq.id">
-            <div :class="`symbol-${energyReq.type} card-img`"> </div> 
-            <div class="amount"> &nbsp;: {{energyReq.amount}} </div>
+    <div class="row-4a" v-if="card instanceof Pokemon" v-for="attack in card.attacks">
+        <div class="ability-name"> {{attack.attack.ability.name}} </div>
+        <div class="energy-req" v-for="energyReq in attack.attack.required">
+            <div :class="`symbol-${energyReq.req.energy} card-img`"> </div> 
+            <div class="amount"> &nbsp;: {{energyReq.req.amount}} </div>
         </div>
     </div>
 
     <!-- TRAINER -->
     <div class= "row-1b" v-if="card instanceof Trainer">
-        <div class="category" v-if="card.category"> {{card.category}} </div>
+        <div class="category" v-if="card.type"> {{card.type}} </div>
     </div>
 
     <div class="row-2b" v-if="card instanceof Trainer">
@@ -103,7 +103,8 @@ export default Vue.extend({
   },
   computed: {
     cardColor(this: any): any {
-        const ct = this.card.type;
+
+        const ct = this.card.energy || this.card.type;
         return {
         kard: true,
         lightning: ct === 'lightning',

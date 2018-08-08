@@ -101,7 +101,7 @@ export default Vue.extend({
     init () {
       if (this.board.your.hand.length === 0) {
        if (this.board.your.deck.length === 0) {
-         this.$router.push({
+         this.$router.replace({
             name: 'UploadDeck',
         });
        } else {

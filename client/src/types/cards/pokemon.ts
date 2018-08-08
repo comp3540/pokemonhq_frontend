@@ -39,7 +39,7 @@ export class EnergyReq {
   public req: any;
   constructor(o: any) {
     this.req = {
-        type: o.energy,
+        energy: o.energy,
         amount: o.amount
     }
   }
@@ -70,10 +70,10 @@ export class State {
 
 export class Pokemon extends Card {
   public state: State;
-  public type: Type;
+  public energy: Type;
   public stage: Stage;
-  public initialHp: number;
-  public evolvesFrom?: Pokemon;
+  public hp: number;
+  public evolves?: Pokemon;
   public retreat: RetreatCost;
   public attacks: CardAbility[];
   public cardType: string;
@@ -81,10 +81,10 @@ export class Pokemon extends Card {
     super(o);
     this.cardType = 'pokemon';
     this.state = new State(o.hp);
-    this.type = o.energy;
+    this.energy = o.energy;
     this.stage = o.stage;
-    this.initialHp = o.hp;
-    this.evolvesFrom = o.evolves;
+    this.hp = o.hp;
+    this.evolves = o.evolves;
     this.retreat = new RetreatCost(o.retreat);
     this.attacks = o.attacks.map((ab: any) => new CardAbility(ab.attack));
   }
