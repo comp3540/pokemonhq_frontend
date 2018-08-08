@@ -33,7 +33,8 @@ module.exports = {
       const {email, password} = req.body;
       const user = await User.findOne({
         email: email
-      });
+      },
+      {states: 0, decks: 0});
       if (!user) {
         return res.status(403).send({
           message: 'The login information was not correct'
