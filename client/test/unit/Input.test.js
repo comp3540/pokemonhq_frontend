@@ -1,5 +1,3 @@
-//Todo:
-
 import {clear, getValue} from '../../src/utilities/form/Input.js';
 
 //For clear (fields, fieldName = undefined):
