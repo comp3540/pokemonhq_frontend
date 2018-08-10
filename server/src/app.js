@@ -19,7 +19,7 @@ app.use('/prolog', express.static(path.join(__dirname, './../prolog')));
 require('./routes')(app);
 require('./passport');
 
-Mongoose.connect('mongodb://localhost/pokemonhq').then((client) => {
+Mongoose.connect('mongodb://localhost/' + process.env.DB_DATABASE).then((client) => {
   app.listen(process.env.PORT || 8081);
   console.log('server started');
 }).catch((err) => {
