@@ -31,6 +31,11 @@ export default {
     clearHand (state:any, player:any) {
       state.state[player].hand = [];
     },
+
+    clearPrize (state:any, player:any) {
+      state.state[player].prize = [];
+    },
+
     setDeck(state: any, payload: any) {
       state.state[payload.player].setDeck(payload.deck);
     },
@@ -73,6 +78,14 @@ export default {
       state.state[player].hand.push(deckTopCard);
     },
 
+    drawPrize(state: any, player: string) {
+      // remove top card from the deck (index[0])...
+      const deckTopCard = state.state[player].deck.shift();
+
+      // push deckTopCard to the end of the player's hand
+      state.state[player].prize.push(deckTopCard);
+    },
+
     discard(state: any, {player, card}: any) {
       // discard a selected card from it's location to the discard pile
     }
@@ -87,7 +100,13 @@ export default {
         context.commit('draw', player);
       }
     },
-
+    setPrize(context: any, player: string) {
+      context.commit('clearPrize', player);
+      // dont know how to access state here to "slice" deck, so using loop
+      for (let x = 1; x <= 6; x++) {
+        context.commit('drawPrize', player);
+      }
+    },
     async getLatestState (context: any) {
         const state = await StateApi.get();
         if (state.hasOwnProperty('state')) {

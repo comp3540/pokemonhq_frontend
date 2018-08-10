@@ -93,11 +93,12 @@ export default Vue.extend({
     };
   },
   methods: {
-    ...mapActions('board', ['setHand', 'draw']),
+    ...mapActions('board', ['setHand', 'draw', 'setPrize']),
     ...mapMutations('board', ['draw', 'setDeck']),
       init () {
           if (this.board.opponent.hand.length === 0) {
               this.setHand('opponent');
+              this.setPrize('opponent');
           }
       }
   },

@@ -88,7 +88,7 @@ export default Vue.extend({
   },
   methods: {
 
-    ...mapActions('board', ['setHand', 'draw', 'saveState']),
+    ...mapActions('board', ['setHand', 'draw', 'saveState', 'setPrize']),
     ...mapMutations('board', ['draw', 'setDeck','setState']),
 
     moveHand(evt) {
@@ -105,9 +105,11 @@ export default Vue.extend({
             name: 'UploadDeck',
         });
        } else {
-         this.setHand('your');  
+         this.setHand('your');
+         this.setPrize('your');
        }
       }
+
     },
     save () {
       let $this = this;
