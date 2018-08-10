@@ -6,12 +6,13 @@
   </div>
 </template>
 
-<script type="text/javascript">
-export default {
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
   props: {
     message: {
-      type: String
-    }
-  }
-};
+      type: String,
+    },
+  },
+});
 </script>

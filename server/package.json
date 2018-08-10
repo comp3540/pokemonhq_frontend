@@ -18,17 +18,15 @@
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "globby": "^8.0.1",
     "jest": "^23.1.0",
     "joi": "^13.4.0",
     "jsonwebtoken": "^8.3.0",
-    "mongodb": "^3.1.0",
     "mongoose": "^5.2.1",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "path": "^0.12.7",
-    "sequelize": "^4.37.10",
-    "sqlite3": "^4.0.0"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

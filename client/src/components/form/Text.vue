@@ -6,28 +6,29 @@
   </div>
 </template>
 
-<script type="text/javascript">
-export default {
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({
   props: {
     label: {
       required: true,
-      type: String
+      type: String,
     },
     error: {
       required: true,
       type: String,
-      default: ''
+      default: '',
     },
     value: {
-      required: true
-    }
+      required: true,
+    },
   },
 
   methods: {
-    input (text) {
+    input(text: string) {
       this.$emit('input', text);
       this.$emit('clearError');
-    }
-  }
-};
+    },
+  },
+});
 </script>

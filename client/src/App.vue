@@ -4,12 +4,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-};
-</script>
-
-<style>
+<style lang="scss">
   @import './assets/css/main.css';
+  @import './assets/css/tooltip.scss';
 </style>

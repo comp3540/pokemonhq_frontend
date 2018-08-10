@@ -15,38 +15,39 @@
   </div>
 </template>
 
-<script>
-import AuthenticationService from '@/services/AuthenticationService';
-import ValidationError from '@/utilities/errors/ValidationError';
-import InputHelper from '@/utilities/form/Input';
-export default {
+<script lang="ts">
+import Vue from 'vue';
+import AuthenticationService from '../services/AuthenticationService';
+import ValidationError from '../utilities/errors/ValidationError';
+import InputHelper from '../utilities/form/Input';
+export default Vue.extend({
   name: 'Register',
-  data () {
+  data() {
     return {
       params: { // all input fields
         first_name: '',
         last_name: '',
         email: '',
-        password: ''
+        password: '',
       },
       errors: {
         first_name: '',
         last_name: '',
         email: '',
         password: '',
-        file: ''
+        file: '',
       },
       // the message associated to the fail alert
       failMessage: '',
 
       // the message associated to the success alert
-      successMessage: ''
+      successMessage: '',
     };
   },
 
   methods: {
     // this method will attempt to register based on the input values filled by the user
-    async register () {
+    async register() {
       try {
         // set the fail message to an empty just in case it is set at this point
         this.failMessage = '';
@@ -56,7 +57,7 @@ export default {
 
         // call the register which is an asynchronous method, passing in the input values.
         // Once the method has finished execution save the response.
-        let response = await AuthenticationService.register(this.params);
+        const response = await AuthenticationService.register(this.params);
 
         // set the success message to the response which will contain a "message" field containing the
         // success message
@@ -75,9 +76,9 @@ export default {
           this.failMessage = error.response.data.message;
         }
       }
-    }
-  }
-};
+    },
+  },
+});
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

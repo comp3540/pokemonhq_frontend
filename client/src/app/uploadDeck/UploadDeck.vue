@@ -1,56 +1,74 @@
 <template>
   <div class="container">
+    <logout></logout>
     <p-header header="DECK UPLOAD"></p-header>
     <div class="row">
       <div class="col-md-6">
         <p-form>
           <p-input-text label="Deck name" :error="errors.name" @clearError="errors.name== ''" v-model="params.name" />
           <p-input-file label="Upload Your Deck" id="upload" @upload="getUpload($event)"/>
-          <p-text-area label="Preview Deck" rows="10" cols="30" v-model="params.deck" :error="errors.deck" @clearError = "errors.deck = ''"/>
+          <p-text-area label="Preview Deck" rows="10" cols="30" v-model="upload" :error="errors.deck" @clearError = "errors.deck = ''"/>
           <p-alert-success :message="successMessage" @close="successMessage = ''" />
           <p-alert-fail :message="failMessage" @close="failMessage = ''" />
           <button class="button" @click="save">Upload!</button>
         </p-form>
       </div>
       <div class="col-md-6 left-border">
-        <my-decks :myDecks="myDecks"></my-decks>
+        <my-decks :myDecks="myDecks" @selectedDeck="selectedDeck = $event" @error="majorErrorSet($event)"></my-decks>
+        <label>Shuffle?</label>
+        <input type="checkbox" :disabled="selectedDeck.length <= 0" v-model="shuffled" />
+        <button class="btn btn-success" :disabled="majorError || selectedDeck <= 0" @click="newGame()">New Game!</button>
+        OR
+        <button class="btn btn-success" @click="resumeGame()">Resume Game!</button>
       </div>
     </div>
   </div>
 </template>
-<script type="text/javascript">
-import DeckApi from '@/services/Deck';
-import MyDecks from '@/app/uploadDeck/components/MyDecks';
-import ValidationErrorHelper from '@/utilities/errors/ValidationError';
-export default {
+<script lang="ts">
+import DeckApi from '../../services/Deck';
+import MyDecks from '@/app/uploadDeck/components/MyDecks.vue';
+import Logout from '@/app/Logout.vue';
+import ValidationErrorHelper from '../../utilities/errors/ValidationError';
+import Vue from 'vue';
+import _ from 'lodash';
+import { mapMutations, mapActions } from 'vuex';
+
+export default Vue.extend({
   name: 'UploadDeck',
   components: {
-    MyDecks
+    MyDecks,
+    Logout
   },
-  data () {
+  data() {
     return {
       params: {
         name: '',
-        deck: ''
+        deck: '',
       },
       errors: {
         name: '',
-        deck: ''
+        deck: '',
       },
+      upload: '',
       failMessage: '',
+      majorError:false,
       successMessage: '',
-      myDecks: []
+      myDecks: [],
+      selectedDeck: [],
+      shuffled:false,
+      state: {}
     };
   },
-  created () {
+  created() {
     this.getMyDecks();
   },
-
   methods: {
-    async save () {
+    ...mapActions('board', ['getLatestState']),
+    ...mapMutations('board', ['setDeck','setState','resetState']),
+    async save() {
       try {
-        this.checkDeck();
-        let response = await DeckApi.save(this.params);
+        this.checkUpload();
+        const response = await DeckApi.save(this.params);
         this.successMessage = response.data.message;
         this.getMyDecks();
       } catch (error) {
@@ -62,30 +80,58 @@ export default {
       }
     },
 
-    getUpload (event) {
-      this.params.deck = event.file;
+    getUpload(event: any) {
+      this.upload = event.file;
     },
 
-    checkDeck () {
+    checkUpload() {
       // replace next line with spaces
-      var checkedDeck = this.params.deck.replace(/\n/g, ' ');
-      this.params.deck = checkedDeck;
+      this.params.deck = this.upload.replace(/\n/g, ' ');
     },
-
-    stringifyDeck () {
-      this.params.deck = JSON.stringify(this.params.deck);
-    },
-
-    async getMyDecks () {
+    async getMyDecks() {
       try {
-        let decks = await DeckApi.get();
+        const decks = await DeckApi.get();
         this.myDecks = decks.data.decks;
       } catch (error) {
         this.failMessage = error.response.data.message;
       }
+    },
+    shuffle(){
+      this.selectedDeck = _.shuffle(this.selectedDeck);
+    },
+    newGame () {
+      if (this.shuffled) {
+        this.shuffle();
+      }
+      this.resetState();
+      this.setDeck({player:'your', deck:this.selectedDeck});
+      this.setDeck({player:'opponent', deck:this.selectedDeck});
+      this.$router.replace({
+        name: 'GameBoard',
+      });
+    },
+    async resumeGame () {
+      try {
+        await this.getLatestState();
+        this.$router.replace({
+            name: 'GameBoard',
+        });
+      } catch (error) {
+        if (error.hasOwnProperty('response')) {
+          this.failMessage = error.response.data.message;
+        } else {
+          console.log(error);
+          this.failMessage = error;
+        }
+      }
+
+    },
+    majorErrorSet(event) {
+      this.failMessage = event;
+      this.majorError = true;
     }
-  }
-};
+  },
+});
 </script>
 <style scoped>
   #upload input{
@@ -94,5 +140,9 @@ export default {
   }
   .left-border {
     border-left: 1px solid lightgrey;
+  }
+  .btn{
+    margin-right: 5px;
+    margin-top: 5px;
   }
 </style>

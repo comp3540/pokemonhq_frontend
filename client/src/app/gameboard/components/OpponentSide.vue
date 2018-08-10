@@ -5,16 +5,25 @@
 
   <div class="active-column">
     <div class="active-card">
-        <active-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
+        <big-card v-if="board.opponent.active.length > 0" :card="board.opponent.active[0]" />
       </div>
   </div>
 
   <div class="super-column">
-
-    <div class="actions-row"> This area will be reserved for buttons and options. </div>
+    <!-- options bar -->
+    <div class="actions-row">
+      <div class="interact-row">
+        <endTurn></endTurn> 
+        <forfeit></forfeit> 
+        <coin></coin>
+      </div>
+      <div class="log">
+        <log></log> 
+      </div>
+    </div>
     <div class="hand-row">
     <!-- hands -->
-      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.props.id">
+      <div class="hand-card" v-for="card in board.opponent.hand" :key="card.id">
         <face-down-card :card="card" />
       </div>
     </div>
@@ -23,7 +32,7 @@
 
         <div class="column-1">
         <!-- bench -->
-          <div class="small-card" v-for="card in board.opponent.bench" :key="card.props.id">
+          <div class="small-card" v-for="card in board.opponent.bench" :key="card.id">
               <small-card :card="card" />
           </div>
         </div>
@@ -31,15 +40,17 @@
         <div class="column-2">
         <!-- deck and discard -->
             <div class="deck">
-            <face-down-card :card="card" />
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-deck"> &nbsp;:{{board.opponent.deck.length}} </div>
             </div>
             <div class="discard">
-            <face-down-card :card="card" />
+              <face-down-card :card="board.opponent.discard[0]" />
+              <div class="amount-discard"> &nbsp;:{{board.opponent.discard.length}} </div>
             </div>
         </div>
 
         <div class="column-3">
-            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.props.id">
+            <div class="prize-card" v-for="card in board.opponent.prize" :key="card.id">
             <face-down-card :card="card" />
             </div>
         </div>
@@ -51,38 +62,49 @@
 
 </template>
 
-<script>
-import Card from './Card';
-import ActiveCard from './ActiveCard';
+<script lang="ts">
+import Vue from 'vue';
+import BigCard from './BigCard.vue';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-import Deck from './../../../../faker/deck';
-import SmallCard from './SmallCard';
-import FaceDownCard from './FaceDownCard';
+import deck from '../../../faker/deck';
+import SmallCard from './SmallCard.vue';
+import FaceDownCard from './FaceDownCard.vue';
+import endTurn from './ButtonEndTurn.vue';
+import forfeit from './ButtonForfeit.vue';
+import log from './Logs.vue';
+import coin from './CoinFlip.vue';
 
-export default {
+export default Vue.extend({
   name: 'opponent-side',
   components: {
-    Card,
-    ActiveCard,
+    BigCard,
     SmallCard,
-    FaceDownCard
+    FaceDownCard,
+    endTurn,
+    forfeit,
+    log,
+    coin,
   },
-  created () {
-    this.setDeck({player: 'opponent', deck: Deck.deck});
-    this.setHand('opponent');
+  created() {
+    this.init();
   },
-  data () {
+  data() {
     return {
     };
   },
   methods: {
     ...mapActions('board', ['setHand', 'draw']),
-    ...mapMutations('board', ['draw', 'setDeck'])
+    ...mapMutations('board', ['draw', 'setDeck']),
+      init () {
+          if (this.board.opponent.hand.length === 0) {
+              this.setHand('opponent');
+          }
+      }
   },
   computed: {
-    ...mapGetters('board', {board: 'getBoard'})
-  }
-};
+    ...mapGetters('board', {board: 'getState', cards: 'getCards'}),
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -90,7 +112,7 @@ export default {
 
   .side {
     background: #fff;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid #ff6600;
     color: #545454;
     display: flex;
     flex-direction: row;
@@ -109,9 +131,27 @@ export default {
   }
 
   .actions-row {
+    display: flex;
     width: 100%;
     height: 30%;
-    background-color:#e6e6e6;
+    background-color:#b80000;
+    flex-direction: column;
+    border-radius: 0px 0px 0px 20px;
+  }
+
+  .interact-row {
+    display: flex;
+    justify-content: space-around;
+    height:50%;
+    width: 100%;
+  }
+
+  .log {
+    align-content: flex-start;
+    text-align: left;
+    height: 30%;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.479);
   }
 
   .hand-row {
@@ -119,7 +159,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     width: 60%;
-    height:20%;
+    height: 20%;
   }
 
   .everything-row {
@@ -152,7 +192,6 @@ export default {
   }
 
   .hand-card {
-    background-color:cadetblue;
     height: 2em;
     width: 2em;
     margin: 4px;
@@ -161,19 +200,17 @@ export default {
   }
 
   .small-card {
-    border: 3px solid orange;
     width: 145px;
     height: 22vh;
     margin: 5px;
     text-align: center;
-    line-height: 75px;
+    /*line-height: 75px;*/
     font-size: 20px;
     border-radius: 10px;
   }
 
   .active-card{
     display: flex;
-    background-color:#b30000;
     width: 90%;
     height: 47vh;
     color: white;
@@ -187,8 +224,6 @@ export default {
   }
 
   .prize-card {
-    border: 1px solid #b30000;
-    background-color: white;
     color: #b30000;
     width: 2em;
     height: 3em;
@@ -198,7 +233,10 @@ export default {
   }
 
   .deck, .discard {
-    background-color:cadetblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #0099cc;
     color: white;
     height: 4em;
     width: 4em;

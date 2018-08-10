@@ -57,6 +57,31 @@ input{
     background-image: url("../images/pokemonCard.png");
 }
 
+.coin {
+    background-image: url("../images/coin.png");
+}
+
+.symbol-lightning {
+    background-image: url("../images/lightning.png");
+}
+
+.symbol-water {
+    background-image: url("../images/water.png");
+}
+
+.symbol-fighting {
+    background-image: url("../images/fighting.png");
+}
+
+.symbol-psychic {
+    background-image: url("../images/psychic.png");
+}
+
+.symbol-colorless {
+    background-image: url("../images/colorless.png");
+}
+
+
 #login {
     min-height: 40em;
 }
@@ -86,4 +111,8 @@ input{
     color: #ff5e0e;
     background-color: #fff;
     border: 3px solid #ff5e0e;
+}
+
+body {
+    margin: 0;
 }
